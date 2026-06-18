@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Services | L&D Manpower Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --navy:#1A2848;
+    --navy-deep:#101A33;
+    --green:#2C8C2C;
+    --green-dark:#226e22;
+    --green-light:#3FA63F;
+    --green-pale:#eaf5ea;
+    --green-soft:#f4f9f4;
+    --green-deep:#0c3b1d;
+    --ink:#27313f;
+    --muted:#5c6b7a;
+    --paper:#ffffff;
+    --border:#e7eaef;
+    --ph:#eef1f4;
+    --ph-line:#dde2e8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); }
+  a{ text-decoration:none; color:inherit; }
+
+  /* ── NAVBAR ── */
+  .navbar{ width:100%; background:var(--paper); border-bottom:1px solid var(--border); box-shadow:0 6px 18px -12px rgba(20,30,60,0.25); position:relative; z-index:20; }
+  .navbar-inner{ max-width:1480px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:28px; padding:18px 48px; }
+  .brand{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
+  .brand img{ height:68px; width:auto; display:block; }
+  .nav-links{ display:flex; align-items:center; gap:36px; list-style:none; margin:0; padding:0; flex:1; justify-content:center; }
+  .nav-links li a{ font-family:'Inter',sans-serif; font-weight:500; font-size:15.5px; color:#1f2a3a; padding:6px 2px; position:relative; transition:color .2s ease; white-space:nowrap; }
+  .nav-links li a:hover{ color:var(--green); }
+  .nav-links li a.active{ color:var(--green); }
+  .nav-links li a.active::after{ content:""; position:absolute; left:0; right:0; bottom:-9px; height:2px; background:var(--green); }
+  .navbar-cta{ display:inline-flex; align-items:center; gap:8px; background:var(--green); color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:15px; padding:13px 26px; border-radius:32px; border:none; cursor:pointer; flex-shrink:0; transition:background .2s ease, transform .2s ease; }
+  .navbar-cta:hover{ background:var(--green-dark); transform:translateY(-1px); }
+  .navbar-cta svg{ width:15px; height:15px; }
+  @media(max-width:1180px){ .nav-links{ gap:22px; } .navbar-inner{ padding:16px 28px; } }
+  @media(max-width:980px){ .nav-links{ display:none; } .navbar-cta{ padding:11px 20px; font-size:14px; } }
+  @media(max-width:560px){ .brand img{ height:42px; } .navbar-cta span.cta-label{ display:none; } .navbar-cta{ padding:11px 14px; } }
+
+  /* ── PLACEHOLDERS (kept for any future unfilled slots) ── */
+  .ph-shape{ background:var(--ph); border:1px solid var(--ph-line); flex-shrink:0; }
+  .ph-circle{ border-radius:50%; }
+  .ph-rounded{ border-radius:16px; }
+  .ph-block{ border:1.5px dashed var(--ph-line); border-radius:18px; background:var(--green-soft); display:flex; align-items:center; justify-content:center; color:#9aa7b3; font-family:'Inter',sans-serif; font-size:13px; text-align:center; padding:24px; }
+
+  /* ── ICON SLOTS (now filled with Font Awesome) ── */
+  .icon-slot{
+    background:var(--green-pale);
+    border:1px solid #d7ecd7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .icon-slot i{ color:var(--green-dark); }
+  .hero-feature .icon-slot i{ font-size:22px; }
+  .service-icon-wrap .icon-slot i{ font-size:28px; }
+  .stat-item .icon-slot i{ font-size:22px; }
+  .service-card:hover .icon-slot{ background:var(--green); }
+  .service-card:hover .icon-slot i{ color:#fff; }
+
+  /* ── HERO ── */
+  .svc-hero{ width:100%; background:var(--paper); overflow:hidden; }
+  .svc-hero-inner{ max-width:1480px; margin:0 auto; padding:90px 48px 70px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:50px; align-items:center; }
+  .svc-hero-content .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-family:'Inter',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:18px; }
+  .svc-hero-content h1{ font-family:'Poppins',sans-serif; font-weight:700; font-size:42px; line-height:1.25; color:var(--navy); margin:0 0 20px 0; letter-spacing:-0.4px; }
+  .svc-hero-content h1 span{ color:var(--green); }
+  .svc-hero-content p{ font-size:16px; line-height:1.75; color:var(--muted); margin:0 0 36px 0; max-width:480px; }
+  .hero-features{ display:flex; gap:34px; flex-wrap:wrap; }
+  .hero-feature{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; max-width:96px; }
+  .hero-feature .icon-slot{ width:54px; height:54px; border-radius:50%; }
+  .hero-feature span{ font-family:'Inter',sans-serif; font-weight:600; font-size:13px; color:var(--navy); line-height:1.4; }
+  .svc-hero-media{ position:relative; }
+  .svc-hero-media .ph-block{ width:100%; min-height:380px; }
+  @media(max-width:980px){ .svc-hero-inner{ grid-template-columns:1fr; padding:60px 28px; } .svc-hero-content h1{ font-size:32px; } .svc-hero-media{ order:-1; } }
+  @media(max-width:560px){ .hero-features{ gap:20px; justify-content:center; } }
+
+  /* ── SERVICES GRID ── */
+  .services-section{ background:var(--green-soft); padding:80px 0 90px; }
+  .services-container{ max-width:1480px; margin:0 auto; padding:0 48px; }
+  .services-heading{ text-align:center; margin-bottom:48px; }
+  .services-heading span{ display:inline-block; font-family:'Inter',sans-serif; font-weight:700; font-size:14px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); position:relative; padding-bottom:12px; }
+  .services-heading span::after{ content:""; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:42px; height:3px; border-radius:2px; background:var(--green); }
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .service-card{ background:#fff; border-radius:16px; border:1px solid var(--border); padding:30px 26px 26px; display:flex; gap:20px; box-shadow:0 12px 30px -22px rgba(20,40,20,0.22); transition:box-shadow .25s, transform .25s; }
+  .service-card:hover{ box-shadow:0 16px 40px -16px rgba(20,80,20,0.18); transform:translateY(-3px); }
+  .service-icon-wrap{ position:relative; flex-shrink:0; }
+  .service-icon-wrap .icon-slot{ width:72px; height:72px; border-radius:16px; }
+  .service-num{ position:absolute; top:-10px; left:-10px; width:30px; height:30px; border-radius:50%; background:var(--green); color:#fff; font-family:'Poppins',sans-serif; font-weight:700; font-size:12.5px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px -3px rgba(34,110,34,0.6); }
+  .service-body h4{ font-family:'Poppins',sans-serif; font-weight:700; font-size:16.5px; line-height:1.35; color:var(--navy); margin:0 0 10px 0; }
+  .service-body p{ font-size:13.5px; line-height:1.65; color:var(--muted); margin:0 0 16px 0; }
+  .learn-more{ display:inline-flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:var(--green-dark); transition:gap .2s ease; }
+  .learn-more:hover{ gap:12px; }
+  .learn-more i{ font-size:11px; }
+  @media(max-width:1180px){ .services-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:640px){ .services-grid{ grid-template-columns:1fr; } .service-card{ padding:26px 22px 22px; } }
+
+  /* ── CTA BANNER ── */
+  .cta-wrap{ max-width:1480px; margin:0 auto 70px; padding:0 48px; }
+  .cta-banner{ position:relative; background:linear-gradient(100deg,var(--green-dark),var(--green)); border-radius:20px; padding:42px 48px; display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap; color:#fff; overflow:hidden; }
+  .cta-banner::after{ content:""; position:absolute; right:-20px; bottom:-30px; width:260px; height:160px; background:radial-gradient(ellipse at bottom right,rgba(255,255,255,0.16),transparent 70%); pointer-events:none; }
+  .cta-text h3{ font-family:'Poppins',sans-serif; font-weight:700; font-size:24px; margin:0 0 8px 0; }
+  .cta-text p{ font-size:14.5px; line-height:1.6; margin:0; color:rgba(255,255,255,.88); max-width:440px; }
+  .cta-actions{ display:flex; gap:14px; flex-wrap:wrap; position:relative; z-index:1; }
+  .cta-btn-solid,.cta-btn-outline-cta{ display:inline-flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px; padding:13px 24px; border-radius:30px; white-space:nowrap; transition:transform .2s ease; }
+  .cta-btn-solid:hover,.cta-btn-outline-cta:hover{ transform:translateY(-1px); }
+  .cta-btn-solid{ background:#fff; color:var(--green-dark); }
+  .cta-btn-outline-cta{ background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.55); }
+  @media(max-width:560px){ .cta-banner{ padding:32px 26px; } }
+
+  /* ── STATS STRIP ── */
+  .stats-wrap{ max-width:1480px; margin:0 auto 90px; padding:0 48px; }
+  .stats-strip{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:30px 36px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px; box-shadow:0 14px 32px -22px rgba(20,40,20,0.16); }
+  .stat-item{ display:flex; align-items:center; gap:14px; }
+  .stat-item .icon-slot{ width:54px; height:54px; border-radius:50%; }
+  .stat-item strong{ display:block; font-family:'Poppins',sans-serif; font-weight:700; font-size:24px; color:var(--navy); }
+  .stat-item span{ font-size:13px; color:var(--muted); }
+  @media(max-width:980px){ .stats-strip{ justify-content:center; } }
+
+  /* ══════════════════════════════
+     FOOTER — matching standard design
+  ══════════════════════════════ */
+  .footer{ font-family:'Poppins',sans-serif; background:#f0f4f0; color:#222; }
+
+  .footer-top{ padding:60px 0 50px; position:relative; overflow:hidden; }
+  .footer-top::after{
+    content:''; position:absolute; right:0; bottom:0; width:400px; height:240px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 260'%3E%3Cg fill='%23b8d4b8' opacity='0.4'%3E%3Crect x='160' y='110' width='18' height='100'/%3E%3Crect x='183' y='120' width='18' height='90'/%3E%3Crect x='206' y='115' width='18' height='95'/%3E%3Crect x='155' y='105' width='74' height='8' rx='4'/%3E%3Ccircle cx='310' cy='130' r='52' fill='none' stroke='%23b8d4b8' stroke-width='5' opacity='0.45'/%3E%3Crect x='306' y='175' width='8' height='55'/%3E%3Crect x='30' y='145' width='22' height='65'/%3E%3Crect x='57' y='135' width='18' height='75'/%3E%3Crect x='80' y='150' width='25' height='60'/%3E%3Crect x='110' y='140' width='20' height='70'/%3E%3Crect x='135' y='155' width='20' height='55'/%3E%3Crect x='0' y='210' width='420' height='10' rx='2'/%3E%3Ccircle cx='50' cy='205' r='12'/%3E%3Ccircle cx='90' cy='208' r='10'/%3E%3Ccircle cx='370' cy='205' r='14'/%3E%3Ccircle cx='400' cy='207' r='10'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-size:contain; background-position:bottom right; pointer-events:none; z-index:1;
+  }
+  .footer-container{ width:90%; max-width:1400px; margin:auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:35px; position:relative; z-index:2; }
+  .footer-col{ position:relative; }
+  .footer-col:not(:first-child){ padding-left:30px; border-left:1px solid #e5e5e5; }
+  .footer-logo{ width:180px; margin-bottom:20px; }
+  .company-info p{ color:#555; line-height:1.8; font-size:14.5px; margin-bottom:20px; }
+  .footer-line{ width:50px; height:2px; background:#0f9d39; margin-bottom:20px; }
+  .company-info h4{ color:#0f9d39; font-size:15px; font-weight:700; margin-bottom:15px; }
+  .social-icons{ display:flex; gap:10px; }
+  .social-icons a{ width:40px; height:40px; border:1.5px solid #c8cfd6; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#555; font-size:15px; transition:all .25s ease; }
+  .social-icons a:hover{ border-color:#0f9d39; color:#0f9d39; }
+  .footer-col h3{ display:flex; align-items:center; gap:12px; color:#0f9d39; margin:0 0 26px 0; font-size:17px; font-weight:700; }
+  .footer-col h3 .col-icon{ width:44px; height:44px; border:1.5px solid #c2dbc2; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:17px; color:#0f9d39; flex-shrink:0; }
+  .footer-col ul{ list-style:none; padding:0; margin:0; }
+  .footer-col ul li{ margin-bottom:14px; }
+  .footer-col ul li a{ text-decoration:none; color:#444; font-size:14.5px; transition:color .2s, padding-left .2s; font-weight:400; }
+  .footer-col ul li a:hover{ color:#0f9d39; padding-left:4px; }
+
+  .footer-contact{ background:linear-gradient(90deg,#002d11,#006d24,#003f18); padding:24px 0; }
+  .contact-container{ width:90%; max-width:1400px; margin:auto; display:grid; grid-template-columns:2fr 1fr 1.5fr 2fr; gap:20px; align-items:center; }
+  .contact-item{ display:flex; align-items:center; gap:14px; color:#fff; }
+  .contact-item .ci-icon{ width:44px; height:44px; border:1.5px solid rgba(255,255,255,.25); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px; color:#6be06b; }
+  .contact-item:first-child .ci-icon{ background:#0f9d39; border-color:#0f9d39; color:#fff; font-size:18px; }
+  .contact-item strong{ display:block; font-size:15px; font-weight:700; margin-bottom:3px; color:#fff; }
+  .contact-item span,.contact-item a{ color:#cce8cc; font-size:13.5px; text-decoration:none; line-height:1.65; }
+  .contact-item a:hover{ color:#b8ffca; }
+
+  .footer-bottom{ background:#004d19; padding:16px 0; }
+  .footer-bottom-container{ width:90%; max-width:1400px; margin:auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .footer-bottom p{ color:#cce8cc; font-size:13.5px; margin:0; }
+  .footer-links{ display:flex; align-items:center; }
+  .footer-links a{ color:#cce8cc; text-decoration:none; font-size:13.5px; padding:0 18px; position:relative; transition:color .2s; }
+  .footer-links a:hover{ color:#fff; }
+  .footer-links a + a::before{ content:''; position:absolute; left:0; top:50%; transform:translateY(-50%); width:1px; height:13px; background:rgba(255,255,255,.35); }
+
+  @media(max-width:1200px){ .footer-container{ grid-template-columns:repeat(2,1fr); } .contact-container{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:768px){ .footer-container,.contact-container{ grid-template-columns:1fr; } .footer-col{ border:none !important; padding-left:0 !important; } .footer-bottom-container{ flex-direction:column; text-align:center; } .footer-links{ justify-content:center; } }
+
+  /* ══════════════════════════════
+     LAZY LOAD / SCROLL ANIMATIONS
+  ══════════════════════════════ */
+  .lazy-fade       { opacity:0; transform:translateY(36px); transition:opacity .65s ease, transform .65s ease; }
+  .lazy-fade-left  { opacity:0; transform:translateX(-40px); transition:opacity .65s ease, transform .65s ease; }
+  .lazy-fade-right { opacity:0; transform:translateX(40px);  transition:opacity .65s ease, transform .65s ease; }
+  .lazy-scale      { opacity:0; transform:scale(0.92);        transition:opacity .6s ease, transform .6s ease; }
+  .lazy-fade-up    { opacity:0; transform:translateY(24px);   transition:opacity .55s ease, transform .55s ease; }
+
+  .lazy-fade.visible,.lazy-fade-left.visible,.lazy-fade-right.visible,
+  .lazy-scale.visible,.lazy-fade-up.visible { opacity:1; transform:none; }
+
+  .delay-1{ transition-delay:.08s !important; }
+  .delay-2{ transition-delay:.16s !important; }
+  .delay-3{ transition-delay:.24s !important; }
+  .delay-4{ transition-delay:.32s !important; }
+  .delay-5{ transition-delay:.40s !important; }
+  .delay-6{ transition-delay:.48s !important; }
+
+  @media(prefers-reduced-motion:reduce){
+    .lazy-fade,.lazy-fade-left,.lazy-fade-right,.lazy-scale,.lazy-fade-up{
+      opacity:1 !important; transform:none !important; transition:none !important;
+    }
+  }
+
+  .svc-hero-media{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.svc-hero-image{
+    width:100%;
+    max-width:650px;
+    height:auto;
+    object-fit:contain;
+    display:block;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="L&D Manpower Solutions Logo" loading="eager">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html" class="active">Our Services</a></li>
+      <li><a href="whyus.html">Why Us</a></li>
+      <li><a href="career.html">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="navbar-cta">
+      <span class="cta-label">Get In Touch</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="svc-hero">
+  <div class="svc-hero-inner">
+
+    <div class="svc-hero-content">
+      <p class="eyebrow">Our Services</p>
+      <h1>Comprehensive Business Solutions Under <span>One Roof</span></h1>
+      <p>From company setup to workforce solutions and compliance support — we provide end-to-end services to help your business start, operate, and grow in Singapore.</p>
+      <div class="hero-features">
+        <div class="hero-feature">
+          <div class="icon-slot"><i class="fas fa-user-tie"></i></div>
+          <span>Expert Guidance</span>
+        </div>
+        <div class="hero-feature">
+          <div class="icon-slot"><i class="fas fa-clock"></i></div>
+          <span>Timely Support</span>
+        </div>
+        <div class="hero-feature">
+          <div class="icon-slot"><i class="fas fa-shield-alt"></i></div>
+          <span>Compliance Focused</span>
+        </div>
+        <div class="hero-feature">
+          <div class="icon-slot"><i class="fas fa-handshake"></i></div>
+          <span>Reliable &amp; Trusted</span>
+        </div>
+      </div>
+    </div>
+
+<div class="svc-hero-media">
+    <img src="assets/service.png"
+         alt="L&D Manpower Services"
+         class="svc-hero-image"
+         loading="lazy">
+</div>
+
+  </div>
+</section>
+
+<!-- ══════════ SERVICES GRID ══════════ -->
+<section class="services-section">
+  <div class="services-container">
+    <div class="services-heading"><span>Our Services</span></div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <span class="service-num">01</span>
+          <div class="icon-slot"><i class="fas fa-building"></i></div>
+        </div>
+        <div class="service-body">
+          <h4>Company Incorporation &amp; ACRA Compliance</h4>
+          <p>We help you incorporate your company and ensure full compliance with ACRA regulations seamlessly.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <span class="service-num">02</span>
+          <div class="icon-slot"><i class="fas fa-folder-open"></i></div>
+        </div>
+        <div class="service-body">
+          <h4>Corporate Secretarial &amp; Ongoing Compliance</h4>
+          <p>End-to-end corporate secretarial services to keep your business compliant and up-to-date.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <span class="service-num">03</span>
+          <div class="icon-slot"><i class="fas fa-id-card"></i></div>
+        </div>
+        <div class="service-body">
+          <h4>Various Licensing Services</h4>
+          <p>We assist in obtaining the required business licenses and permits for your operations in Singapore.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <span class="service-num">04</span>
+          <div class="icon-slot"><i class="fas fa-passport"></i></div>
+        </div>
+        <div class="service-body">
+          <h4>Work Pass Applications (MOM) Services</h4>
+          <p>Comprehensive work pass application services for your foreign employees with MOM.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <span class="service-num">05</span>
+          <div class="icon-slot"><i class="fas fa-file-invoice-dollar"></i></div>
+        </div>
+        <div class="service-body">
+          <h4>GST Registration &amp; Filing (IRAS) Services</h4>
+          <p>GST registration, filing, and advisory services to ensure IRAS compliance made easy.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <span class="service-num">06</span>
+          <div class="icon-slot"><i class="fas fa-certificate"></i></div>
+        </div>
+        <div class="service-body">
+          <h4>bizSAFE &amp; ISO Certification Support Services</h4>
+          <p>We help your business achieve bizSAFE and ISO certifications for higher standards and credibility.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <span class="service-num">07</span>
+          <div class="icon-slot"><i class="fas fa-users"></i></div>
+        </div>
+        <div class="service-body">
+          <h4>Recruitment &amp; Manpower Services</h4>
+          <p>Find the right talent faster. We provide recruitment and manpower solutions tailored to your needs.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <span class="service-num">08</span>
+          <div class="icon-slot"><i class="fas fa-flag"></i></div>
+        </div>
+        <div class="service-body">
+          <h4>Singapore PR Application (ICA) Services</h4>
+          <p>We guide you through the Singapore PR application process with ICA professionally.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <span class="service-num">09</span>
+          <div class="icon-slot"><i class="fas fa-laptop-code"></i></div>
+        </div>
+        <div class="service-body">
+          <h4>Software Solution Services</h4>
+          <p>Custom software solutions to streamline your business operations and improve efficiency.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA BANNER ══════════ -->
+<div class="cta-wrap">
+  <div class="cta-banner">
+    <div class="cta-text">
+      <h3>Need Help With Your Business Needs?</h3>
+      <p>Our experts are ready to support you every step of the way.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="contact.html" class="cta-btn-solid">Talk to Our Experts <i class="fas fa-chevron-right"></i></a>
+      <a href="contact.html" class="cta-btn-outline-cta">Request Consultation <i class="fas fa-chevron-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ STATS STRIP ══════════ -->
+<div class="stats-wrap">
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="icon-slot"><i class="fas fa-calendar-check"></i></div>
+      <div><strong>12+</strong><span>Years of Experience</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="icon-slot"><i class="fas fa-smile"></i></div>
+      <div><strong>15,000+</strong><span>Successful Clients</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="icon-slot"><i class="fas fa-briefcase"></i></div>
+      <div><strong>1,200+</strong><span>Companies Served</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="icon-slot"><i class="fas fa-thumbs-up"></i></div>
+      <div><strong>98%</strong><span>Client Satisfaction</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-container">
+
+      <div class="footer-col company-info">
+        <img src="assets/logo.png" alt="L&D Manpower" class="footer-logo" loading="lazy">
+        <p>L &amp; D Manpower is a leading manpower and recruitment consultancy in Singapore, connecting the right talent with the right opportunities and empowering businesses to grow.</p>
+        <div class="footer-line"></div>
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-building"></i></span>Company</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="whyus.html">Why Us</a></li>
+          <li><a href="career.html">Careers</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-users"></i></span>Our Services</h3>
+        <ul>
+          <li><a href="#">Recruitment Solutions</a></li>
+          <li><a href="#">Workforce Planning</a></li>
+          <li><a href="#">Talent Outsourcing</a></li>
+          <li><a href="#">Compliance Management</a></li>
+          <li><a href="#">HR Support Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-industry"></i></span>Industries</h3>
+        <ul>
+          <li><a href="#">Construction</a></li>
+          <li><a href="#">Manufacturing</a></li>
+          <li><a href="#">Marine &amp; Offshore</a></li>
+          <li><a href="#">Hospitality</a></li>
+          <li><a href="#">Logistics</a></li>
+          <li><a href="#">Retail</a></li>
+          <li><a href="#">Healthcare</a></li>
+          <li><a href="#">IT &amp; Technology</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-link"></i></span>Quick Links</h3>
+        <ul>
+          <li><a href="#">Job Seekers</a></li>
+          <li><a href="#">Employers</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">News &amp; Insights</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Contact Strip -->
+  <div class="footer-contact">
+    <div class="contact-container">
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-shield-alt"></i></div>
+        <div>
+          <strong>Your Trusted Partner</strong>
+          <span>Connecting Talent. Building Futures.</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+        <a href="tel:+6581358438">+65 81358438</a>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+        <a href="mailto:contact@ldmanpower.com">contact@ldmanpower.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <span>Marina Bay Financial Centre Tower 2,<br>10 Marina Blvd, #39-00,<br>Singapore 018983</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-container">
+      <p>© 2026 L &amp; D Manpower Pte. Ltd. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ LAZY LOAD SCRIPT ══════════ -->
+<script>
+(function(){
+  'use strict';
+
+  function applyLazyClasses(){
+    /* Hero */
+    var heroContent = document.querySelector('.svc-hero-content');
+    var heroMedia   = document.querySelector('.svc-hero-media');
+    if(heroContent) heroContent.classList.add('lazy-fade-left');
+    if(heroMedia)   heroMedia.classList.add('lazy-fade-right');
+
+    /* Hero feature pills */
+    document.querySelectorAll('.hero-feature').forEach(function(el,i){
+      el.classList.add('lazy-fade-up','delay-'+(i+1));
+    });
+
+    /* Section heading */
+    document.querySelectorAll('.services-heading').forEach(function(el){
+      el.classList.add('lazy-fade');
+    });
+
+    /* Service cards — stagger in groups of 3 */
+    document.querySelectorAll('.service-card').forEach(function(el,i){
+      el.classList.add('lazy-fade-up','delay-'+((i%3)+1));
+    });
+
+    /* CTA banner */
+    var ctaText    = document.querySelector('.cta-text');
+    var ctaActions = document.querySelector('.cta-actions');
+    if(ctaText)    ctaText.classList.add('lazy-fade-left');
+    if(ctaActions) ctaActions.classList.add('lazy-fade-right');
+
+    /* Stats */
+    document.querySelectorAll('.stat-item').forEach(function(el,i){
+      el.classList.add('lazy-fade-up','delay-'+(i+1));
+    });
+
+    /* Footer columns */
+    document.querySelectorAll('.footer-col').forEach(function(el,i){
+      el.classList.add('lazy-fade-up','delay-'+((i%5)+1));
+    });
+
+    /* Footer contact items */
+    document.querySelectorAll('.contact-item').forEach(function(el,i){
+      el.classList.add('lazy-fade-up','delay-'+((i%4)+1));
+    });
+
+    /* Native lazy on all images not already set */
+    document.querySelectorAll('img:not([loading])').forEach(function(img){
+      img.setAttribute('loading','lazy');
+      img.setAttribute('decoding','async');
+    });
+  }
+
+  function initObserver(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+
+    ['.lazy-fade','.lazy-fade-left','.lazy-fade-right','.lazy-scale','.lazy-fade-up']
+      .forEach(function(sel){
+        document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
+      });
+  }
+
+  /* Animated counters */
+  function initCounters(){
+    var counterIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        var el     = entry.target;
+        var raw    = el.textContent.trim();
+        var suffix = raw.replace(/[\d,]/g,'');
+        var num    = parseInt(raw.replace(/[^0-9]/g,''),10);
+        if(isNaN(num)) return;
+        counterIO.unobserve(el);
+        var start = performance.now();
+        var dur   = 1400;
+        (function tick(now){
+          var p = Math.min((now-start)/dur,1);
+          var e = 1-Math.pow(1-p,3);
+          el.textContent = Math.round(e*num).toLocaleString()+suffix;
+          if(p<1) requestAnimationFrame(tick);
+        })(start);
+      });
+    },{threshold:0.5});
+    document.querySelectorAll('.stat-item strong').forEach(function(el){
+      counterIO.observe(el);
+    });
+  }
+
+  function run(){
+    applyLazyClasses();
+    if('IntersectionObserver' in window){
+      initObserver();
+      initCounters();
+    } else {
+      document.querySelectorAll(
+        '.lazy-fade,.lazy-fade-left,.lazy-fade-right,.lazy-scale,.lazy-fade-up'
+      ).forEach(function(el){ el.classList.add('visible'); });
+    }
+  }
+
+  document.readyState==='loading'
+    ? document.addEventListener('DOMContentLoaded', run)
+    : run();
+}());
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Careers – L&D Manpower Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --navy:#1A2848;
+    --green:#2C8C2C;
+    --green-dark:#226e22;
+    --green-light:#3FA63F;
+    --green-soft:#f4f9f4;
+    --green-pale:#eaf5ea;
+    --ink:#27313f;
+    --muted:#5c6b7a;
+    --paper:#ffffff;
+    --border:#e7eaef;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); }
+  a{ text-decoration:none; color:inherit; }
+
+  /* ── NAVBAR ── */
+  .navbar{ width:100%; background:var(--paper); border-bottom:1px solid var(--border); box-shadow:0 6px 18px -12px rgba(20,30,60,0.25); position:relative; z-index:20; }
+  .navbar-inner{ max-width:1480px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:28px; padding:18px 48px; }
+  .brand{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
+  .brand img{ height:68px; width:auto; display:block; }
+  .nav-links{ display:flex; align-items:center; gap:36px; list-style:none; margin:0; padding:0; flex:1; justify-content:center; }
+  .nav-links li a{ font-family:'Inter',sans-serif; font-weight:500; font-size:15.5px; color:#1f2a3a; padding:6px 2px; position:relative; transition:color .2s ease; white-space:nowrap; }
+  .nav-links li a:hover{ color:var(--green); }
+  .nav-links li a.active{ color:var(--green); }
+  .nav-links li a.active::after{ content:""; position:absolute; left:0; right:0; bottom:-9px; height:2px; background:var(--green); }
+  .navbar-cta{ display:inline-flex; align-items:center; gap:8px; background:var(--green); color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:15px; padding:13px 26px; border-radius:32px; border:none; cursor:pointer; flex-shrink:0; transition:background .2s ease, transform .2s ease; }
+  .navbar-cta:hover{ background:var(--green-dark); transform:translateY(-1px); }
+  .navbar-cta svg{ width:15px; height:15px; }
+  @media(max-width:1180px){ .nav-links{ gap:22px; } .navbar-inner{ padding:16px 28px; } }
+  @media(max-width:980px){ .nav-links{ display:none; } .navbar-cta{ padding:11px 20px; font-size:14px; } }
+  @media(max-width:560px){ .brand img{ height:42px; } .navbar-cta span.cta-label{ display:none; } .navbar-cta{ padding:11px 14px; } }
+
+  /* ══════════════════
+     SHARED UTILITIES
+  ══════════════════ */
+  .wrap{ max-width:1300px; margin:0 auto; padding:0 60px; }
+  .eyebrow{ display:inline-block; font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--green); margin-bottom:14px; }
+  .sec-title{ font-family:'Poppins',sans-serif; font-size:34px; font-weight:700; color:var(--navy); margin:0 0 14px 0; }
+  .sec-sub{ font-size:16px; color:var(--muted); line-height:1.75; margin:0 0 44px 0; }
+
+  /* ══════════════════
+     1. HERO
+  ══════════════════ */
+  .career-hero{
+    background:linear-gradient(108deg,#f4faf4 0%,#edf5ed 55%,#ddeedd 100%);
+    padding:80px 0 0;
+    overflow:hidden;
+    position:relative;
+  }
+  .career-hero-inner{
+    max-width:1300px; margin:0 auto; padding:0 60px;
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:48px; align-items:center; min-height:500px;
+  }
+
+  .career-hero-left .eyebrow{ margin-bottom:16px; }
+  .career-hero-left h1{
+    font-family:'Poppins',sans-serif; font-size:46px; font-weight:700;
+    color:var(--navy); line-height:1.15; margin:0 0 20px 0; letter-spacing:-0.5px;
+  }
+  .career-hero-left h1 span{ color:var(--green); }
+  .career-hero-left p{
+    font-size:16.5px; color:var(--muted); line-height:1.75; margin:0 0 36px 0; max-width:460px;
+  }
+  .hero-cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-green{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--green); color:#fff; font-family:'Inter',sans-serif;
+    font-weight:600; font-size:15px; padding:14px 28px; border-radius:32px;
+    transition:background .2s, transform .2s;
+  }
+  .btn-green:hover{ background:var(--green-dark); transform:translateY(-1px); }
+  .btn-outline-navy{
+    display:inline-flex; align-items:center; gap:8px;
+    background:transparent; color:var(--navy); font-family:'Inter',sans-serif;
+    font-weight:600; font-size:15px; padding:14px 26px; border-radius:32px;
+    border:1.5px solid #c8d0dc; transition:border-color .2s, color .2s;
+  }
+  .btn-outline-navy:hover{ border-color:var(--navy); }
+
+  /* Hero right — illustration area */
+  .career-hero-right{
+    position:relative; height:480px;
+    display:flex; align-items:flex-end; justify-content:center;
+  }
+  /* REPLACE with: <img src="assets/career-hero.png" class="hero-img" alt="Careers" loading="lazy"> */
+  .hero-img{ width:100%; height:100%; object-fit:contain; object-position:bottom center; }
+
+  /* Floating stat chips */
+  .hero-chip{
+    position:absolute; background:#fff; border-radius:14px;
+    box-shadow:0 8px 28px -6px rgba(20,60,20,0.16);
+    padding:14px 20px; display:flex; align-items:center; gap:12px; z-index:4;
+  }
+  .hero-chip .chip-icon{
+    width:40px; height:40px; border-radius:10px; background:var(--green-pale);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--green); font-size:18px; flex-shrink:0;
+  }
+  .hero-chip strong{ display:block; font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; color:var(--navy); line-height:1; }
+  .hero-chip span{ font-size:12px; color:var(--muted); display:block; margin-top:2px; }
+  .chip-openings{ top:40px; left:0; }
+  .chip-placed  { top:40px; right:0; }
+  .chip-rating  { bottom:100px; left:20px; }
+
+  /* Hero SVG illustration placeholder */
+  .hero-svg-wrap{
+    position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    width:100%; display:flex; justify-content:center;
+  }
+
+  /* ══════════════════
+     2. PERKS / WHY JOIN
+  ══════════════════ */
+  .perks-section{ padding:80px 0 70px; background:#fff; }
+  .perks-section .eyebrow, .perks-section .sec-title, .perks-section .sec-sub{ text-align:center; display:block; }
+  .perks-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+  }
+  .perk-card{
+    border-radius:16px; border:1px solid var(--border); padding:32px 24px;
+    text-align:center; transition:box-shadow .25s, transform .25s;
+    background:#fff;
+  }
+  .perk-card:hover{ box-shadow:0 12px 36px -12px rgba(44,140,44,0.15); transform:translateY(-4px); }
+  .perk-icon{
+    width:64px; height:64px; border-radius:18px; background:var(--green-pale);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 20px; font-size:26px; color:var(--green);
+    /* REPLACE with: <img src="assets/icons/perk-*.png" loading="lazy"> */
+  }
+  .perk-card h4{ font-family:'Poppins',sans-serif; font-size:16px; font-weight:700; color:var(--navy); margin:0 0 10px 0; }
+  .perk-card p{ font-size:13.5px; color:var(--muted); line-height:1.65; margin:0; }
+
+  /* ══════════════════
+     3. OPEN POSITIONS
+  ══════════════════ */
+  .jobs-section{ padding:80px 0 90px; background:var(--green-soft); }
+  .jobs-section .eyebrow{ display:block; text-align:center; }
+  .jobs-section .sec-title{ text-align:center; }
+  .jobs-section .sec-sub{ text-align:center; }
+
+  /* Filter tabs */
+  .job-filters{
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:40px;
+  }
+  .filter-btn{
+    padding:9px 22px; border-radius:30px; border:1.5px solid var(--border);
+    font-family:'Inter',sans-serif; font-size:13.5px; font-weight:600;
+    color:var(--muted); background:#fff; cursor:pointer;
+    transition:border-color .2s, color .2s, background .2s;
+  }
+  .filter-btn.active, .filter-btn:hover{
+    border-color:var(--green); color:var(--green); background:var(--green-pale);
+  }
+
+  /* Search bar */
+  .job-search{
+    display:flex; gap:12px; max-width:680px; margin:0 auto 44px;
+  }
+  .job-search input{
+    flex:1; border:1.5px solid var(--border); border-radius:12px;
+    padding:13px 18px; font-family:'Inter',sans-serif; font-size:14.5px;
+    color:var(--ink); outline:none; transition:border-color .2s; background:#fff;
+  }
+  .job-search input:focus{ border-color:var(--green); }
+  .job-search input::placeholder{ color:#aab0ba; }
+  .search-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--green); color:#fff; font-family:'Inter',sans-serif;
+    font-weight:600; font-size:14.5px; padding:13px 24px; border-radius:12px;
+    border:none; cursor:pointer; transition:background .2s;
+    white-space:nowrap;
+  }
+  .search-btn:hover{ background:var(--green-dark); }
+
+  /* Job cards */
+  .jobs-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .job-card{
+    background:#fff; border-radius:16px; border:1px solid var(--border);
+    padding:28px 26px; display:flex; flex-direction:column; gap:16px;
+    box-shadow:0 8px 24px -16px rgba(20,40,20,0.14);
+    transition:box-shadow .25s, transform .25s;
+  }
+  .job-card:hover{ box-shadow:0 16px 40px -12px rgba(44,140,44,0.14); transform:translateY(-3px); }
+
+  .job-card-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+  .job-dept-icon{
+    width:48px; height:48px; border-radius:12px; background:var(--green-pale);
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; color:var(--green); flex-shrink:0;
+  }
+  .job-badge{
+    display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.5px;
+    text-transform:uppercase; padding:5px 12px; border-radius:20px;
+    background:var(--green-pale); color:var(--green);
+  }
+  .job-badge.urgent{ background:#fff4e5; color:#b45309; }
+  .job-badge.new{ background:#e6f0ff; color:#1d4ed8; }
+
+  .job-card h4{ font-family:'Poppins',sans-serif; font-size:16.5px; font-weight:700; color:var(--navy); margin:0; line-height:1.35; }
+  .job-dept{ font-size:13px; color:var(--muted); font-weight:500; margin:4px 0 0; }
+
+  .job-meta{ display:flex; flex-wrap:wrap; gap:14px; }
+  .job-meta-item{ display:flex; align-items:center; gap:6px; font-size:13px; color:var(--muted); }
+  .job-meta-item i{ color:var(--green); font-size:12px; width:14px; }
+
+  .job-tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .job-tag{
+    font-size:12px; font-weight:600; padding:4px 12px; border-radius:20px;
+    background:var(--green-soft); color:var(--green-dark); border:1px solid #c8e0c8;
+  }
+
+  .job-card-footer{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; padding-top:16px; border-top:1px solid var(--border); }
+  .job-salary{ font-family:'Poppins',sans-serif; font-size:15px; font-weight:700; color:var(--navy); }
+  .job-salary small{ font-size:12px; color:var(--muted); font-weight:400; font-family:'Inter',sans-serif; }
+  .apply-btn{
+    display:inline-flex; align-items:center; gap:7px;
+    background:var(--green); color:#fff; font-family:'Inter',sans-serif;
+    font-weight:600; font-size:13px; padding:10px 20px; border-radius:24px;
+    transition:background .2s, transform .2s; white-space:nowrap;
+  }
+  .apply-btn:hover{ background:var(--green-dark); transform:translateY(-1px); }
+
+  /* No more jobs notice */
+  .jobs-more{ text-align:center; margin-top:40px; }
+  .jobs-more p{ font-size:14.5px; color:var(--muted); margin:0 0 18px 0; }
+
+  @media(max-width:1100px){ .jobs-grid{ grid-template-columns:repeat(2,1fr); } .perks-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:640px){ .jobs-grid{ grid-template-columns:1fr; } }
+
+  /* ══════════════════
+     4. LIFE AT L&D
+  ══════════════════ */
+  .life-section{ padding:80px 0; background:#fff; }
+  .life-inner{ max-width:1300px; margin:0 auto; padding:0 60px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+
+  .life-left .eyebrow{ display:block; }
+  .life-left p{ font-size:15px; color:var(--muted); line-height:1.8; margin:0 0 28px 0; }
+  .life-points{ display:flex; flex-direction:column; gap:18px; }
+  .life-point{ display:flex; align-items:flex-start; gap:14px; }
+  .life-point .lp-icon{
+    width:42px; height:42px; border-radius:10px; background:var(--green-pale);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--green); font-size:17px; flex-shrink:0; margin-top:2px;
+  }
+  .life-point h5{ font-family:'Poppins',sans-serif; font-size:15px; font-weight:700; color:var(--navy); margin:0 0 4px 0; }
+  .life-point p{ font-size:13.5px; color:var(--muted); line-height:1.6; margin:0; }
+
+  /* Right — photo grid */
+  .life-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px;
+  }
+  .life-photo{
+    border-radius:14px; overflow:hidden; background:var(--green-pale);
+    border:1px solid #c8e0c8; aspect-ratio:4/3;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--green); font-size:28px;
+    /* REPLACE with: <img src="assets/life-*.jpg" loading="lazy" alt=""> */
+  }
+  .life-photo.tall{ grid-row:span 2; aspect-ratio:auto; min-height:260px; }
+
+  @media(max-width:1000px){ .life-inner{ grid-template-columns:1fr; } }
+
+  /* ══════════════════
+     5. HOW TO APPLY
+  ══════════════════ */
+  .apply-section{
+    padding:80px 0; background:var(--green-soft);
+  }
+  .apply-section .eyebrow, .apply-section .sec-title, .apply-section .sec-sub{ text-align:center; display:block; }
+  .steps-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+  .steps-grid::before{
+    content:''; position:absolute;
+    top:40px; left:calc(100%/8); right:calc(100%/8);
+    height:2px; background:linear-gradient(90deg,var(--green) 0%,var(--green-light) 100%);
+    z-index:0;
+  }
+  .step-item{ text-align:center; padding:0 20px; position:relative; z-index:1; }
+  .step-num{
+    width:80px; height:80px; border-radius:50%;
+    background:var(--green); color:#fff;
+    font-family:'Poppins',sans-serif; font-size:26px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 20px; box-shadow:0 8px 24px -8px rgba(44,140,44,0.4);
+    border:4px solid #fff;
+  }
+  .step-item h4{ font-family:'Poppins',sans-serif; font-size:15.5px; font-weight:700; color:var(--navy); margin:0 0 8px 0; }
+  .step-item p{ font-size:13.5px; color:var(--muted); line-height:1.6; margin:0; }
+
+  @media(max-width:860px){ .steps-grid{ grid-template-columns:repeat(2,1fr); gap:32px; } .steps-grid::before{ display:none; } }
+  @media(max-width:520px){ .steps-grid{ grid-template-columns:1fr; } }
+
+  /* ══════════════════
+     6. CTA BANNER
+  ══════════════════ */
+  .cta-section{ padding:0 60px 80px; max-width:1300px; margin:0 auto; }
+  .cta-banner-career{
+    background:linear-gradient(100deg,#1a4a1a 0%,#226e22 55%,#1a4a1a 100%);
+    border-radius:20px; padding:52px 56px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:36px; flex-wrap:wrap; position:relative; overflow:hidden;
+  }
+  .cta-banner-career::after{
+    content:''; position:absolute; right:0; top:0; height:100%; width:260px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 200'%3E%3Cg fill='rgba(255,255,255,0.07)'%3E%3Cellipse cx='50' cy='160' rx='20' ry='55'/%3E%3Cellipse cx='100' cy='145' rx='17' ry='62'/%3E%3Cellipse cx='150' cy='152' rx='19' ry='58'/%3E%3Cellipse cx='200' cy='148' rx='15' ry='60'/%3E%3Cellipse cx='245' cy='155' rx='17' ry='53'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-size:cover; pointer-events:none;
+  }
+  .cta-career-text h2{ font-family:'Poppins',sans-serif; font-size:28px; font-weight:700; color:#fff; margin:0 0 10px 0; }
+  .cta-career-text p{ font-size:15px; color:rgba(255,255,255,.78); margin:0; max-width:460px; line-height:1.65; }
+  .cta-career-btns{ display:flex; gap:14px; flex-shrink:0; flex-wrap:wrap; position:relative; z-index:2; }
+  .cta-white{ display:inline-flex; align-items:center; gap:8px; background:#fff; color:var(--green-dark); font-family:'Inter',sans-serif; font-weight:700; font-size:14.5px; padding:13px 26px; border-radius:32px; transition:background .2s, transform .2s; }
+  .cta-white:hover{ background:#e8f4e8; transform:translateY(-1px); }
+  .cta-ghost{ display:inline-flex; align-items:center; gap:8px; background:transparent; color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px; padding:13px 26px; border-radius:32px; border:1.5px solid rgba(255,255,255,.5); transition:border-color .2s, background .2s; }
+  .cta-ghost:hover{ border-color:#fff; background:rgba(255,255,255,.08); }
+
+  /* ══════════════════
+     FOOTER (standard)
+  ══════════════════ */
+  .footer{ font-family:'Poppins',sans-serif; background:#f0f4f0; color:#222; }
+  .footer-top{ padding:60px 0 50px; position:relative; overflow:hidden; }
+  .footer-top::after{
+    content:''; position:absolute; right:0; bottom:0; width:400px; height:240px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 260'%3E%3Cg fill='%23b8d4b8' opacity='0.4'%3E%3Crect x='160' y='110' width='18' height='100'/%3E%3Crect x='183' y='120' width='18' height='90'/%3E%3Crect x='206' y='115' width='18' height='95'/%3E%3Crect x='155' y='105' width='74' height='8' rx='4'/%3E%3Ccircle cx='310' cy='130' r='52' fill='none' stroke='%23b8d4b8' stroke-width='5' opacity='0.45'/%3E%3Crect x='306' y='175' width='8' height='55'/%3E%3Crect x='30' y='145' width='22' height='65'/%3E%3Crect x='57' y='135' width='18' height='75'/%3E%3Crect x='80' y='150' width='25' height='60'/%3E%3Crect x='110' y='140' width='20' height='70'/%3E%3Crect x='135' y='155' width='20' height='55'/%3E%3Crect x='0' y='210' width='420' height='10' rx='2'/%3E%3Ccircle cx='50' cy='205' r='12'/%3E%3Ccircle cx='90' cy='208' r='10'/%3E%3Ccircle cx='370' cy='205' r='14'/%3E%3Ccircle cx='400' cy='207' r='10'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-size:contain; background-position:bottom right; pointer-events:none; z-index:1;
+  }
+  .footer-container{ width:90%; max-width:1400px; margin:auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:35px; position:relative; z-index:2; }
+  .footer-col{ position:relative; }
+  .footer-col:not(:first-child){ padding-left:30px; border-left:1px solid #e5e5e5; }
+  .footer-logo{ width:180px; margin-bottom:20px; }
+  .company-info p{ color:#555; line-height:1.8; font-size:14.5px; margin-bottom:20px; }
+  .footer-line{ width:50px; height:2px; background:#0f9d39; margin-bottom:20px; }
+  .company-info h4{ color:#0f9d39; font-size:15px; font-weight:700; margin-bottom:15px; }
+  .social-icons{ display:flex; gap:10px; }
+  .social-icons a{ width:40px; height:40px; border:1.5px solid #c8cfd6; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#555; font-size:15px; transition:all .25s ease; }
+  .social-icons a:hover{ border-color:#0f9d39; color:#0f9d39; }
+  .footer-col h3{ display:flex; align-items:center; gap:12px; color:#0f9d39; margin:0 0 26px 0; font-size:17px; font-weight:700; }
+  .footer-col h3 .col-icon{ width:44px; height:44px; border:1.5px solid #c2dbc2; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:17px; color:#0f9d39; flex-shrink:0; }
+  .footer-col ul{ list-style:none; padding:0; margin:0; }
+  .footer-col ul li{ margin-bottom:14px; }
+  .footer-col ul li a{ text-decoration:none; color:#444; font-size:14.5px; transition:color .2s, padding-left .2s; font-weight:400; }
+  .footer-col ul li a:hover{ color:#0f9d39; padding-left:4px; }
+  .footer-contact{ background:linear-gradient(90deg,#002d11,#006d24,#003f18); padding:24px 0; }
+  .contact-container{ width:90%; max-width:1400px; margin:auto; display:grid; grid-template-columns:2fr 1fr 1.5fr 2fr; gap:20px; align-items:center; }
+  .contact-item{ display:flex; align-items:center; gap:14px; color:#fff; }
+  .contact-item .ci-icon{ width:44px; height:44px; border:1.5px solid rgba(255,255,255,.25); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px; color:#6be06b; }
+  .contact-item:first-child .ci-icon{ background:#0f9d39; border-color:#0f9d39; color:#fff; font-size:18px; }
+  .contact-item strong{ display:block; font-size:15px; font-weight:700; margin-bottom:3px; color:#fff; }
+  .contact-item span,.contact-item a{ color:#cce8cc; font-size:13.5px; text-decoration:none; line-height:1.65; }
+  .contact-item a:hover{ color:#b8ffca; }
+  .footer-bottom{ background:#004d19; padding:16px 0; }
+  .footer-bottom-container{ width:90%; max-width:1400px; margin:auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .footer-bottom p{ color:#cce8cc; font-size:13.5px; margin:0; }
+  .footer-links{ display:flex; align-items:center; }
+  .footer-links a{ color:#cce8cc; text-decoration:none; font-size:13.5px; padding:0 18px; position:relative; transition:color .2s; }
+  .footer-links a:hover{ color:#fff; }
+  .footer-links a + a::before{ content:''; position:absolute; left:0; top:50%; transform:translateY(-50%); width:1px; height:13px; background:rgba(255,255,255,.35); }
+  @media(max-width:1200px){ .footer-container{ grid-template-columns:repeat(2,1fr); } .contact-container{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:768px){ .footer-container,.contact-container{ grid-template-columns:1fr; } .footer-col{ border:none !important; padding-left:0 !important; } .footer-bottom-container{ flex-direction:column; text-align:center; } .footer-links{ justify-content:center; } }
+
+  /* ══════════════════
+     LAZY ANIMATIONS
+  ══════════════════ */
+  .lz{ opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+  .lz-l{ opacity:0; transform:translateX(-40px); transition:opacity .65s ease, transform .65s ease; }
+  .lz-r{ opacity:0; transform:translateX(40px);  transition:opacity .65s ease, transform .65s ease; }
+  .lz-s{ opacity:0; transform:scale(0.93);        transition:opacity .55s ease, transform .55s ease; }
+  .lz.v,.lz-l.v,.lz-r.v,.lz-s.v{ opacity:1; transform:none; }
+  .d1{ transition-delay:.07s !important; }
+  .d2{ transition-delay:.14s !important; }
+  .d3{ transition-delay:.21s !important; }
+  .d4{ transition-delay:.28s !important; }
+  .d5{ transition-delay:.35s !important; }
+  .d6{ transition-delay:.42s !important; }
+  .d7{ transition-delay:.49s !important; }
+  .d8{ transition-delay:.56s !important; }
+  @media(prefers-reduced-motion:reduce){ .lz,.lz-l,.lz-r,.lz-s{ opacity:1 !important; transform:none !important; transition:none !important; } }
+
+  /* ══════════════════
+     RESPONSIVE
+  ══════════════════ */
+  @media(max-width:1100px){ .career-hero-inner{ grid-template-columns:1fr; min-height:auto; } .career-hero-right{ height:320px; } }
+  @media(max-width:860px){ .wrap,.career-hero-inner,.life-inner{ padding:0 28px; } .cta-section{ padding:0 28px 60px; } }
+  @media(max-width:640px){ .perks-grid{ grid-template-columns:1fr 1fr; } .hero-chip{ display:none; } .cta-banner-career{ padding:36px 28px; } }
+  @media(max-width:420px){ .perks-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="L&D Manpower Solutions" loading="eager">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Our Services</a></li>
+      <li><a href="whyus.html">Why Us</a></li>
+      <li><a href="career.html" class="active">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="navbar-cta">
+      <span class="cta-label">Get In Touch</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ══════════ 1. HERO ══════════ -->
+<section class="career-hero">
+  <div class="career-hero-inner">
+
+    <!-- Left -->
+    <div class="career-hero-left">
+      <span class="eyebrow">Join Our Team</span>
+      <h1>Build Your Career<br>With the <span>Right Partner.</span></h1>
+      <p>We're looking for passionate, driven individuals to grow with us. Explore opportunities that match your skills and ambitions at L &amp; D Manpower.</p>
+      <div class="hero-cta-row">
+        <a href="#open-positions" class="btn-green">
+          View Open Roles
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </a>
+        <a href="contact.html" class="btn-outline-navy">Send Your CV</a>
+      </div>
+    </div>
+
+    <!-- Right visual -->
+    <div class="career-hero-right">
+
+      <!-- Floating chips -->
+      <div class="hero-chip chip-openings">
+        <div class="chip-icon"><i class="fas fa-briefcase"></i></div>
+        <div><strong>20+</strong><span>Open Positions</span></div>
+      </div>
+
+      <div class="hero-chip chip-placed">
+        <div class="chip-icon"><i class="fas fa-user-check"></i></div>
+        <div><strong>15,000+</strong><span>Placed Candidates</span></div>
+      </div>
+
+      <div class="hero-chip chip-rating">
+        <div class="chip-icon"><i class="fas fa-star"></i></div>
+        <div><strong>4.8 / 5</strong><span>Employee Rating</span></div>
+      </div>
+
+      <!-- SVG Illustration placeholder — replace with <img src="assets/career-hero.png"> -->
+      <div class="hero-svg-wrap">
+        <svg viewBox="0 0 560 440" width="560" height="440" xmlns="http://www.w3.org/2000/svg">
+          <!-- Office / growth illustration -->
+          <defs>
+            <radialGradient id="bgGrad" cx="50%" cy="60%">
+              <stop offset="0%" stop-color="#c8e8c8" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#e8f5e8" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="280" cy="400" rx="240" ry="30" fill="url(#bgGrad)"/>
+
+          <!-- Building -->
+          <rect x="100" y="160" width="180" height="240" rx="8" fill="#d4e8d4" stroke="#b8d4b8" stroke-width="1.5"/>
+          <rect x="115" y="175" width="35" height="30" rx="3" fill="#a8cca8"/>
+          <rect x="158" y="175" width="35" height="30" rx="3" fill="#a8cca8"/>
+          <rect x="201" y="175" width="35" height="30" rx="3" fill="#a8cca8"/>
+          <rect x="115" y="218" width="35" height="30" rx="3" fill="#a8cca8"/>
+          <rect x="158" y="218" width="35" height="30" rx="3" fill="#a8cca8"/>
+          <rect x="201" y="218" width="35" height="30" rx="3" fill="#a8cca8"/>
+          <rect x="115" y="261" width="35" height="30" rx="3" fill="#a8cca8"/>
+          <rect x="158" y="261" width="35" height="30" rx="3" fill="#a8cca8"/>
+          <rect x="201" y="261" width="35" height="30" rx="3" fill="#a8cca8"/>
+          <!-- Door -->
+          <rect x="165" y="340" width="50" height="60" rx="4" fill="#8ab88a"/>
+          <circle cx="207" cy="372" r="3" fill="#2a7a2a"/>
+
+          <!-- Chart / growth arrow -->
+          <polyline points="310,340 340,300 370,320 400,260 430,280 460,200"
+            fill="none" stroke="#2a7a2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <g fill="#2a7a2a" opacity="0.85">
+            <circle cx="310" cy="340" r="5"/>
+            <circle cx="340" cy="300" r="5"/>
+            <circle cx="370" cy="320" r="5"/>
+            <circle cx="400" cy="260" r="5"/>
+            <circle cx="430" cy="280" r="5"/>
+            <circle cx="460" cy="200" r="7"/>
+          </g>
+          <!-- Arrow head -->
+          <polyline points="450,192 460,200 452,210" fill="none" stroke="#2a7a2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Axis lines -->
+          <line x1="295" y1="160" x2="295" y2="370" stroke="#c8d8c8" stroke-width="1.5"/>
+          <line x1="295" y1="370" x2="480" y2="370" stroke="#c8d8c8" stroke-width="1.5"/>
+
+          <!-- People silhouettes -->
+          <g fill="#2a7a2a" opacity="0.8">
+            <!-- Person 1 -->
+            <circle cx="380" cy="368" r="14"/>
+            <path d="M366,386 Q380,398 394,386 L397,400 L363,400Z"/>
+            <!-- Person 2 -->
+            <circle cx="420" cy="362" r="16"/>
+            <path d="M404,382 Q420,396 436,382 L440,400 L400,400Z"/>
+          </g>
+
+          <!-- Stars / sparkles -->
+          <g fill="#2a7a2a" opacity="0.6">
+            <circle cx="470" cy="150" r="4"/>
+            <circle cx="490" cy="165" r="3"/>
+            <circle cx="478" cy="175" r="2.5"/>
+            <circle cx="80" cy="200" r="3"/>
+            <circle cx="68" cy="220" r="4"/>
+            <circle cx="90" cy="230" r="2.5"/>
+          </g>
+
+          <!-- Platform -->
+          <ellipse cx="280" cy="402" rx="200" ry="14" fill="#b8d4b8" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 2. PERKS ══════════ -->
+<section class="perks-section">
+  <div class="wrap">
+    <span class="eyebrow">Why Work With Us</span>
+    <h2 class="sec-title">Why Choose L &amp; D Manpower</h2>
+    <p class="sec-sub">We invest in our people as much as we invest in our clients. Here's what makes us a great place to grow.</p>
+
+    <div class="perks-grid">
+      <div class="perk-card">
+        <!-- REPLACE: <img src="assets/icons/growth.png" loading="lazy" alt=""> -->
+        <div class="perk-icon"><i class="fas fa-chart-line"></i></div>
+        <h4>Career Growth</h4>
+        <p>Structured development plans, mentorship programmes, and clear pathways to advance your career at every level.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon"><i class="fas fa-hand-holding-heart"></i></div>
+        <h4>Great Culture</h4>
+        <p>A collaborative, inclusive workplace where your ideas are heard and your contributions are valued every day.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon"><i class="fas fa-umbrella"></i></div>
+        <h4>Competitive Benefits</h4>
+        <p>Attractive compensation, medical coverage, performance bonuses, and leave benefits designed for your wellbeing.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon"><i class="fas fa-globe-asia"></i></div>
+        <h4>Regional Exposure</h4>
+        <p>Work with clients and partners across Singapore, Malaysia, and Thailand, broadening your professional horizons.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 3. OPEN POSITIONS ══════════ -->
+<section class="jobs-section" id="open-positions">
+  <div class="wrap">
+    <span class="eyebrow">Open Positions</span>
+    <h2 class="sec-title">Find Your Next Role</h2>
+    <p class="sec-sub">Browse our current openings and find the opportunity that's right for you.</p>
+
+    <!-- Search -->
+    <div class="job-search">
+      <input type="text" placeholder="Search job title, keyword or department…">
+      <button class="search-btn"><i class="fas fa-search"></i> Search</button>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="job-filters">
+      <button class="filter-btn active">All Roles</button>
+      <button class="filter-btn">Recruitment</button>
+      <button class="filter-btn">Operations</button>
+      <button class="filter-btn">Sales</button>
+      <button class="filter-btn">Technology</button>
+      <button class="filter-btn">Admin</button>
+    </div>
+
+    <!-- Jobs grid -->
+    <div class="jobs-grid">
+
+      <!-- Card 1 -->
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-dept-icon"><i class="fas fa-users"></i></div>
+          <span class="job-badge new">New</span>
+        </div>
+        <div>
+          <h4>Senior Recruitment Consultant</h4>
+          <p class="job-dept">Recruitment Division</p>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Singapore</span>
+          <span class="job-meta-item"><i class="fas fa-clock"></i> Full-Time</span>
+          <span class="job-meta-item"><i class="fas fa-layer-group"></i> Mid-Senior</span>
+        </div>
+        <div class="job-tags">
+          <span class="job-tag">Headhunting</span>
+          <span class="job-tag">Client Management</span>
+          <span class="job-tag">BD</span>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">S$4,500 – S$6,500<br><small>per month + commission</small></div>
+          <a href="contact.html" class="apply-btn">Apply <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-dept-icon"><i class="fas fa-briefcase"></i></div>
+          <span class="job-badge urgent">Urgent</span>
+        </div>
+        <div>
+          <h4>HR & Payroll Executive</h4>
+          <p class="job-dept">Human Resources</p>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Singapore</span>
+          <span class="job-meta-item"><i class="fas fa-clock"></i> Full-Time</span>
+          <span class="job-meta-item"><i class="fas fa-layer-group"></i> Junior</span>
+        </div>
+        <div class="job-tags">
+          <span class="job-tag">Payroll</span>
+          <span class="job-tag">MOM Compliance</span>
+          <span class="job-tag">HR Admin</span>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">S$3,000 – S$4,000<br><small>per month</small></div>
+          <a href="contact.html" class="apply-btn">Apply <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-dept-icon"><i class="fas fa-chart-bar"></i></div>
+          <span class="job-badge">Sales</span>
+        </div>
+        <div>
+          <h4>Business Development Executive</h4>
+          <p class="job-dept">Sales & Partnerships</p>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Singapore</span>
+          <span class="job-meta-item"><i class="fas fa-clock"></i> Full-Time</span>
+          <span class="job-meta-item"><i class="fas fa-layer-group"></i> Mid-Level</span>
+        </div>
+        <div class="job-tags">
+          <span class="job-tag">B2B Sales</span>
+          <span class="job-tag">Lead Gen</span>
+          <span class="job-tag">Proposals</span>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">S$3,500 – S$5,500<br><small>per month + incentives</small></div>
+          <a href="contact.html" class="apply-btn">Apply <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-dept-icon"><i class="fas fa-laptop-code"></i></div>
+          <span class="job-badge new">New</span>
+        </div>
+        <div>
+          <h4>IT Systems & Support Analyst</h4>
+          <p class="job-dept">Technology</p>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Singapore</span>
+          <span class="job-meta-item"><i class="fas fa-clock"></i> Full-Time</span>
+          <span class="job-meta-item"><i class="fas fa-layer-group"></i> Mid-Level</span>
+        </div>
+        <div class="job-tags">
+          <span class="job-tag">System Admin</span>
+          <span class="job-tag">IT Support</span>
+          <span class="job-tag">Networking</span>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">S$3,800 – S$5,200<br><small>per month</small></div>
+          <a href="contact.html" class="apply-btn">Apply <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-dept-icon"><i class="fas fa-file-alt"></i></div>
+          <span class="job-badge">Operations</span>
+        </div>
+        <div>
+          <h4>Work Pass & Compliance Officer</h4>
+          <p class="job-dept">Operations & Compliance</p>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Singapore</span>
+          <span class="job-meta-item"><i class="fas fa-clock"></i> Full-Time</span>
+          <span class="job-meta-item"><i class="fas fa-layer-group"></i> Junior – Mid</span>
+        </div>
+        <div class="job-tags">
+          <span class="job-tag">MOM Portal</span>
+          <span class="job-tag">Work Pass</span>
+          <span class="job-tag">ACRA</span>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">S$2,800 – S$3,800<br><small>per month</small></div>
+          <a href="contact.html" class="apply-btn">Apply <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-dept-icon"><i class="fas fa-headset"></i></div>
+          <span class="job-badge">Admin</span>
+        </div>
+        <div>
+          <h4>Client Relations & Admin Executive</h4>
+          <p class="job-dept">Administration</p>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Singapore</span>
+          <span class="job-meta-item"><i class="fas fa-clock"></i> Full-Time</span>
+          <span class="job-meta-item"><i class="fas fa-layer-group"></i> Entry – Junior</span>
+        </div>
+        <div class="job-tags">
+          <span class="job-tag">Client Support</span>
+          <span class="job-tag">Scheduling</span>
+          <span class="job-tag">CRM</span>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">S$2,500 – S$3,300<br><small>per month</small></div>
+          <a href="contact.html" class="apply-btn">Apply <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="jobs-more">
+      <p>Don't see the right role? We're always open to talented people.</p>
+      <a href="contact.html" class="btn-green">Send a Speculative Application <i class="fas fa-paper-plane" style="margin-left:6px;font-size:13px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 4. LIFE AT L&D ══════════ -->
+<section class="life-section">
+  <div class="life-inner">
+
+    <div class="life-left">
+      <span class="eyebrow">Life at L&amp;D</span>
+      <h2 class="sec-title" style="margin-bottom:16px;">More Than Just a Job</h2>
+      <p>We foster an environment where ambition meets opportunity. Our team is our greatest asset, and we make sure everyone feels supported, recognised, and inspired to do their best work.</p>
+
+      <div class="life-points">
+        <div class="life-point">
+          <div class="lp-icon"><i class="fas fa-rocket"></i></div>
+          <div>
+            <h5>Fast-Paced & Dynamic</h5>
+            <p>Every day brings new challenges and opportunities to make a real impact across industries.</p>
+          </div>
+        </div>
+        <div class="life-point">
+          <div class="lp-icon"><i class="fas fa-medal"></i></div>
+          <div>
+            <h5>Recognition & Rewards</h5>
+            <p>Performance-based incentives, quarterly awards, and transparent promotions that celebrate your wins.</p>
+          </div>
+        </div>
+        <div class="life-point">
+          <div class="lp-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div>
+            <h5>Learning & Development</h5>
+            <p>Regular training sessions, external courses, and on-the-job learning to keep you ahead of the curve.</p>
+          </div>
+        </div>
+        <div class="life-point">
+          <div class="lp-icon"><i class="fas fa-users"></i></div>
+          <div>
+            <h5>Team First Culture</h5>
+            <p>We celebrate together, solve problems together, and grow together as one cohesive family.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="life-grid">
+  <div class="life-photo tall"><img src="assets/career-1.png" loading="lazy" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+  <div class="life-photo"><img src="assets/career-2.png" loading="lazy" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+  <div class="life-photo"><img src="assets/career-2.png" loading="lazy" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+</div>
+  </div>
+</section>
+
+<!-- ══════════ 5. HOW TO APPLY ══════════ -->
+<section class="apply-section">
+  <div class="wrap">
+    <span class="eyebrow">Application Process</span>
+    <h2 class="sec-title">How to Apply</h2>
+    <p class="sec-sub" style="max-width:580px;margin:0 auto 60px;">Our hiring process is straightforward and transparent. Here's what to expect from application to offer.</p>
+
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <h4>Browse &amp; Apply</h4>
+        <p>Find a role that fits your skills and submit your CV and cover letter online.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <h4>Initial Screening</h4>
+        <p>Our HR team reviews your application and reaches out within 3–5 business days.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <h4>Interview Rounds</h4>
+        <p>One to two rounds of interviews — competency-based and with the hiring manager.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <h4>Offer &amp; Onboard</h4>
+        <p>Receive your offer, complete onboarding, and start your journey with us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 6. CTA ══════════ -->
+<div style="background:#fff; padding:80px 0 0;">
+  <div class="cta-section">
+    <div class="cta-banner-career">
+      <div class="cta-career-text">
+        <h2>Ready to Take the Next Step?</h2>
+        <p>Join a team that's shaping the future of manpower in Singapore. We'd love to hear from you.</p>
+      </div>
+      <div class="cta-career-btns">
+        <a href="#open-positions" class="cta-white">
+          View Open Roles
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </a>
+        <a href="contact.html" class="cta-ghost">Send Your CV</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-container">
+      <div class="footer-col company-info">
+        <img src="assets/logo.png" alt="L&D Manpower" class="footer-logo" loading="lazy">
+        <p>L &amp; D Manpower is a leading manpower and recruitment consultancy in Singapore, connecting the right talent with the right opportunities and empowering businesses to grow.</p>
+        <div class="footer-line"></div>
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-building"></i></span>Company</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="whyus.html">Why Us</a></li>
+          <li><a href="career.html">Careers</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-users"></i></span>Our Services</h3>
+        <ul>
+          <li><a href="#">Recruitment Solutions</a></li>
+          <li><a href="#">Workforce Planning</a></li>
+          <li><a href="#">Talent Outsourcing</a></li>
+          <li><a href="#">Compliance Management</a></li>
+          <li><a href="#">HR Support Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-industry"></i></span>Industries</h3>
+        <ul>
+          <li><a href="#">Construction</a></li>
+          <li><a href="#">Manufacturing</a></li>
+          <li><a href="#">Marine &amp; Offshore</a></li>
+          <li><a href="#">Hospitality</a></li>
+          <li><a href="#">Logistics</a></li>
+          <li><a href="#">Retail</a></li>
+          <li><a href="#">Healthcare</a></li>
+          <li><a href="#">IT &amp; Technology</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-link"></i></span>Quick Links</h3>
+        <ul>
+          <li><a href="#">Job Seekers</a></li>
+          <li><a href="#">Employers</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">News &amp; Insights</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-contact">
+    <div class="contact-container">
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-shield-alt"></i></div>
+        <div><strong>Your Trusted Partner</strong><span>Connecting Talent. Building Futures.</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+        <a href="tel:+6581358438">+65 81358438</a>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+        <a href="mailto:contact@ldmanpower.com">contact@ldmanpower.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <span>Marina Bay Financial Centre Tower 2,<br>10 Marina Blvd, #39-00,<br>Singapore 018983</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-container">
+      <p>© 2026 L &amp; D Manpower Pte. Ltd. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+(function(){
+  'use strict';
+
+  /* ── Filter tab interaction ── */
+  document.querySelectorAll('.filter-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  /* ── Lazy animation classes ── */
+  function tag(){
+    /* Hero */
+    var hl = document.querySelector('.career-hero-left');
+    var hr = document.querySelector('.career-hero-right');
+    if(hl) hl.classList.add('lz-l');
+    if(hr) hr.classList.add('lz-r');
+
+    /* Hero chips */
+    document.querySelectorAll('.hero-chip').forEach(function(el,i){
+      el.classList.add('lz','d'+(i+1));
+    });
+
+    /* Perk cards */
+    document.querySelectorAll('.perk-card').forEach(function(el,i){
+      el.classList.add('lz','d'+(i+1));
+    });
+
+    /* Section headings */
+    document.querySelectorAll('.eyebrow,.sec-title,.sec-sub').forEach(function(el){
+      if(!el.classList.contains('lz')) el.classList.add('lz');
+    });
+
+    /* Job search + filters */
+    var js = document.querySelector('.job-search');
+    var jf = document.querySelector('.job-filters');
+    if(js) js.classList.add('lz');
+    if(jf) jf.classList.add('lz');
+
+    /* Job cards */
+    document.querySelectorAll('.job-card').forEach(function(el,i){
+      el.classList.add('lz','d'+((i%3)+1));
+    });
+
+    /* Jobs more */
+    var jm = document.querySelector('.jobs-more');
+    if(jm) jm.classList.add('lz');
+
+    /* Life section */
+    var ll = document.querySelector('.life-left');
+    var lg = document.querySelector('.life-grid');
+    if(ll) ll.classList.add('lz-l');
+    if(lg) lg.classList.add('lz-r');
+
+    /* Life points */
+    document.querySelectorAll('.life-point').forEach(function(el,i){
+      el.classList.add('lz','d'+(i+1));
+    });
+
+    /* Steps */
+    document.querySelectorAll('.step-item').forEach(function(el,i){
+      el.classList.add('lz-s','d'+(i+1));
+    });
+
+    /* CTA */
+    var ct = document.querySelector('.cta-career-text');
+    var cb = document.querySelector('.cta-career-btns');
+    if(ct) ct.classList.add('lz-l');
+    if(cb) cb.classList.add('lz-r');
+
+    /* Footer */
+    document.querySelectorAll('.footer-col').forEach(function(el,i){
+      el.classList.add('lz','d'+((i%5)+1));
+    });
+    document.querySelectorAll('.contact-item').forEach(function(el,i){
+      el.classList.add('lz','d'+((i%4)+1));
+    });
+
+    /* Native lazy images */
+    document.querySelectorAll('img:not([loading])').forEach(function(img){
+      img.setAttribute('loading','lazy');
+      img.setAttribute('decoding','async');
+    });
+  }
+
+  function observe(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('v');
+          io.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.1, rootMargin:'0px 0px -36px 0px'});
+
+    document.querySelectorAll('.lz,.lz-l,.lz-r,.lz-s').forEach(function(el){
+      io.observe(el);
+    });
+  }
+
+  function run(){
+    tag();
+    if('IntersectionObserver' in window){
+      observe();
+    } else {
+      document.querySelectorAll('.lz,.lz-l,.lz-r,.lz-s').forEach(function(el){
+        el.classList.add('v');
+      });
+    }
+  }
+
+  document.readyState==='loading'
+    ? document.addEventListener('DOMContentLoaded', run)
+    : run();
+}());
+</script>
+
+</body>
+</html>

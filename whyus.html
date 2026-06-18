@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Us – L&D Manpower Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --navy:#1A2848;
+    --navy-deep:#101A33;
+    --green:#2C8C2C;
+    --green-dark:#226e22;
+    --green-light:#3FA63F;
+    --ink:#27313f;
+    --muted:#5c6b7a;
+    --paper:#ffffff;
+    --border:#e7eaef;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); }
+  a{ text-decoration:none; color:inherit; }
+
+  /* ── NAVBAR ── */
+  .navbar{ width:100%; background:var(--paper); border-bottom:1px solid var(--border); box-shadow:0 6px 18px -12px rgba(20,30,60,0.25); position:relative; z-index:20; }
+  .navbar-inner{ max-width:1480px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:28px; padding:18px 48px; }
+  .brand{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
+  .brand img{ height:68px; width:auto; display:block; }
+  .nav-links{ display:flex; align-items:center; gap:36px; list-style:none; margin:0; padding:0; flex:1; justify-content:center; }
+  .nav-links li a{ font-family:'Inter',sans-serif; font-weight:500; font-size:15.5px; color:#1f2a3a; padding:6px 2px; position:relative; transition:color .2s ease; white-space:nowrap; }
+  .nav-links li a:hover{ color:var(--green); }
+  .nav-links li a.active{ color:var(--green); }
+  .nav-links li a.active::after{ content:""; position:absolute; left:0; right:0; bottom:-9px; height:2px; background:var(--green); }
+  .navbar-cta{ display:inline-flex; align-items:center; gap:8px; background:var(--green); color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:15px; padding:13px 26px; border-radius:32px; border:none; cursor:pointer; flex-shrink:0; transition:background .2s ease, transform .2s ease; }
+  .navbar-cta:hover{ background:var(--green-dark); transform:translateY(-1px); }
+  .navbar-cta svg{ width:15px; height:15px; }
+  @media(max-width:1180px){ .nav-links{ gap:22px; } .navbar-inner{ padding:16px 28px; } }
+  @media(max-width:980px){ .nav-links{ display:none; } .navbar-cta{ padding:11px 20px; font-size:14px; } }
+  @media(max-width:560px){ .brand img{ height:42px; } .navbar-cta span.cta-label{ display:none; } .navbar-cta{ padding:11px 14px; } }
+
+  /* ══════════════════════════
+     SHARED UTILITIES
+  ══════════════════════════ */
+  .section-wrap{ max-width:1300px; margin:0 auto; padding:0 60px; }
+  .section-label{
+    font-size:12px; font-weight:700; letter-spacing:2.5px;
+    text-transform:uppercase; color:var(--green);
+    display:block; margin-bottom:12px;
+  }
+  .section-title{
+    font-family:'Poppins',sans-serif; font-size:34px; font-weight:700;
+    color:var(--navy); margin:0 0 44px 0;
+  }
+
+  /* ══════════════════════════
+     1. HERO
+  ══════════════════════════ */
+  .why-hero{
+    background:#f8faf8;
+    padding:70px 0 0;
+    overflow:hidden;
+  }
+  .why-hero-inner{
+    max-width:1300px; margin:0 auto; padding:0 60px;
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:40px; align-items:center; min-height:520px;
+  }
+
+  /* Left */
+  .why-eyebrow{
+    display:inline-block; font-size:12px; font-weight:700;
+    letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--green); margin-bottom:18px;
+  }
+  .why-hero-left h1{
+    font-family:'Poppins',sans-serif; font-size:46px; font-weight:700;
+    color:var(--navy); line-height:1.15; margin:0 0 20px 0; letter-spacing:-0.5px;
+  }
+  .why-hero-left h1 span{ color:var(--green); }
+  .why-hero-left > p{
+    font-size:16px; color:var(--muted); line-height:1.75;
+    margin:0 0 30px 0; max-width:440px;
+  }
+  .why-checklist{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:13px; }
+  .why-checklist li{
+    display:flex; align-items:center; gap:12px;
+    font-size:15px; color:var(--ink); font-weight:500;
+  }
+  .why-checklist li .check-icon{
+    width:22px; height:22px; background:var(--green); color:#fff;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:11px; flex-shrink:0;
+  }
+
+  /* Right – hero visual */
+  .why-hero-right{
+    position:relative;
+    height:520px;
+    display:flex; align-items:flex-end; justify-content:center;
+  }
+
+  /* Hero center image (globe + people) */
+  .hero-center-img{
+    position:absolute;
+    top:0; left:50%; transform:translateX(-50%);
+    width:100%; max-width:480px;
+    height:100%;
+    object-fit:contain;
+    object-position:center bottom;
+    z-index:2;
+  }
+
+  /* Floating badge cards */
+  .float-badge{
+    position:absolute;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 8px 28px -6px rgba(20,60,20,0.18);
+    padding:14px 18px;
+    display:flex; flex-direction:column; align-items:center;
+    gap:8px; text-align:center; min-width:115px; z-index:4;
+  }
+  .float-badge img{ width:36px; height:36px; object-fit:contain; }
+  .float-badge i{ font-size:22px; color:var(--green); }
+  .float-badge span{ font-size:12px; font-weight:600; color:var(--navy); line-height:1.3; }
+
+  .badge-people  { top:30px;   left:0; }
+  .badge-tailored{ top:30px;   right:0; }
+  .badge-track   { bottom:130px; left:0; }
+  .badge-longterm{ bottom:130px; right:0; }
+
+  /* ══════════════════════════
+     2. STATS STRIP
+  ══════════════════════════ */
+  .stats-wrap{ background:#f8faf8; padding:0 0 50px; }
+  .stats-strip{
+    background:#fff; border:1px solid var(--border); border-radius:16px;
+    margin:0 60px; padding:36px 40px;
+    display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+    box-shadow:0 4px 24px -8px rgba(20,40,80,0.1); position:relative; z-index:5;
+  }
+  .stat-item{
+    display:flex; align-items:center; gap:16px;
+    padding:0 24px; position:relative;
+  }
+  .stat-item + .stat-item::before{
+    content:''; position:absolute; left:0; top:10%; height:80%;
+    width:1px; background:var(--border);
+  }
+  .stat-icon{
+    width:50px; height:50px; border:1.5px solid #d0e8d0; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--green); font-size:20px; flex-shrink:0;
+    overflow:hidden;
+  }
+  .stat-icon img{ width:28px; height:28px; object-fit:contain; }
+  .stat-text strong{
+    display:block; font-family:'Poppins',sans-serif; font-size:28px;
+    font-weight:700; color:var(--navy); line-height:1; margin-bottom:4px;
+  }
+  .stat-text span{ font-size:13px; color:var(--muted); line-height:1.4; display:block; }
+
+  /* ══════════════════════════
+     3. CORE STRENGTHS
+  ══════════════════════════ */
+  .core-strengths{ padding:80px 0 70px; background:#fff; }
+  .core-strengths .section-label,
+  .core-strengths .section-title{ text-align:center; }
+
+  .strengths-bento{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:auto auto;
+    gap:22px;
+  }
+
+  /* Hexagon badge, used at two sizes */
+  .hex-badge{
+    clip-path:polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+
+  /* Lead feature tile — spans 2 cols x 2 rows */
+  .strength-feature{
+    grid-column:1 / 3; grid-row:1 / 3;
+    background:var(--navy);
+    border-radius:18px;
+    padding:38px 34px;
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column; justify-content:space-between;
+    transition:transform .3s ease;
+  }
+  .strength-feature::after{
+    content:''; position:absolute; right:-70px; top:-70px;
+    width:230px; height:230px; border-radius:50%;
+    background:rgba(255,255,255,0.05);
+  }
+  .strength-feature:hover{ transform:translateY(-4px); }
+  .strength-feature .hex-badge{
+    width:62px; height:62px; background:var(--green); color:#fff;
+    font-size:24px; margin-bottom:26px; position:relative; z-index:2;
+  }
+  .strength-feature .feature-eyebrow{
+    font-size:11.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+    color:var(--green-light); margin-bottom:10px; display:block; position:relative; z-index:2;
+  }
+  .strength-feature h4{
+    font-family:'Poppins',sans-serif; font-size:23px; font-weight:700;
+    color:#fff; margin:0 0 12px 0; line-height:1.3; position:relative; z-index:2;
+  }
+  .strength-feature p{
+    font-size:14.5px; color:rgba(255,255,255,.72); line-height:1.75;
+    margin:0; max-width:360px; position:relative; z-index:2;
+  }
+
+  /* Standard tile — 4 of these fill the 2x2 area beside the feature */
+  .strength-tile{
+    background:#fff; border:1px solid var(--border); border-radius:16px;
+    padding:26px 24px; display:flex; flex-direction:column; gap:12px;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .strength-tile:hover{
+    transform:translateY(-5px);
+    box-shadow:0 14px 32px -12px rgba(20,80,20,0.16);
+    border-color:#cfe6cf;
+  }
+  .strength-tile .hex-badge{
+    width:46px; height:46px; background:#eef6ee; color:var(--green); font-size:18px;
+  }
+  .strength-tile h4{
+    font-family:'Poppins',sans-serif; font-size:14.5px; font-weight:700;
+    color:var(--navy); margin:0; line-height:1.3;
+  }
+  .strength-tile p{ font-size:12.5px; color:var(--muted); line-height:1.6; margin:0; }
+
+  /* Full-width banner tile underneath */
+  .strength-banner{
+    grid-column:1 / 5; grid-row:3;
+    background:#f3f8f3; border:1.5px dashed #bcdcbc; border-radius:16px;
+    padding:24px 30px; display:flex; align-items:center; gap:24px;
+  }
+  .strength-banner .hex-badge{
+    width:52px; height:52px; background:var(--green); color:#fff; font-size:20px;
+  }
+  .strength-banner-text h4{
+    font-family:'Poppins',sans-serif; font-size:15.5px; font-weight:700;
+    color:var(--navy); margin:0 0 4px 0;
+  }
+  .strength-banner-text p{ font-size:13px; color:var(--muted); margin:0; line-height:1.6; }
+
+  /* ══════════════════════════
+     4. WHY TRUST US
+  ══════════════════════════ */
+  .trust-section{ padding:70px 0; background:#f8faf8; }
+  .trust-inner{
+    max-width:1300px; margin:0 auto; padding:0 60px;
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:70px; align-items:center;
+  }
+
+  /* Left image */
+  .trust-visual{
+    border-radius:16px; overflow:hidden;
+    height:400px; position:relative;
+  }
+  .trust-visual img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  /* Fallback bg if no image */
+  .trust-visual{ background:linear-gradient(135deg,#d4e8d4 0%,#b8d4b8 100%); }
+
+  /* Right */
+  .trust-right .section-label{ text-align:left; }
+  .trust-right .section-title{ text-align:left; font-size:28px; margin-bottom:32px; }
+
+  .trust-items{ display:grid; grid-template-columns:1fr 1fr; gap:26px 32px; }
+  .trust-item-header{
+    display:flex; align-items:center; gap:10px; margin-bottom:8px;
+  }
+  .trust-item-header .ti-check{
+    width:26px; height:26px; background:var(--green); border-radius:50%;
+    color:#fff; font-size:11px;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  /* custom icon per item */
+  .trust-item-header .ti-icon{
+    width:28px; height:28px; object-fit:contain; flex-shrink:0;
+  }
+  .trust-item-box h4{
+    font-family:'Poppins',sans-serif; font-size:15px; font-weight:700;
+    color:var(--navy); margin:0;
+  }
+  .trust-item-box p{
+    font-size:13.5px; color:var(--muted); line-height:1.65;
+    margin:0; padding-left:36px;
+  }
+
+  /* ══════════════════════════
+     5. INDUSTRIES
+  ══════════════════════════ */
+  .industries-section{ padding:70px 0; background:#fff; }
+  .industries-section .section-label,
+  .industries-section .section-title{ text-align:center; }
+
+  .industries-tags{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:28px 22px;
+  }
+  .industry-tag{
+    position:relative; background:#fff; border:1px solid var(--border);
+    border-radius:10px; padding:30px 22px 22px;
+    display:flex; flex-direction:column; gap:10px;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .industry-tag::before{
+    content:''; position:absolute; left:0; top:0; bottom:0; width:4px;
+    background:var(--green); border-radius:10px 0 0 10px;
+  }
+  .industry-tag:nth-child(even)::before{ background:var(--navy); }
+  .industry-tag:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 34px -14px rgba(20,50,20,0.18);
+    border-color:#d8e8d8;
+  }
+  .tag-code{
+    position:absolute; top:-12px; left:24px;
+    background:var(--navy); color:#fff;
+    font-family:'Poppins',sans-serif; font-size:10.5px; font-weight:700;
+    letter-spacing:1.5px; text-transform:uppercase;
+    padding:5px 11px; border-radius:5px;
+  }
+  .industry-tag:nth-child(even) .tag-code{ background:var(--green); }
+  .tag-icon-row{ margin-top:8px; }
+  .tag-icon-row i{ font-size:26px; color:var(--green); }
+  .industry-tag:nth-child(even) .tag-icon-row i{ color:var(--navy); }
+  .industry-tag h4{
+    font-family:'Poppins',sans-serif; font-size:16px; font-weight:700;
+    color:var(--navy); margin:2px 0 0;
+  }
+  .industry-tag p{ font-size:13px; color:var(--muted); line-height:1.6; margin:0; }
+  .tag-divider{ border-top:1px dashed var(--border); margin-top:6px; padding-top:12px; }
+  .tag-pill{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11px; font-weight:600; color:var(--green);
+    background:#eef6ee; padding:4px 11px; border-radius:20px;
+  }
+  .industry-tag:nth-child(even) .tag-pill{ color:var(--navy); background:#eef1f8; }
+
+  /* ══════════════════════════
+     6. CTA BANNER
+  ══════════════════════════ */
+  .cta-banner{
+    background:linear-gradient(100deg,#1a4a1a 0%,#226e22 50%,#1a4a1a 100%);
+    padding:56px 60px; position:relative; overflow:hidden;
+  }
+  /* Silhouette right side - replace with your own image */
+  .cta-banner-bg-img{
+    position:absolute; right:0; top:0; height:100%;
+    opacity:0.12; pointer-events:none; object-fit:cover;
+  }
+  .cta-inner{
+    max-width:1300px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:40px; flex-wrap:wrap; position:relative; z-index:2;
+  }
+  .cta-text h2{
+    font-family:'Poppins',sans-serif; font-size:30px; font-weight:700;
+    color:#fff; margin:0 0 10px 0;
+  }
+  .cta-text p{ font-size:15px; color:rgba(255,255,255,.75); margin:0; max-width:460px; line-height:1.65; }
+  .cta-btns{ display:flex; gap:14px; flex-shrink:0; flex-wrap:wrap; }
+  .cta-btn-white{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; color:var(--green-dark);
+    font-family:'Inter',sans-serif; font-weight:700; font-size:14.5px;
+    padding:13px 26px; border-radius:32px;
+    transition:background .2s, transform .2s;
+  }
+  .cta-btn-white:hover{ background:#e8f4e8; transform:translateY(-1px); }
+  .cta-btn-outline{
+    display:inline-flex; align-items:center; gap:8px;
+    background:transparent; color:#fff;
+    font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px;
+    padding:13px 26px; border-radius:32px;
+    border:1.5px solid rgba(255,255,255,.5);
+    transition:border-color .2s, background .2s;
+  }
+  .cta-btn-outline:hover{ border-color:#fff; background:rgba(255,255,255,.08); }
+
+  /* ══════════════════════════
+     FOOTER (unchanged)
+  ══════════════════════════ */
+  .footer{ font-family:'Poppins',sans-serif; background:#f0f4f0; color:#222; }
+  .footer-top{ padding:60px 0 50px; position:relative; overflow:hidden; }
+  .footer-top::after{
+    content:''; position:absolute; right:0; bottom:0; width:400px; height:240px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 260'%3E%3Cg fill='%23b8d4b8' opacity='0.4'%3E%3Crect x='160' y='110' width='18' height='100'/%3E%3Crect x='183' y='120' width='18' height='90'/%3E%3Crect x='206' y='115' width='18' height='95'/%3E%3Crect x='155' y='105' width='74' height='8' rx='4'/%3E%3Ccircle cx='310' cy='130' r='52' fill='none' stroke='%23b8d4b8' stroke-width='5' opacity='0.45'/%3E%3Crect x='306' y='175' width='8' height='55'/%3E%3Crect x='30' y='145' width='22' height='65'/%3E%3Crect x='57' y='135' width='18' height='75'/%3E%3Crect x='80' y='150' width='25' height='60'/%3E%3Crect x='110' y='140' width='20' height='70'/%3E%3Crect x='135' y='155' width='20' height='55'/%3E%3Crect x='0' y='210' width='420' height='10' rx='2'/%3E%3Ccircle cx='50' cy='205' r='12'/%3E%3Ccircle cx='90' cy='208' r='10'/%3E%3Ccircle cx='370' cy='205' r='14'/%3E%3Ccircle cx='400' cy='207' r='10'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-size:contain; background-position:bottom right; pointer-events:none; z-index:1;
+  }
+  .footer-container{ width:90%; max-width:1400px; margin:auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:35px; position:relative; z-index:2; }
+  .footer-col{ position:relative; }
+  .footer-col:not(:first-child){ padding-left:30px; border-left:1px solid #e5e5e5; }
+  .footer-logo{ width:180px; margin-bottom:20px; }
+  .company-info p{ color:#555; line-height:1.8; font-size:14.5px; margin-bottom:20px; }
+  .footer-line{ width:50px; height:2px; background:#0f9d39; margin-bottom:20px; }
+  .company-info h4{ color:#0f9d39; font-size:15px; font-weight:700; margin-bottom:15px; }
+  .social-icons{ display:flex; gap:10px; }
+  .social-icons a{ width:40px; height:40px; border:1.5px solid #c8cfd6; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#555; font-size:15px; transition:all .25s ease; }
+  .social-icons a:hover{ border-color:#0f9d39; color:#0f9d39; }
+  .footer-col h3{ display:flex; align-items:center; gap:12px; color:#0f9d39; margin:0 0 26px 0; font-size:17px; font-weight:700; }
+  .footer-col h3 .col-icon{ width:44px; height:44px; border:1.5px solid #c2dbc2; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:17px; color:#0f9d39; flex-shrink:0; }
+  .footer-col ul{ list-style:none; padding:0; margin:0; }
+  .footer-col ul li{ margin-bottom:14px; }
+  .footer-col ul li a{ text-decoration:none; color:#444; font-size:14.5px; transition:color .2s, padding-left .2s; font-weight:400; }
+  .footer-col ul li a:hover{ color:#0f9d39; padding-left:4px; }
+  .footer-contact{ background:linear-gradient(90deg,#002d11,#006d24,#003f18); padding:24px 0; }
+  .contact-container{ width:90%; max-width:1400px; margin:auto; display:grid; grid-template-columns:2fr 1fr 1.5fr 2fr; gap:20px; align-items:center; }
+  .contact-item{ display:flex; align-items:center; gap:14px; color:#fff; }
+  .contact-item .ci-icon{ width:44px; height:44px; border:1.5px solid rgba(255,255,255,.25); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px; color:#6be06b; }
+  .contact-item:first-child .ci-icon{ background:#0f9d39; border-color:#0f9d39; color:#fff; font-size:18px; }
+  .contact-item strong{ display:block; font-size:15px; font-weight:700; margin-bottom:3px; color:#fff; }
+  .contact-item span,.contact-item a{ color:#cce8cc; font-size:13.5px; text-decoration:none; line-height:1.65; }
+  .contact-item a:hover{ color:#b8ffca; }
+  .footer-bottom{ background:#004d19; padding:16px 0; }
+  .footer-bottom-container{ width:90%; max-width:1400px; margin:auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .footer-bottom p{ color:#cce8cc; font-size:13.5px; margin:0; }
+  .footer-links{ display:flex; align-items:center; }
+  .footer-links a{ color:#cce8cc; text-decoration:none; font-size:13.5px; padding:0 18px; position:relative; transition:color .2s; }
+  .footer-links a:hover{ color:#fff; }
+  .footer-links a + a::before{ content:''; position:absolute; left:0; top:50%; transform:translateY(-50%); width:1px; height:13px; background:rgba(255,255,255,.35); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:1100px){
+    .why-hero-inner{ grid-template-columns:1fr; }
+    .why-hero-right{ height:320px; }
+    .strengths-bento{ grid-template-columns:repeat(2,1fr); grid-template-rows:auto; }
+    .strength-feature{ grid-column:1 / 3; grid-row:auto; }
+    .strength-tile{ grid-column:auto; }
+    .strength-banner{ grid-column:1 / 3; grid-row:auto; }
+    .trust-inner{ grid-template-columns:1fr; }
+    .industries-tags{ grid-template-columns:repeat(2,1fr); }
+    .stats-strip{ grid-template-columns:repeat(3,1fr); margin:0 24px; }
+    .footer-container{ grid-template-columns:repeat(2,1fr); }
+    .contact-container{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media(max-width:768px){
+    .why-hero-inner,.trust-inner{ padding:0 24px; }
+    .section-wrap{ padding:0 24px; }
+    .stats-strip{ grid-template-columns:1fr 1fr; margin:0 16px; }
+    .strengths-bento{ grid-template-columns:1fr; }
+    .strength-feature{ grid-column:1; grid-row:auto; }
+    .strength-banner{ grid-column:1; grid-row:auto; flex-direction:column; text-align:center; }
+    .industries-tags{ grid-template-columns:1fr; }
+    .trust-items{ grid-template-columns:1fr; }
+    .cta-banner{ padding:40px 24px; }
+    .cta-btns{ flex-direction:column; }
+    .footer-container,.contact-container{ grid-template-columns:1fr; }
+    .footer-col{ border:none !important; padding-left:0 !important; }
+    .footer-bottom-container{ flex-direction:column; text-align:center; }
+    .footer-links{ justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="L&D Manpower Solutions Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Our Services</a></li>
+      <li><a href="whyus.html" class="active">Why Us</a></li>
+      <li><a href="career.html">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="navbar-cta">
+      <span class="cta-label">Get In Touch</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ══════════ 1. HERO ══════════ -->
+<section class="why-hero">
+  <div class="why-hero-inner">
+
+    <!-- Left copy -->
+    <div class="why-hero-left">
+      <span class="why-eyebrow">Why Choose L &amp; D Manpower</span>
+      <h1>The Right People.<br>The Right Solution.<br>The Right <span>Partner.</span></h1>
+      <p>We go beyond matching talent. We build long-term partnerships by providing reliable manpower solutions that drive your business forward.</p>
+      <ul class="why-checklist">
+        <li><span class="check-icon"><i class="fas fa-check"></i></span> Trusted by businesses across Singapore and beyond</li>
+        <li><span class="check-icon"><i class="fas fa-check"></i></span> Deep market knowledge and industry expertise</li>
+        <li><span class="check-icon"><i class="fas fa-check"></i></span> End-to-end recruitment and workforce solutions</li>
+        <li><span class="check-icon"><i class="fas fa-check"></i></span> Committed to quality, integrity and results</li>
+      </ul>
+    </div>
+
+    <!-- Right visual -->
+    <div class="why-hero-right">
+
+      <!-- Top-left floating badge -->
+      <div class="float-badge badge-people">
+        <!-- REPLACE: <img src="assets/icons/people-first.png" alt="People First"> -->
+        <i class="fas fa-users"></i>
+        <span>People<br>First</span>
+      </div>
+
+      <!-- Top-right floating badge -->
+      <div class="float-badge badge-tailored">
+        <!-- REPLACE: <img src="assets/icons/tailored.png" alt="Tailored Solutions"> -->
+        <i class="fas fa-puzzle-piece"></i>
+        <span>Tailored<br>Solutions</span>
+      </div>
+
+      <!-- HERO CENTER IMAGE -->
+      <img class="hero-center-img" src="assets/why-us-img.png" alt="Why Us Visual">
+
+      <!-- Bottom-left badge -->
+      <div class="float-badge badge-track">
+        <!-- REPLACE: <img src="assets/icons/track-record.png" alt="Track Record"> -->
+        <i class="fas fa-chart-bar"></i>
+        <span>Proven<br>Track Record</span>
+      </div>
+
+      <!-- Bottom-right badge -->
+      <div class="float-badge badge-longterm">
+        <!-- REPLACE: <img src="assets/icons/partnerships.png" alt="Partnerships"> -->
+        <i class="fas fa-handshake"></i>
+        <span>Long-term<br>Partnerships</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ 2. STATS STRIP ══════════ -->
+<div class="stats-wrap">
+  <div class="stats-strip">
+
+    <div class="stat-item">
+      <div class="stat-icon">
+        <!-- REPLACE: <img src="assets/icons/stat-award.png" alt=""> -->
+        <i class="fas fa-award"></i>
+      </div>
+      <div class="stat-text">
+        <strong>12+</strong>
+        <span>Years of Excellence<br>In Manpower Solutions</span>
+      </div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-icon">
+        <!-- REPLACE: <img src="assets/icons/stat-placements.png" alt=""> -->
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="stat-text">
+        <strong>15,000+</strong>
+        <span>Successful<br>Placements</span>
+      </div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-icon">
+        <!-- REPLACE: <img src="assets/icons/stat-companies.png" alt=""> -->
+        <i class="fas fa-building"></i>
+      </div>
+      <div class="stat-text">
+        <strong>1,200+</strong>
+        <span>Partner<br>Companies</span>
+      </div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-icon">
+        <!-- REPLACE: <img src="assets/icons/stat-retention.png" alt=""> -->
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="stat-text">
+        <strong>98%</strong>
+        <span>Client Retention<br>Rate</span>
+      </div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-icon">
+        <!-- REPLACE: <img src="assets/icons/stat-industries.png" alt=""> -->
+        <i class="fas fa-globe-asia"></i>
+      </div>
+      <div class="stat-text">
+        <strong>10+</strong>
+        <span>Industries<br>Served</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ 3. CORE STRENGTHS ══════════ -->
+<section class="core-strengths">
+  <div class="section-wrap">
+    <span class="section-label">Our Core Strengths</span>
+    <h2 class="section-title">Our Core Strengths</h2>
+    <div class="strengths-bento">
+
+      <div class="strength-feature">
+        <div>
+          <span class="hex-badge"><i class="fas fa-search"></i></span>
+          <span class="feature-eyebrow">Our Strongest Asset</span>
+          <h4>Extensive Talent Network</h4>
+          <p>Access to a wide pool of pre-screened, qualified candidates across multiple industries — ready to deploy when you need them.</p>
+        </div>
+      </div>
+
+      <div class="strength-tile">
+        <span class="hex-badge"><i class="fas fa-shield-alt"></i></span>
+        <h4>Quality &amp; Compliance Assured</h4>
+        <p>Strict selection and compliance processes for peace of mind.</p>
+      </div>
+
+      <div class="strength-tile">
+        <span class="hex-badge"><i class="fas fa-bolt"></i></span>
+        <h4>Fast &amp; Efficient Hiring</h4>
+        <p>Streamlined processes to hire the right talent quickly.</p>
+      </div>
+
+      <div class="strength-tile">
+        <span class="hex-badge"><i class="fas fa-headset"></i></span>
+        <h4>Dedicated Support</h4>
+        <p>Personalized support at every step of your hiring journey.</p>
+      </div>
+
+      <div class="strength-tile">
+        <span class="hex-badge"><i class="fas fa-chart-line"></i></span>
+        <h4>Industry Expertise</h4>
+        <p>Deep understanding of market trends and workforce needs.</p>
+      </div>
+
+      <div class="strength-banner">
+        <span class="hex-badge"><i class="fas fa-handshake"></i></span>
+        <div class="strength-banner-text">
+          <h4>Built on Integrity</h4>
+          <p>Transparency and honesty in every placement — the foundation of relationships that last.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 4. WHY TRUST US ══════════ -->
+<section class="trust-section">
+  <div class="trust-inner">
+
+    <!-- Left image -->
+    <div class="trust-visual">
+      <img src="assets/why-us-img-2.png" alt="Why Businesses Trust Us">
+    </div>
+
+    <!-- Right trust points -->
+    <div class="trust-right">
+      <span class="section-label">Why Businesses Trust Us</span>
+      <h2 class="section-title">Why Businesses Trust Us</h2>
+      <div class="trust-items">
+
+        <div class="trust-item-box">
+          <div class="trust-item-header">
+            <span class="ti-check"><i class="fas fa-check"></i></span>
+            <h4>End-to-End Solutions</h4>
+          </div>
+          <p>From manpower sourcing to placement and aftercare, we handle it all.</p>
+        </div>
+
+        <div class="trust-item-box">
+          <div class="trust-item-header">
+            <!-- REPLACE: <img class="ti-icon" src="assets/icons/cost.png" alt=""> -->
+            <span class="ti-check"><i class="fas fa-check"></i></span>
+            <h4>Cost-Effective</h4>
+          </div>
+          <p>Our solutions help you optimize costs while maintaining high-quality hires.</p>
+        </div>
+
+        <div class="trust-item-box">
+          <div class="trust-item-header">
+            <span class="ti-check"><i class="fas fa-check"></i></span>
+            <h4>Customized Approach</h4>
+          </div>
+          <p>We understand your unique needs and provide tailored solutions that fit your business.</p>
+        </div>
+
+        <div class="trust-item-box">
+          <div class="trust-item-header">
+            <!-- REPLACE: <img class="ti-icon" src="assets/icons/sustainable.png" alt=""> -->
+            <span class="ti-check"><i class="fas fa-check"></i></span>
+            <h4>Sustainable Partnerships</h4>
+          </div>
+          <p>We focus on long-term partnerships that contribute to your growth.</p>
+        </div>
+
+        <div class="trust-item-box">
+          <div class="trust-item-header">
+            <span class="ti-check"><i class="fas fa-check"></i></span>
+            <h4>Reliable &amp; Consistent</h4>
+          </div>
+          <p>You can count on us for consistent service quality and dependable results.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ 5. INDUSTRIES WE SERVE ══════════ -->
+<section class="industries-section">
+  <div class="section-wrap">
+    <span class="section-label">Industries We Serve</span>
+    <h2 class="section-title">Industries We Serve</h2>
+    <div class="industries-tags">
+
+      <div class="industry-tag">
+        <span class="tag-code">Sector 01</span>
+        <div class="tag-icon-row"><i class="fas fa-hard-hat"></i></div>
+        <h4>Construction</h4>
+        <p>Site crews, riggers and foremen deployed on schedule.</p>
+        <div class="tag-divider"><span class="tag-pill">Workforce Ready</span></div>
+      </div>
+
+      <div class="industry-tag">
+        <span class="tag-code">Sector 02</span>
+        <div class="tag-icon-row"><i class="fas fa-industry"></i></div>
+        <h4>Manufacturing</h4>
+        <p>Production line operators and technical support staff.</p>
+        <div class="tag-divider"><span class="tag-pill">Workforce Ready</span></div>
+      </div>
+
+      <div class="industry-tag">
+        <span class="tag-code">Sector 03</span>
+        <div class="tag-icon-row"><i class="fas fa-concierge-bell"></i></div>
+        <h4>Hospitality</h4>
+        <p>Front-of-house, F&amp;B and guest service personnel.</p>
+        <div class="tag-divider"><span class="tag-pill">Workforce Ready</span></div>
+      </div>
+
+      <div class="industry-tag">
+        <span class="tag-code">Sector 04</span>
+        <div class="tag-icon-row"><i class="fas fa-ship"></i></div>
+        <h4>Marine &amp; Offshore</h4>
+        <p>Certified crew for shipyards, vessels and offshore work.</p>
+        <div class="tag-divider"><span class="tag-pill">Workforce Ready</span></div>
+      </div>
+
+      <div class="industry-tag">
+        <span class="tag-code">Sector 05</span>
+        <div class="tag-icon-row"><i class="fas fa-truck"></i></div>
+        <h4>Logistics</h4>
+        <p>Warehouse, fulfilment and last-mile delivery teams.</p>
+        <div class="tag-divider"><span class="tag-pill">Workforce Ready</span></div>
+      </div>
+
+      <div class="industry-tag">
+        <span class="tag-code">Sector 06</span>
+        <div class="tag-icon-row"><i class="fas fa-shopping-cart"></i></div>
+        <h4>Retail</h4>
+        <p>Sales associates and store operations support.</p>
+        <div class="tag-divider"><span class="tag-pill">Workforce Ready</span></div>
+      </div>
+
+      <div class="industry-tag">
+        <span class="tag-code">Sector 07</span>
+        <div class="tag-icon-row"><i class="fas fa-heartbeat"></i></div>
+        <h4>Healthcare</h4>
+        <p>Support staff for clinics, care homes and facilities.</p>
+        <div class="tag-divider"><span class="tag-pill">Workforce Ready</span></div>
+      </div>
+
+      <div class="industry-tag">
+        <span class="tag-code">Sector 08</span>
+        <div class="tag-icon-row"><i class="fas fa-ellipsis-h"></i></div>
+        <h4>Others</h4>
+        <p>Don't see your sector? We'll still find the right fit.</p>
+        <div class="tag-divider"><span class="tag-pill">Workforce Ready</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 6. CTA BANNER ══════════ -->
+<section class="cta-banner">
+  <!--
+    Optional silhouette bg image (right side):
+    <img class="cta-banner-bg-img" src="assets/cta-silhouette.png" alt="">
+  -->
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2>Ready to Build Your Workforce?</h2>
+      <p>Partner with L &amp; D Manpower and discover the difference of working with a team that truly cares.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="contact.html" class="cta-btn-white">
+        Talk to Our Experts
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+      <a href="services.html" class="cta-btn-outline">
+        Explore Services
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-container">
+      <div class="footer-col company-info">
+        <img src="assets/logo.png" alt="L&D Manpower" class="footer-logo">
+        <p>L &amp; D Manpower is a leading manpower and recruitment consultancy in Singapore, connecting the right talent with the right opportunities and empowering businesses to grow.</p>
+        <div class="footer-line"></div>
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-building"></i></span>Company</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="whyus.html">Why Us</a></li>
+          <li><a href="career.html">Careers</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-users"></i></span>Our Services</h3>
+        <ul>
+          <li><a href="#">Recruitment Solutions</a></li>
+          <li><a href="#">Workforce Planning</a></li>
+          <li><a href="#">Talent Outsourcing</a></li>
+          <li><a href="#">Compliance Management</a></li>
+          <li><a href="#">HR Support Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-industry"></i></span>Industries</h3>
+        <ul>
+          <li><a href="#">Construction</a></li>
+          <li><a href="#">Manufacturing</a></li>
+          <li><a href="#">Marine &amp; Offshore</a></li>
+          <li><a href="#">Hospitality</a></li>
+          <li><a href="#">Logistics</a></li>
+          <li><a href="#">Retail</a></li>
+          <li><a href="#">Healthcare</a></li>
+          <li><a href="#">IT &amp; Technology</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3><span class="col-icon"><i class="fas fa-link"></i></span>Quick Links</h3>
+        <ul>
+          <li><a href="#">Job Seekers</a></li>
+          <li><a href="#">Employers</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">News &amp; Insights</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-contact">
+    <div class="contact-container">
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-shield-alt"></i></div>
+        <div><strong>Your Trusted Partner</strong><span>Connecting Talent. Building Futures.</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+        <a href="tel:+6581358438">+65 81358438</a>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+        <a href="mailto:contact@ldmanpower.com">contact@ldmanpower.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <span>Marina Bay Financial Centre Tower 2,<br>10 Marina Blvd, #39-00,<br>Singapore 018983</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-container">
+      <p>© 2026 L &amp; D Manpower Pte. Ltd. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<style>
+/* ══════════════════════════
+   LAZY LOAD / SCROLL ANIMATIONS
+══════════════════════════ */
+
+/* Base hidden state — applied by JS before element enters view */
+.lazy-fade       { opacity:0; transform:translateY(36px); transition:opacity .65s ease, transform .65s ease; }
+.lazy-fade-left  { opacity:0; transform:translateX(-40px); transition:opacity .65s ease, transform .65s ease; }
+.lazy-fade-right { opacity:0; transform:translateX(40px);  transition:opacity .65s ease, transform .65s ease; }
+.lazy-scale      { opacity:0; transform:scale(0.92);        transition:opacity .6s ease, transform .6s ease; }
+.lazy-fade-up    { opacity:0; transform:translateY(24px);   transition:opacity .55s ease, transform .55s ease; }
+
+/* Visible state — added by IntersectionObserver */
+.lazy-fade.visible,
+.lazy-fade-left.visible,
+.lazy-fade-right.visible,
+.lazy-scale.visible,
+.lazy-fade-up.visible {
+  opacity:1;
+  transform:none;
+}
+
+/* Staggered delay helpers — add class alongside lazy-* */
+.delay-1 { transition-delay:.08s !important; }
+.delay-2 { transition-delay:.16s !important; }
+.delay-3 { transition-delay:.24s !important; }
+.delay-4 { transition-delay:.32s !important; }
+.delay-5 { transition-delay:.40s !important; }
+.delay-6 { transition-delay:.48s !important; }
+
+/* Stat counter flash */
+@keyframes countUp {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:none; }
+}
+.stat-item.visible .stat-text strong {
+  animation: countUp .5s ease forwards;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .lazy-fade, .lazy-fade-left, .lazy-fade-right,
+  .lazy-scale, .lazy-fade-up {
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── 1. Tag elements with lazy classes ── */
+  function applyLazyClasses() {
+
+    /* Hero left / right */
+    const heroLeft  = document.querySelector('.why-hero-left');
+    const heroRight = document.querySelector('.why-hero-right');
+    if (heroLeft)  heroLeft.classList.add('lazy-fade-left');
+    if (heroRight) heroRight.classList.add('lazy-fade-right');
+
+    /* Checklist items */
+    document.querySelectorAll('.why-checklist li').forEach(function(el, i) {
+      el.classList.add('lazy-fade-up', 'delay-' + (i + 1));
+    });
+
+    /* Floating badges */
+    document.querySelectorAll('.float-badge').forEach(function(el) {
+      el.classList.add('lazy-scale');
+    });
+
+    /* Stats strip */
+    document.querySelectorAll('.stat-item').forEach(function(el, i) {
+      el.classList.add('lazy-fade-up', 'delay-' + (i + 1));
+    });
+
+    /* Strength bento tiles */
+    document.querySelectorAll('.strength-feature, .strength-tile').forEach(function(el, i) {
+      el.classList.add('lazy-fade-up', 'delay-' + ((i % 6) + 1));
+    });
+    const strengthBanner = document.querySelector('.strength-banner');
+    if (strengthBanner) strengthBanner.classList.add('lazy-fade-up', 'delay-5');
+
+    /* Section headings */
+    document.querySelectorAll('.section-label, .section-title').forEach(function(el) {
+      el.classList.add('lazy-fade');
+    });
+
+    /* Trust visual */
+    const trustVis = document.querySelector('.trust-visual');
+    if (trustVis) trustVis.classList.add('lazy-fade-left');
+
+    /* Trust items */
+    document.querySelectorAll('.trust-item-box').forEach(function(el, i) {
+      el.classList.add('lazy-fade-up', 'delay-' + ((i % 4) + 1));
+    });
+
+    /* Industry sector tags */
+    document.querySelectorAll('.industry-tag').forEach(function(el, i) {
+      el.classList.add('lazy-fade-up', 'delay-' + ((i % 8) + 1));
+    });
+
+    /* CTA banner */
+    const ctaText = document.querySelector('.cta-text');
+    const ctaBtns = document.querySelector('.cta-btns');
+    if (ctaText) ctaText.classList.add('lazy-fade-left');
+    if (ctaBtns) ctaBtns.classList.add('lazy-fade-right');
+
+    /* Footer columns */
+    document.querySelectorAll('.footer-col').forEach(function(el, i) {
+      el.classList.add('lazy-fade-up', 'delay-' + ((i % 5) + 1));
+    });
+
+    /* Contact strip items */
+    document.querySelectorAll('.contact-item').forEach(function(el, i) {
+      el.classList.add('lazy-fade-up', 'delay-' + ((i % 4) + 1));
+    });
+
+    /* All images — native lazy loading */
+    document.querySelectorAll('img:not([loading])').forEach(function(img) {
+      img.setAttribute('loading', 'lazy');
+      img.setAttribute('decoding', 'async');
+    });
+  }
+
+  /* ── 2. Observe and reveal ── */
+  function initObserver() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); /* fire once */
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    var lazyClasses = [
+      '.lazy-fade', '.lazy-fade-left', '.lazy-fade-right',
+      '.lazy-scale', '.lazy-fade-up'
+    ];
+
+    lazyClasses.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        observer.observe(el);
+      });
+    });
+  }
+
+  /* ── 3. Animated stat counters ── */
+  function initCounters() {
+    var counters = document.querySelectorAll('.stat-text strong');
+    var counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el    = entry.target;
+        var raw   = el.textContent.trim();           /* e.g. "15,000+" */
+        var suffix = raw.replace(/[\d,]/g, '');       /* "+", "%" etc  */
+        var num    = parseInt(raw.replace(/[^0-9]/g, ''), 10);
+        if (isNaN(num)) return;
+        counterObserver.unobserve(el);
+
+        var duration = 1400;
+        var start    = performance.now();
+        function step(now) {
+          var progress = Math.min((now - start) / duration, 1);
+          /* ease-out cubic */
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = Math.round(eased * num);
+          /* format with commas */
+          el.textContent = current.toLocaleString() + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function(el) { counterObserver.observe(el); });
+  }
+
+  /* ── Init ── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+
+  function run() {
+    applyLazyClasses();
+    if ('IntersectionObserver' in window) {
+      initObserver();
+      initCounters();
+    } else {
+      /* Fallback: show everything immediately in old browsers */
+      document.querySelectorAll(
+        '.lazy-fade,.lazy-fade-left,.lazy-fade-right,.lazy-scale,.lazy-fade-up'
+      ).forEach(function(el){ el.classList.add('visible'); });
+    }
+  }
+}());
+</script>
+
+</body>
+</html>
