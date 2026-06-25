@@ -170,6 +170,49 @@
   @media(max-width:1100px){.contact-hero-inner{grid-template-columns:1fr;gap:40px;}}
   @media(max-width:768px){.contact-hero-inner{padding:0 24px;}.contact-left h1{font-size:32px;}.form-row{grid-template-columns:1fr;}}
 
+
+    /* Form part styles */
+
+    .file-upload-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 24px 16px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: #f8fafc;
+    text-align: center;
+  }
+
+  .file-upload-wrap:hover {
+    border-color: #6366f1; /* match your brand color */
+    background: #f0f1ff;
+  }
+
+  .file-upload-wrap svg {
+    color: #94a3b8;
+    transition: color 0.2s;
+  }
+
+  .file-upload-wrap:hover svg {
+    color: #6366f1;
+  }
+
+  .file-label {
+    font-size: 0.9rem;
+    color: #475569;
+    font-weight: 500;
+  }
+
+  .file-hint {
+    font-size: 0.75rem;
+    color: #94a3b8;
+  }
+
   /* ══════════════════════════════════════
      TRUST BADGES
   ══════════════════════════════════════ */
@@ -483,6 +526,26 @@
           <textarea placeholder="How can we help you?"></textarea>
         </div>
 
+        <div class="form-group">
+          <label>Upload Resume <span style="font-size:0.8em; font-weight:400; color:#888;">(Optional)</span></label>
+          <div class="file-upload-wrap" onclick="document.getElementById('resumeUpload').click()">
+            <input 
+              type="file" 
+              id="resumeUpload" 
+              accept=".pdf,.doc,.docx" 
+              style="display:none;"
+              onchange="updateFileName(this)"
+            >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <span class="file-label" id="fileLabel">Click to upload or drag & drop</span>
+            <span class="file-hint">PDF, DOC, DOCX — Max 5MB</span>
+          </div>
+        </div>
+
         <button class="btn-send">
           Send Message
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
@@ -711,6 +774,20 @@
     mo.observe(mapFrame);
   }
 })();
+</script>
+
+<!--Script for file uploading-->
+<script>
+  function updateFileName(input) {
+  const label = document.getElementById('fileLabel');
+  const wrap = input.closest('.file-upload-wrap');
+  if (input.files && input.files[0]) {
+    label.textContent = input.files[0].name;
+    wrap.style.borderColor = '#22c55e';
+    wrap.style.background = '#f0fdf4';
+    wrap.querySelector('svg').style.color = '#22c55e';
+  }
+}
 </script>
 
 </body>
