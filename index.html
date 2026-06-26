@@ -260,7 +260,7 @@
   .pstat strong{display:block;font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;color:var(--navy);}
   .pstat span{font-size:12.5px;color:var(--muted);}
 
-  /* ---- marquee logos ---- */
+  /* ---- marquee logos 
   .trusted-strip{background:var(--green-soft);border-radius:18px;padding:36px 40px;text-align:center;margin-bottom:54px;}
   .trusted-label{font-family:'Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.6px;text-transform:uppercase;color:var(--navy);margin:0 0 26px 0;}
   .trusted-logos{overflow:hidden;flex-wrap:nowrap;justify-content:flex-start;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);display:flex;}
@@ -270,7 +270,7 @@
   .logo-chip{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 28px;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:var(--navy);transition:transform .25s ease,box-shadow .25s ease;}
   .logo-chip:hover{transform:translateY(-3px);box-shadow:0 12px 24px -16px rgba(20,40,20,0.3);}
   .and-more{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:var(--green-dark);}
-
+---- */
   /* ============================================
      SUCCESS SECTION — editorial two-col layout
   ============================================= */
@@ -433,6 +433,33 @@
     .highlights-editorial .highlight-row:nth-child(2n){padding-left:0;border-left:none;}
     .highlights-editorial .highlight-row:nth-last-child(-n+2){border-bottom:1px solid var(--border);}
     .highlights-editorial .highlight-row:last-child{border-bottom:none;}
+  }
+
+  /* style for success highlight */
+    .highlights-cta {
+    margin-top: 28px;
+    text-align: right;
+  }
+
+  .btn-more-services {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background-color: transparent;
+    border: 2px solid var(--accent, #101A33); /* swap to your brand colour */
+    color: var(--accent,#101A33);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-more-services:hover {
+    background-color: var(--accent, #226e22);
+    color: #fff;
   }
 
   /* ---- Testimonials ---- */
@@ -746,17 +773,9 @@
         <div class="highlights-editorial">
 
           <div class="highlight-row">
-            <div class="hl-icon-wrap"><i class="fas fa-file-alt"></i></div>
-            <div class="hl-body">
-              <h4>Company Incorporation</h4>
-              <p>Successfully incorporated 1,000+ Singapore companies, guiding founders from idea to operating business — fast, compliant, and stress-free.</p>
-            </div>
-          </div>
-
-          <div class="highlight-row">
             <div class="hl-icon-wrap"><i class="fas fa-id-card"></i></div>
             <div class="hl-body">
-              <h4>Work Pass Services</h4>
+              <h4>Work Pass Applications (MOM)</h4>
               <p>High approval success rate for Employment Pass and S Pass applications, with end-to-end MOM documentation handled by our specialists.</p>
             </div>
           </div>
@@ -764,19 +783,31 @@
           <div class="highlight-row">
             <div class="hl-icon-wrap"><i class="fas fa-user-friends"></i></div>
             <div class="hl-body">
-              <h4>Recruitment &amp; Manpower</h4>
+              <h4>Recruitment &amp; Manpower Solutions</h4>
               <p>Delivered qualified talent across construction, manufacturing, logistics, technology, and more — matched precisely to each client's needs.</p>
+            </div>
+          </div>
+
+          <div class="highlight-row">
+            <div class="hl-icon-wrap"><i class="fas fa-file-alt"></i></div>
+            <div class="hl-body">
+              <h4>Company Incorporation (ACRA)</h4>
+              <p>Successfully incorporated 1,000+ Singapore companies, guiding founders from idea to operating business — fast, compliant, and stress-free.</p>
             </div>
           </div>
 
           <div class="highlight-row">
             <div class="hl-icon-wrap"><i class="fas fa-shield-alt"></i></div>
             <div class="hl-body">
-              <h4>Compliance &amp; Licensing</h4>
-              <p>End-to-end regulatory support ensuring your business stays compliant with Singapore's ever-evolving employment and corporate laws.</p>
+              <h4>Licensing Services (BCA, SFA)</h4>
+              <p>Full licensing support for BCA, SFA, and other regulatory bodies — ensuring your business is authorised, compliant, and ready to operate.</p>
             </div>
           </div>
 
+        </div>
+
+        <div class="highlights-cta">
+          <a href="services.html" class="btn-more-services">Explore All Services <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -787,7 +818,7 @@
           <div class="testimonial-card">
             <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
             <div class="stars">★★★★★</div>
-            <p>L&amp;D Manpower streamlined our company setup and recruitment process, allowing us to focus entirely on business growth.</p>
+            <p>L&amp;D Manpower streamlined our company setup and recruitment process, allowing us to focus entirely on business growth. Professional support from start to finish.</p>
             <div class="testimonial-author">
               <span class="author-dot"></span>
               <div><strong>Mr Koori Prasad</strong><span></span></div>
@@ -838,31 +869,41 @@
           <p>L &amp; D Manpower is a leading manpower and recruitment consultancy in Singapore, connecting the right talent with the right opportunities and empowering businesses to grow.</p>
           <div class="footer-line"></div>
           <h4>Follow Us</h4>
-          <div class="social-icons">
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          </div>
+              <div class="social-icons">
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
         </div>
         <div class="footer-col">
           <h3><span class="col-icon"><i class="fas fa-building"></i></span>Company</h3>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Why Us</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="whyus.html">Why Us</a></li>
+            <li><a href="career.html">Careers</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h3><span class="col-icon"><i class="fas fa-users"></i></span>Our Services</h3>
           <ul>
-            <li><a href="#">Recruitment Solutions</a></li>
-            <li><a href="#">Workforce Planning</a></li>
-            <li><a href="#">Talent Outsourcing</a></li>
-            <li><a href="#">Compliance Management</a></li>
-            <li><a href="#">HR Support Services</a></li>
+            <li><a href="services.html">Work Pass Applications</a></li>
+            <li><a href="services.html">Recruitment &amp; Manpower Solutions</a></li>
+            <li><a href="services.html">Company Incorporation</a></li>
+            <li><a href="services.html">Licensing Services</a></li>
           </ul>
         </div>
         <div class="footer-col">
