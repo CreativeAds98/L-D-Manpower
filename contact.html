@@ -131,6 +131,12 @@
   .ci-text strong{display:block;font-size:15px;font-weight:600;color:#fff;line-height:1.5;}
   .ci-text small{font-size:12.5px;color:rgba(255,255,255,.5);}
 
+    a.contact-info-item {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
   /* ── Form card (stays white, lifts off the dark bg) ── */
   .contact-form-card{
     background:#fff;
@@ -591,44 +597,51 @@
   <section class="contact-hero">
     <div class="contact-hero-inner">
 
-      <!-- Left: info -->
-      <div class="contact-left">
-        <span class="contact-eyebrow">Contact Us</span>
-        <h1>Let's Build the Right<br>Workforce <span>Together</span></h1>
-        <p>Have questions or need assistance? Our team is here to help you find the right manpower solutions for your business.</p>
+        <!-- Left: info -->
+        <div class="contact-left">
+          <span class="contact-eyebrow">Contact Us</span>
+          <h1>Let's Build the Right<br>Workforce <span>Together</span></h1>
+          <p>Have questions or need assistance? Our team is here to help you find the right manpower solutions for your business.</p>
 
-        <div class="contact-info-list">
-          <div class="contact-info-item">
-            <div class="ci-icon-box"><i class="fas fa-phone-alt"></i></div>
-            <div class="ci-text">
-              <label>Call Us</label>
-              <strong>+65 8135 8438</strong>
+          <div class="contact-info-list">
+            <a href="tel:+6581358438" class="contact-info-item">
+              <div class="ci-icon-box"><i class="fas fa-phone-alt"></i></div>
+              <div class="ci-text">
+                <label>Call Us</label>
+                <strong>+65 8135 8438</strong>
+              </div>
+            </a>
+            <a href="mailto:contact@ldmanpower.com" class="contact-info-item">
+              <div class="ci-icon-box"><i class="fas fa-envelope"></i></div>
+              <div class="ci-text">
+                <label>Email Us</label>
+                <strong>contact@ldmanpower.com</strong>
+              </div>
+            </a>
+            <a href="https://wa.me/6581358438" target="_blank" rel="noopener noreferrer" class="contact-info-item">
+              <div class="ci-icon-box"><i class="fab fa-whatsapp"></i></div>
+              <div class="ci-text">
+                <label>WhatsApp Us</label>
+                <strong>+65 8135 8438</strong>
+              </div>
+            </a>
+            <div class="contact-info-item">
+              <div class="ci-icon-box"><i class="fas fa-clock"></i></div>
+              <div class="ci-text">
+                <label>Business Hours</label>
+                <strong>Mon – Fri: 9:00 AM – 6:00 PM</strong>
+                <small>(Closed on Weekends &amp; Public Holidays)</small>
+              </div>
             </div>
-          </div>
-          <div class="contact-info-item">
-            <div class="ci-icon-box"><i class="fas fa-envelope"></i></div>
-            <div class="ci-text">
-              <label>Email Us</label>
-              <strong>contact@ldmanpower.com</strong>
-            </div>
-          </div>
-          <div class="contact-info-item">
-            <div class="ci-icon-box"><i class="fas fa-clock"></i></div>
-            <div class="ci-text">
-              <label>Business Hours</label>
-              <strong>Mon – Fri: 9:00 AM – 6:00 PM</strong>
-              <small>(Closed on Weekends &amp; Public Holidays)</small>
-            </div>
-          </div>
-          <div class="contact-info-item">
-            <div class="ci-icon-box"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="ci-text">
-              <label>Our Office</label>
-              <strong>Marina Bay Financial Centre Tower 2, 10 Marina Blvd,<br> #39-00, Singapore 018983</strong>
+            <div class="contact-info-item">
+              <div class="ci-icon-box"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="ci-text">
+                <label>Our Office</label>
+                <strong>Marina Bay Financial Centre Tower 2, 10 Marina Blvd,<br> #39-00, Singapore 018983</strong>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
       <!-- Right: form card -->
       <div class="contact-form-card">
