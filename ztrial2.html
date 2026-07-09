@@ -1,328 +1,247 @@
-<!--
-  ============================================================
-  OUR CLIENTS SECTION — real flag images with a wave animation
-  ============================================================
-  HOW TO USE:
-  1) Paste the <style> block into your page's main <style> tag.
-  2) Paste the <section class="clients-section">...</section>
-     block wherever you want it to appear in the body.
-  Flags are pulled from flagcdn.com (no download needed — they
-  load directly from the URL). Swap the src if you'd rather use
-  your own local flag files in assets/flags/.
-  ============================================================
--->
-
+<!-- ══════════════════════════════════════════
+     EMPLOYEE LOGIN — Floating Tab + Popup Modal
+     Paste this whole block just before the closing </body> tag
+     on every page where you want the login tab to appear.
+     Self-contained: styles + markup + script all included.
+══════════════════════════════════════════ -->
 <style>
-  /* ===== OUR CLIENTS SECTION — REDESIGN (waving flags) ===== */
-  .clients-section{
-    background:#f8faf8;
-    padding:90px 0 100px;
-    position:relative;
-    border-top:1px solid var(--border);
-  }
-  .clients-container{
-    width:90%; max-width:1480px; margin:0 auto;
-  }
-  .clients-header{
-    text-align:center; margin-bottom:60px;
-  }
-  .clients-header .section-eyebrow{
-    color:var(--green); margin-bottom:10px; display:block;
-  }
-  .clients-header h2{
-    font-family:'Poppins',sans-serif; font-weight:700;
-    font-size:36px; color:var(--navy); margin:0 0 14px; letter-spacing:-0.3px;
-  }
-  .clients-header h2 span{ color:var(--green); }
-  .clients-header p{
-    font-size:15.5px; line-height:1.7;
-    color:var(--muted); max-width:500px; margin:0 auto;
+  :root{
+    --emp-green:#2C8C2C;
+    --emp-green-dark:#226e22;
+    --emp-green-pale:#eaf5ea;
   }
 
-  /* layout: 4-country grid left + sidebar right */
-  .clients-layout{
-    display:grid;
-    grid-template-columns:1fr 380px;
-    gap:20px;
-    align-items:start;
+  /* Floating vertical tab, fixed to right edge of viewport */
+  .emp-login-tab{
+    position:fixed;
+    top:50%;
+    right:0;
+    transform:translateY(-50%);
+    background:var(--emp-green);
+    color:#fff;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:1.5px;
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    padding:22px 10px;
+    border-radius:8px 0 0 8px;
+    cursor:pointer;
+    border:none;
+    box-shadow:0 8px 20px -8px rgba(34,110,34,0.55);
+    z-index:900;
+    transition:background .2s ease, padding-right .2s ease;
   }
-  .clients-featured{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
+  .emp-login-tab:hover{
+    background:var(--emp-green-dark);
+    padding-right:16px;
   }
-  .clients-sidebar{
+
+  /* Overlay */
+  .emp-login-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,25,15,0.55);
+    z-index:1000;
+    align-items:flex-start;
+    justify-content:center;
+  }
+  .emp-login-overlay.active{
     display:flex;
-    flex-direction:column;
-    gap:16px;
   }
 
-  /* ── waving flag mechanics ──
-     A flag image sits inside a small "pole" wrapper. The image
-     itself is animated with a skew/scale keyframe loop and a
-     subtle drop-shadow so it reads as cloth moving in the wind. */
-  @keyframes flagWave{
-    0%   { transform:skewY(0deg)   scaleY(1);    }
-    20%  { transform:skewY(2.2deg) scaleY(0.985);}
-    40%  { transform:skewY(-1.4deg) scaleY(1.01);}
-    60%  { transform:skewY(1.8deg) scaleY(0.99); }
-    80%  { transform:skewY(-2deg)  scaleY(1.005);}
-    100% { transform:skewY(0deg)   scaleY(1);    }
-  }
-  .flag-pole{
-    position:relative;
-    display:inline-block;
-    transform-origin:left center;
-  }
-  .flag-pole img{
-    display:block;
-    object-fit:cover;
-    border-radius:3px;
-    box-shadow:0 4px 10px -3px rgba(20,40,20,0.35);
-    filter:drop-shadow(0 3px 4px rgba(0,0,0,0.15));
-    transform-origin:left center;
-    animation:flagWave 3.2s ease-in-out infinite;
-    will-change:transform;
-  }
-  @media(prefers-reduced-motion:reduce){
-    .flag-pole img{ animation:none; }
-  }
-
-  /* base country card */
-  .cc{
+  /* Modal card */
+  .emp-login-modal{
     background:#fff;
-    border:1px solid #e8edf2;
-    border-radius:18px;
-    padding:28px 26px 22px;
-    position:relative;
+    width:320px;
+    max-width:90vw;
+    margin-top:70px;
+    border-radius:10px;
+    box-shadow:0 24px 60px -20px rgba(0,0,0,0.4);
+    font-family:'Inter',sans-serif;
     overflow:hidden;
-    cursor:default;
-    opacity:0;
-    transform:translateY(22px);
-    transition:opacity .55s ease, transform .55s ease,
-               box-shadow .3s ease, border-color .3s ease;
+    animation:empModalIn .25s ease;
   }
-  .cc.is-visible{ opacity:1; transform:translateY(0); }
-  .cc:nth-child(2){ transition-delay:.07s; }
-  .cc:nth-child(3){ transition-delay:.14s; }
-  .cc:nth-child(4){ transition-delay:.21s; }
-
-  /* left green accent bar */
-  .cc::before{
-    content:"";
-    position:absolute;
-    top:0; left:0;
-    width:3px; height:100%;
-    background:linear-gradient(180deg, var(--green-light), var(--green-dark));
-    border-radius:3px 0 0 3px;
-    opacity:0;
-    transition:opacity .3s ease;
-  }
-  .cc:hover::before{ opacity:1; }
-  .cc:hover{
-    transform:translateY(-5px);
-    box-shadow:0 18px 36px -16px rgba(44,140,44,0.2);
-    border-color:#c8ddc8;
+  @keyframes empModalIn{
+    from{ opacity:0; transform:translateY(-14px); }
+    to{ opacity:1; transform:translateY(0); }
   }
 
-  .cc .flag-pole{ margin-bottom:16px; }
-  .cc .flag-pole img{ width:56px; height:38px; }
-  .cc:hover .flag-pole img{ animation-duration:1.4s; }
-
-  .cc h3{
-    font-family:'Poppins',sans-serif; font-weight:700;
-    font-size:18px; color:var(--navy); margin:0 0 6px;
-  }
-  .cc-tag{
-    display:inline-flex; align-items:center; gap:5px;
-    font-family:'Inter',sans-serif; font-size:11px; font-weight:600;
-    letter-spacing:1.2px; text-transform:uppercase;
-    color:var(--green-dark);
-    background:#eaf5ea; border:1px solid #c8e0c8;
-    padding:3px 10px; border-radius:30px;
-  }
-
-  /* small row card (Maldives) */
-  .cc-row{
-    background:#fff;
-    border:1px solid #e8edf2;
-    border-radius:16px;
-    padding:18px 20px;
+  .emp-login-header{
     display:flex;
     align-items:center;
-    gap:16px;
-    cursor:default;
-    opacity:0; transform:translateY(22px);
-    transition:opacity .55s ease, transform .55s ease,
-               box-shadow .3s ease, border-color .3s ease;
+    justify-content:space-between;
+    padding:18px 20px;
+    border-bottom:1px solid #eef1f4;
   }
-  .cc-row.is-visible{ opacity:1; transform:translateY(0); }
-  .cc-row:hover{
-    transform:translateY(-4px);
-    box-shadow:0 14px 28px -14px rgba(44,140,44,0.2);
-    border-color:#c8ddc8;
+  .emp-login-header h3{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    font-size:19px;
+    font-weight:600;
+    color:#1A2848;
   }
-  .cc-row .flag-pole{ flex-shrink:0; }
-  .cc-row .flag-pole img{ width:48px; height:32px; }
-  .cc-row:hover .flag-pole img{ animation-duration:1.4s; }
-  .cc-row h3{
-    font-family:'Poppins',sans-serif; font-weight:700;
-    font-size:16px; color:var(--navy); margin:0 0 5px;
+  .emp-login-close{
+    background:none;
+    border:none;
+    font-size:18px;
+    color:#8a95a3;
+    cursor:pointer;
+    line-height:1;
+    padding:4px;
+  }
+  .emp-login-close:hover{ color:#27313f; }
+
+  .emp-login-body{
+    padding:22px 20px 26px;
   }
 
-  /* Middle East card */
-  .me-card{
-    background:#fff;
-    border:1px solid #e8edf2;
-    border-radius:18px;
-    padding:24px;
-    cursor:default;
-    opacity:0; transform:translateY(22px);
-    transition:opacity .55s ease, transform .55s ease,
-               box-shadow .3s ease, border-color .3s ease;
-  }
-  .me-card.is-visible{ opacity:1; transform:translateY(0); }
-  .me-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 14px 28px -14px rgba(44,140,44,0.2);
-    border-color:#c8ddc8;
-  }
-  .me-head{
-    display:flex; align-items:center; gap:14px;
-    padding-bottom:16px;
-    border-bottom:1px solid #f0f3f0;
-    margin-bottom:16px;
-  }
-  .me-globe{ font-size:32px; line-height:1; flex-shrink:0; }
-  .me-head h3{
-    font-family:'Poppins',sans-serif; font-weight:700;
-    font-size:17px; color:var(--navy); margin:0 0 5px;
-  }
-  .me-cities{
-    display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;
-  }
-  .me-city{
-    background:#f6faf6;
-    border:1px solid #e0eae0;
-    border-radius:12px;
-    padding:14px 10px;
+  .emp-branch-btn{
+    width:100%;
+    display:block;
+    background:var(--emp-green-pale);
+    border:1.5px solid var(--emp-green);
+    color:var(--emp-green-dark);
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
     text-align:center;
-    transition:background .25s ease, border-color .25s ease, transform .25s ease;
+    padding:12px 14px;
+    border-radius:8px;
+    margin-bottom:18px;
     cursor:default;
   }
-  .me-city:hover{
-    background:#eaf5ea; border-color:#b8d8b8;
-    transform:translateY(-3px);
-  }
-  .me-city .flag-pole{ margin-bottom:6px; }
-  .me-city .flag-pole img{ width:34px; height:23px; }
-  .me-city:hover .flag-pole img{ animation-duration:1.4s; }
-  .me-city h4{
-    font-family:'Poppins',sans-serif; font-weight:700;
-    font-size:13.5px; color:var(--navy); margin:0 0 2px;
-  }
-  .me-city span{ font-size:11px; color:var(--muted); }
 
-  @media(max-width:1100px){
-    .clients-layout{ grid-template-columns:1fr; }
-    .clients-sidebar{ flex-direction:row; flex-wrap:wrap; }
-    .cc-row{ flex:1; min-width:240px; }
-    .me-card{ flex:1; min-width:280px; }
+  .emp-input-wrap{
+    position:relative;
+    margin-bottom:14px;
   }
-  @media(max-width:680px){
-    .clients-featured{ grid-template-columns:1fr; }
-    .clients-sidebar{ flex-direction:column; }
-    .me-cities{ grid-template-columns:1fr 1fr 1fr; }
-    .clients-header h2{ font-size:28px; }
+  .emp-input-wrap input{
+    width:100%;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    padding:12px 40px 12px 14px;
+    border:1px solid #dde2e8;
+    border-radius:8px;
+    outline:none;
+    transition:border-color .2s ease;
+    box-sizing:border-box;
+  }
+  .emp-input-wrap input:focus{
+    border-color:var(--emp-green);
+  }
+  .emp-input-wrap i{
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#9aa7b3;
+    font-size:14px;
+    pointer-events:none;
+  }
+
+  .emp-login-submit{
+    width:100%;
+    background:var(--emp-green);
+    color:#fff;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:6px;
+    transition:background .2s ease;
+  }
+  .emp-login-submit:hover{
+    background:var(--emp-green-dark);
+  }
+
+  .emp-login-error{
+    display:none;
+    background:#fdeceb;
+    border:1px solid #f3c2be;
+    color:#b13a30;
+    font-size:13px;
+    padding:10px 12px;
+    border-radius:7px;
+    margin-bottom:14px;
+  }
+  .emp-login-error.show{ display:block; }
+
+  @media(max-width:560px){
+    .emp-login-tab{ font-size:12.5px; padding:18px 8px; }
+    .emp-login-modal{ margin-top:50px; }
   }
 </style>
 
-<!-- OUR CLIENTS -->
-<section class="clients-section">
-  <div class="clients-container">
-    <div class="clients-header">
-      <span class="section-eyebrow">Where We Operate</span>
-      <h2>Our <span>Clients</span></h2>
-      <p>Trusted by businesses across Asia and the Gulf — placing the right talent everywhere it's needed.</p>
+<!-- Floating tab -->
+<button type="button" class="emp-login-tab" id="empLoginTab">EMPLOYEE LOGIN</button>
+
+<!-- Popup overlay + modal -->
+<div class="emp-login-overlay" id="empLoginOverlay">
+  <div class="emp-login-modal">
+    <div class="emp-login-header">
+      <h3>Employee Login</h3>
+      <button type="button" class="emp-login-close" id="empLoginClose" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
-    <div class="clients-layout">
-      <!-- 4 main country cards -->
-      <div class="clients-featured">
-        <div class="cc">
-          <span class="flag-pole"><img src="https://flagcdn.com/w160/sg.png" srcset="https://flagcdn.com/w320/sg.png 2x" alt="Singapore flag" loading="lazy" decoding="async"></span>
-          <h3>Singapore</h3>
-          <span class="cc-tag"><i class="fas fa-map-marker-alt"></i> South-East Asia</span>
-        </div>
-        <div class="cc">
-          <span class="flag-pole"><img src="https://flagcdn.com/w160/hk.png" srcset="https://flagcdn.com/w320/hk.png 2x" alt="Hong Kong flag" loading="lazy" decoding="async"></span>
-          <h3>Hong Kong</h3>
-          <span class="cc-tag"><i class="fas fa-map-marker-alt"></i> East Asia</span>
-        </div>
-        <div class="cc">
-          <span class="flag-pole"><img src="https://flagcdn.com/w160/my.png" srcset="https://flagcdn.com/w320/my.png 2x" alt="Malaysia flag" loading="lazy" decoding="async"></span>
-          <h3>Malaysia</h3>
-          <span class="cc-tag"><i class="fas fa-map-marker-alt"></i> South-East Asia</span>
-        </div>
-        <div class="cc">
-          <span class="flag-pole"><img src="https://flagcdn.com/w160/id.png" srcset="https://flagcdn.com/w320/id.png 2x" alt="Indonesia flag" loading="lazy" decoding="async"></span>
-          <h3>Indonesia</h3>
-          <span class="cc-tag"><i class="fas fa-map-marker-alt"></i> South-East Asia</span>
-        </div>
+    <div class="emp-login-body">
+      <div class="emp-branch-btn">Singapore Employee Login</div>
+
+      <div class="emp-login-error" id="empLoginError">
+        Invalid username or password. Please try again.
       </div>
-      <!-- sidebar: Maldives + Middle East -->
-      <div class="clients-sidebar">
-        <div class="cc-row">
-          <span class="flag-pole"><img src="https://flagcdn.com/w160/mv.png" srcset="https://flagcdn.com/w320/mv.png 2x" alt="Maldives flag" loading="lazy" decoding="async"></span>
-          <div>
-            <h3>Maldives</h3>
-            <span class="cc-tag"><i class="fas fa-map-marker-alt"></i> South Asia</span>
-          </div>
+
+      <form id="empLoginForm">
+        <div class="emp-input-wrap">
+          <input type="text" placeholder="Username or Email Address" autocomplete="username">
+          <i class="fas fa-user"></i>
         </div>
-        <div class="me-card">
-          <div class="me-head">
-            <span class="me-globe">🌍</span>
-            <div>
-              <h3>Middle East</h3>
-              <span class="cc-tag"><i class="fas fa-map-marker-alt"></i> Gulf Region</span>
-            </div>
-          </div>
-          <div class="me-cities">
-            <div class="me-city">
-              <span class="flag-pole"><img src="https://flagcdn.com/w80/qa.png" srcset="https://flagcdn.com/w160/qa.png 2x" alt="Qatar flag" loading="lazy" decoding="async"></span>
-              <h4>Qatar</h4>
-              <span>Gulf</span>
-            </div>
-            <div class="me-city">
-              <span class="flag-pole"><img src="https://flagcdn.com/w80/ae.png" srcset="https://flagcdn.com/w160/ae.png 2x" alt="UAE flag" loading="lazy" decoding="async"></span>
-              <h4>Dubai</h4>
-              <span>UAE</span>
-            </div>
-            <div class="me-city">
-              <span class="flag-pole"><img src="https://flagcdn.com/w80/om.png" srcset="https://flagcdn.com/w160/om.png 2x" alt="Oman flag" loading="lazy" decoding="async"></span>
-              <h4>Oman</h4>
-              <span>Gulf</span>
-            </div>
-          </div>
+        <div class="emp-input-wrap">
+          <input type="password" placeholder="Password" autocomplete="current-password">
+          <i class="fas fa-lock"></i>
         </div>
-      </div>
+        <button type="submit" class="emp-login-submit">Login</button>
+      </form>
     </div>
   </div>
-</section>
+</div>
 
-<!-- Scroll-reveal script (only add once per page — skip if your page already has an
-     IntersectionObserver that toggles .is-visible on scroll) -->
 <script>
 (function(){
-  var revealEls = document.querySelectorAll('.cc, .cc-row, .me-card');
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
-      });
-    }, { threshold:0.15 });
-    revealEls.forEach(function(el){ io.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  var tab     = document.getElementById('empLoginTab');
+  var overlay = document.getElementById('empLoginOverlay');
+  var closeBtn= document.getElementById('empLoginClose');
+  var form    = document.getElementById('empLoginForm');
+  var errorEl = document.getElementById('empLoginError');
+
+  function openModal(){
+    overlay.classList.add('active');
+    errorEl.classList.remove('show');
+    document.body.style.overflow='hidden';
   }
+  function closeModal(){
+    overlay.classList.remove('active');
+    document.body.style.overflow='';
+  }
+
+  tab.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errorEl.classList.add('show');
+  });
 })();
 </script>
