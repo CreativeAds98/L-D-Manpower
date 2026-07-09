@@ -468,9 +468,247 @@
   .scroll-top-btn.show{opacity:1;transform:translateY(0);pointer-events:auto;}
   .scroll-top-btn:hover{background:var(--green-dark);transform:translateY(-3px);}
 
+  /* ===== PRELOADER ===== */
+  #preloader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    transition:opacity .55s ease, visibility .55s ease;
+  }
+  #preloader.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .pre-logo{
+    width:96px;
+    height:96px;
+    animation:prePulse 1.6s ease-in-out infinite;
+  }
+  @keyframes prePulse{
+    0%,100%{ transform:scale(1);   opacity:1;   }
+    50%{     transform:scale(1.1); opacity:.75; }
+  }
+  .pre-bar-wrap{
+    width:160px;
+    height:3px;
+    background:#e7eaef;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .pre-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#226e22,#3FA63F);
+    border-radius:4px;
+    animation:preBar 1.6s ease-in-out forwards;
+  }
+  @keyframes preBar{
+    0%{  width:0%;   }
+    60%{ width:75%;  }
+    100%{width:100%; }
+  }
+  .pre-text{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#226e22;
+    animation:preFade 1.2s ease-in-out infinite alternate;
+  }
+  @keyframes preFade{
+    from{ opacity:.4; }
+    to{   opacity:1;  }
+  }
+  @media(prefers-reduced-motion:reduce){
+    #preloader .pre-logo,#preloader .pre-bar,#preloader .pre-text{animation:none !important;}
+  }
+
+  /* ===== EMPLOYEE LOGIN ===== */
+  :root{
+    --emp-green:#2C8C2C;
+    --emp-green-dark:#226e22;
+    --emp-green-pale:#eaf5ea;
+  }
+  .emp-login-tab{
+    position:fixed;
+    top:50%;
+    right:0;
+    transform:translateY(-50%);
+    background:var(--emp-green);
+    color:#fff;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:1.5px;
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    padding:22px 10px;
+    border-radius:8px 0 0 8px;
+    cursor:pointer;
+    border:none;
+    box-shadow:0 8px 20px -8px rgba(34,110,34,0.55);
+    z-index:900;
+    transition:background .2s ease, padding-right .2s ease;
+  }
+  .emp-login-tab:hover{
+    background:var(--emp-green-dark);
+    padding-right:16px;
+  }
+  .emp-login-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,25,15,0.55);
+    z-index:1000;
+    align-items:flex-start;
+    justify-content:center;
+  }
+  .emp-login-overlay.active{
+    display:flex;
+  }
+  .emp-login-modal{
+    background:#fff;
+    width:320px;
+    max-width:90vw;
+    margin-top:70px;
+    border-radius:10px;
+    box-shadow:0 24px 60px -20px rgba(0,0,0,0.4);
+    font-family:'Inter',sans-serif;
+    overflow:hidden;
+    animation:empModalIn .25s ease;
+  }
+  @keyframes empModalIn{
+    from{ opacity:0; transform:translateY(-14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .emp-login-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px;
+    border-bottom:1px solid #eef1f4;
+  }
+  .emp-login-header h3{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    font-size:19px;
+    font-weight:600;
+    color:#1A2848;
+  }
+  .emp-login-close{
+    background:none;
+    border:none;
+    font-size:18px;
+    color:#8a95a3;
+    cursor:pointer;
+    line-height:1;
+    padding:4px;
+  }
+  .emp-login-close:hover{ color:#27313f; }
+  .emp-login-body{
+    padding:22px 20px 26px;
+  }
+  .emp-branch-btn{
+    width:100%;
+    display:block;
+    background:var(--emp-green-pale);
+    border:1.5px solid var(--emp-green);
+    color:var(--emp-green-dark);
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    text-align:center;
+    padding:12px 14px;
+    border-radius:8px;
+    margin-bottom:18px;
+    cursor:default;
+  }
+  .emp-input-wrap{
+    position:relative;
+    margin-bottom:14px;
+  }
+  .emp-input-wrap input{
+    width:100%;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    padding:12px 40px 12px 14px;
+    border:1px solid #dde2e8;
+    border-radius:8px;
+    outline:none;
+    transition:border-color .2s ease;
+    box-sizing:border-box;
+  }
+  .emp-input-wrap input:focus{
+    border-color:var(--emp-green);
+  }
+  .emp-input-wrap i{
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#9aa7b3;
+    font-size:14px;
+    pointer-events:none;
+  }
+  .emp-login-submit{
+    width:100%;
+    background:var(--emp-green);
+    color:#fff;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:6px;
+    transition:background .2s ease;
+  }
+  .emp-login-submit:hover{
+    background:var(--emp-green-dark);
+  }
+  .emp-login-error{
+    display:none;
+    background:#fdeceb;
+    border:1px solid #f3c2be;
+    color:#b13a30;
+    font-size:13px;
+    padding:10px 12px;
+    border-radius:7px;
+    margin-bottom:14px;
+  }
+  .emp-login-error.show{ display:block; }
+  @media(max-width:560px){
+    .emp-login-tab{ font-size:12.5px; padding:18px 8px; }
+    .emp-login-modal{ margin-top:50px; }
+  }
+
 </style>
 </head>
 <body>
+
+<!-- ===== PRELOADER ===== -->
+<div id="preloader" role="status" aria-label="Loading L&D Manpower Solutions">
+  <img
+    src="assets/favicon-preloader.png"
+    alt="L&D Manpower logo"
+    class="pre-logo"
+    loading="eager"
+    decoding="async"
+  >
+  <div class="pre-bar-wrap">
+    <div class="pre-bar"></div>
+  </div>
+  <span class="pre-text">L &amp; D Manpower Solutions</span>
+</div>
 
 <!-- ══════════ NAVBAR ══════════ -->
 <header class="navbar">
@@ -515,14 +753,12 @@
 
       <!-- Top-left floating badge -->
       <div class="float-badge badge-people">
-        <!-- REPLACE: <img src="assets/icons/people-first.png" alt="People First"> -->
         <i class="fas fa-users"></i>
         <span>People<br>First</span>
       </div>
 
       <!-- Top-right floating badge -->
       <div class="float-badge badge-tailored">
-        <!-- REPLACE: <img src="assets/icons/tailored.png" alt="Tailored Solutions"> -->
         <i class="fas fa-puzzle-piece"></i>
         <span>Tailored<br>Solutions</span>
       </div>
@@ -532,14 +768,12 @@
 
       <!-- Bottom-left badge -->
       <div class="float-badge badge-track">
-        <!-- REPLACE: <img src="assets/icons/track-record.png" alt="Track Record"> -->
         <i class="fas fa-chart-bar"></i>
         <span>Proven<br>Track Record</span>
       </div>
 
       <!-- Bottom-right badge -->
       <div class="float-badge badge-longterm">
-        <!-- REPLACE: <img src="assets/icons/partnerships.png" alt="Partnerships"> -->
         <i class="fas fa-handshake"></i>
         <span>Long-term<br>Partnerships</span>
       </div>
@@ -554,7 +788,6 @@
 
     <div class="stat-item">
       <div class="stat-icon">
-        <!-- REPLACE: <img src="assets/icons/stat-award.png" alt=""> -->
         <i class="fas fa-award"></i>
       </div>
       <div class="stat-text">
@@ -565,7 +798,6 @@
 
     <div class="stat-item">
       <div class="stat-icon">
-        <!-- REPLACE: <img src="assets/icons/stat-placements.png" alt=""> -->
         <i class="fas fa-users"></i>
       </div>
       <div class="stat-text">
@@ -576,7 +808,6 @@
 
     <div class="stat-item">
       <div class="stat-icon">
-        <!-- REPLACE: <img src="assets/icons/stat-companies.png" alt=""> -->
         <i class="fas fa-building"></i>
       </div>
       <div class="stat-text">
@@ -587,7 +818,6 @@
 
     <div class="stat-item">
       <div class="stat-icon">
-        <!-- REPLACE: <img src="assets/icons/stat-retention.png" alt=""> -->
         <i class="fas fa-star"></i>
       </div>
       <div class="stat-text">
@@ -598,7 +828,6 @@
 
     <div class="stat-item">
       <div class="stat-icon">
-        <!-- REPLACE: <img src="assets/icons/stat-industries.png" alt=""> -->
         <i class="fas fa-globe-asia"></i>
       </div>
       <div class="stat-text">
@@ -687,7 +916,6 @@
 
         <div class="trust-item-box">
           <div class="trust-item-header">
-            <!-- REPLACE: <img class="ti-icon" src="assets/icons/cost.png" alt=""> -->
             <span class="ti-check"><i class="fas fa-check"></i></span>
             <h4>Cost-Effective</h4>
           </div>
@@ -704,7 +932,6 @@
 
         <div class="trust-item-box">
           <div class="trust-item-header">
-            <!-- REPLACE: <img class="ti-icon" src="assets/icons/sustainable.png" alt=""> -->
             <span class="ti-check"><i class="fas fa-check"></i></span>
             <h4>Sustainable Partnerships</h4>
           </div>
@@ -802,10 +1029,6 @@
 
 <!-- ══════════ 6. CTA BANNER ══════════ -->
 <section class="cta-banner">
-  <!--
-    Optional silhouette bg image (right side):
-    <img class="cta-banner-bg-img" src="assets/cta-silhouette.png" alt="">
-  -->
   <div class="cta-inner">
     <div class="cta-text">
       <h2>Ready to Build Your Workforce?</h2>
@@ -935,20 +1158,51 @@
   <i class="fas fa-arrow-up"></i>
 </button>
 
+<!-- ══════════ EMPLOYEE LOGIN — Floating Tab + Popup Modal ══════════ -->
+<button type="button" class="emp-login-tab" id="empLoginTab">EMPLOYEE LOGIN</button>
+
+<div class="emp-login-overlay" id="empLoginOverlay">
+  <div class="emp-login-modal">
+    <div class="emp-login-header">
+      <h3>Employee Login</h3>
+      <button type="button" class="emp-login-close" id="empLoginClose" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="emp-login-body">
+      <div class="emp-branch-btn">Singapore Employee Login</div>
+
+      <div class="emp-login-error" id="empLoginError">
+        Invalid username or password. Please try again.
+      </div>
+
+      <form id="empLoginForm">
+        <div class="emp-input-wrap">
+          <input type="text" placeholder="Username or Email Address" autocomplete="username">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="emp-input-wrap">
+          <input type="password" placeholder="Password" autocomplete="current-password">
+          <i class="fas fa-lock"></i>
+        </div>
+        <button type="submit" class="emp-login-submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 <style>
 /* ══════════════════════════
    LAZY LOAD / SCROLL ANIMATIONS
 ══════════════════════════ */
 
-/* Base hidden state — applied by JS before element enters view */
 .lazy-fade       { opacity:0; transform:translateY(36px); transition:opacity .65s ease, transform .65s ease; }
 .lazy-fade-left  { opacity:0; transform:translateX(-40px); transition:opacity .65s ease, transform .65s ease; }
 .lazy-fade-right { opacity:0; transform:translateX(40px);  transition:opacity .65s ease, transform .65s ease; }
 .lazy-scale      { opacity:0; transform:scale(0.92);        transition:opacity .6s ease, transform .6s ease; }
 .lazy-fade-up    { opacity:0; transform:translateY(24px);   transition:opacity .55s ease, transform .55s ease; }
 
-/* Visible state — added by IntersectionObserver */
 .lazy-fade.visible,
 .lazy-fade-left.visible,
 .lazy-fade-right.visible,
@@ -958,7 +1212,6 @@
   transform:none;
 }
 
-/* Staggered delay helpers — add class alongside lazy-* */
 .delay-1 { transition-delay:.08s !important; }
 .delay-2 { transition-delay:.16s !important; }
 .delay-3 { transition-delay:.24s !important; }
@@ -966,7 +1219,6 @@
 .delay-5 { transition-delay:.40s !important; }
 .delay-6 { transition-delay:.48s !important; }
 
-/* Stat counter flash */
 @keyframes countUp {
   from { opacity:0; transform:translateY(8px); }
   to   { opacity:1; transform:none; }
@@ -975,7 +1227,6 @@
   animation: countUp .5s ease forwards;
 }
 
-/* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
   .lazy-fade, .lazy-fade-left, .lazy-fade-right,
   .lazy-scale, .lazy-fade-up {
@@ -990,86 +1241,71 @@
 (function () {
   'use strict';
 
-  /* ── 1. Tag elements with lazy classes ── */
   function applyLazyClasses() {
 
-    /* Hero left / right */
     const heroLeft  = document.querySelector('.why-hero-left');
     const heroRight = document.querySelector('.why-hero-right');
     if (heroLeft)  heroLeft.classList.add('lazy-fade-left');
     if (heroRight) heroRight.classList.add('lazy-fade-right');
 
-    /* Checklist items */
     document.querySelectorAll('.why-checklist li').forEach(function(el, i) {
       el.classList.add('lazy-fade-up', 'delay-' + (i + 1));
     });
 
-    /* Floating badges */
     document.querySelectorAll('.float-badge').forEach(function(el) {
       el.classList.add('lazy-scale');
     });
 
-    /* Stats strip */
     document.querySelectorAll('.stat-item').forEach(function(el, i) {
       el.classList.add('lazy-fade-up', 'delay-' + (i + 1));
     });
 
-    /* Strength bento tiles */
     document.querySelectorAll('.strength-feature, .strength-tile').forEach(function(el, i) {
       el.classList.add('lazy-fade-up', 'delay-' + ((i % 6) + 1));
     });
     const strengthBanner = document.querySelector('.strength-banner');
     if (strengthBanner) strengthBanner.classList.add('lazy-fade-up', 'delay-5');
 
-    /* Section headings */
     document.querySelectorAll('.section-label, .section-title').forEach(function(el) {
       el.classList.add('lazy-fade');
     });
 
-    /* Trust visual */
     const trustVis = document.querySelector('.trust-visual');
     if (trustVis) trustVis.classList.add('lazy-fade-left');
 
-    /* Trust items */
     document.querySelectorAll('.trust-item-box').forEach(function(el, i) {
       el.classList.add('lazy-fade-up', 'delay-' + ((i % 4) + 1));
     });
 
-    /* Industry sector tags */
     document.querySelectorAll('.industry-tag').forEach(function(el, i) {
       el.classList.add('lazy-fade-up', 'delay-' + ((i % 8) + 1));
     });
 
-    /* CTA banner */
     const ctaText = document.querySelector('.cta-text');
     const ctaBtns = document.querySelector('.cta-btns');
     if (ctaText) ctaText.classList.add('lazy-fade-left');
     if (ctaBtns) ctaBtns.classList.add('lazy-fade-right');
 
-    /* Footer columns */
     document.querySelectorAll('.footer-col').forEach(function(el, i) {
       el.classList.add('lazy-fade-up', 'delay-' + ((i % 5) + 1));
     });
 
-    /* Contact strip items */
     document.querySelectorAll('.contact-item').forEach(function(el, i) {
       el.classList.add('lazy-fade-up', 'delay-' + ((i % 4) + 1));
     });
 
-    /* All images — native lazy loading */
     document.querySelectorAll('img:not([loading])').forEach(function(img) {
       img.setAttribute('loading', 'lazy');
       img.setAttribute('decoding', 'async');
     });
   }
 
-  /* ── 2. Observe and reveal ── */
   function initObserver() {
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target); /* fire once */
+          observer.unobserve(entry.target);
         }
       });
     }, {
@@ -1089,15 +1325,14 @@
     });
   }
 
-  /* ── 3. Animated stat counters ── */
   function initCounters() {
     var counters = document.querySelectorAll('.stat-text strong');
     var counterObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (!entry.isIntersecting) return;
         var el    = entry.target;
-        var raw   = el.textContent.trim();           /* e.g. "15,000+" */
-        var suffix = raw.replace(/[\d,]/g, '');       /* "+", "%" etc  */
+        var raw   = el.textContent.trim();
+        var suffix = raw.replace(/[\d,]/g, '');
         var num    = parseInt(raw.replace(/[^0-9]/g, ''), 10);
         if (isNaN(num)) return;
         counterObserver.unobserve(el);
@@ -1106,10 +1341,8 @@
         var start    = performance.now();
         function step(now) {
           var progress = Math.min((now - start) / duration, 1);
-          /* ease-out cubic */
           var eased = 1 - Math.pow(1 - progress, 3);
           var current = Math.round(eased * num);
-          /* format with commas */
           el.textContent = current.toLocaleString() + suffix;
           if (progress < 1) requestAnimationFrame(step);
         }
@@ -1120,7 +1353,6 @@
     counters.forEach(function(el) { counterObserver.observe(el); });
   }
 
-  /* ── Init ── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', run);
   } else {
@@ -1133,7 +1365,6 @@
       initObserver();
       initCounters();
     } else {
-      /* Fallback: show everything immediately in old browsers */
       document.querySelectorAll(
         '.lazy-fade,.lazy-fade-left,.lazy-fade-right,.lazy-scale,.lazy-fade-up'
       ).forEach(function(el){ el.classList.add('visible'); });
@@ -1156,5 +1387,62 @@
   }
 })();
 </script>
+
+<!-- ===== PRELOADER SCRIPT ===== -->
+<script>
+(function(){
+  var pre = document.getElementById('preloader');
+  function hidePreloader(){
+    if(pre){ pre.classList.add('hide'); }
+  }
+  var minTime = 1200;
+  var loaded  = false;
+  var elapsed = false;
+  var loadedAt = Date.now();
+  function tryHide(){ if(loaded && elapsed) hidePreloader(); }
+  window.addEventListener('load', function(){
+    loaded = true;
+    var wait = Math.max(0, minTime - (Date.now() - loadedAt));
+    setTimeout(function(){ elapsed = true; tryHide(); }, wait);
+  });
+  setTimeout(function(){ loaded = true; elapsed = true; tryHide(); }, 4000);
+})();
+</script>
+
+<!-- ===== EMPLOYEE LOGIN SCRIPT ===== -->
+<script>
+(function(){
+  var tab     = document.getElementById('empLoginTab');
+  var overlay = document.getElementById('empLoginOverlay');
+  var closeBtn= document.getElementById('empLoginClose');
+  var form    = document.getElementById('empLoginForm');
+  var errorEl = document.getElementById('empLoginError');
+
+  function openModal(){
+    overlay.classList.add('active');
+    errorEl.classList.remove('show');
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('active');
+    document.body.style.overflow='';
+  }
+
+  tab.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errorEl.classList.add('show');
+  });
+})();
+</script>
+
 </body>
 </html>

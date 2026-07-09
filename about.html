@@ -1300,7 +1300,10 @@ html{ scroll-behavior:smooth; }
 
 .count-up{ display:inline-block; }
 
-/* ---- lazy-loaded image frames ---- */
+/* ---- lazy-loaded image frames (real <img> sits inside placeholder boxes;
+   loading="lazy" defers the fetch until scrolled near viewport, and
+   onerror quietly falls back to the placeholder look until a real
+   asset is dropped in the matching /assets/ path) ---- */
 .img-frame{ position:relative; }
 .img-frame > img{
   position:absolute;
@@ -1399,158 +1402,55 @@ html{ scroll-behavior:smooth; }
   }
 
   /* ===== EMPLOYEE LOGIN ===== */
-  :root{
-    --emp-green:#2C8C2C;
-    --emp-green-dark:#226e22;
-    --emp-green-pale:#eaf5ea;
-  }
   .emp-login-tab{
-    position:fixed;
-    top:50%;
-    right:0;
-    transform:translateY(-50%);
-    background:var(--emp-green);
-    color:#fff;
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:14px;
-    letter-spacing:1.5px;
-    writing-mode:vertical-rl;
-    text-orientation:mixed;
-    padding:22px 10px;
-    border-radius:8px 0 0 8px;
-    cursor:pointer;
-    border:none;
-    box-shadow:0 8px 20px -8px rgba(34,110,34,0.55);
-    z-index:900;
+    position:fixed; top:50%; right:0; transform:translateY(-50%);
+    background:var(--green); color:#fff; font-family:'Inter',sans-serif;
+    font-weight:600; font-size:14px; letter-spacing:1.5px;
+    writing-mode:vertical-rl; text-orientation:mixed;
+    padding:22px 10px; border-radius:8px 0 0 8px; cursor:pointer; border:none;
+    box-shadow:0 8px 20px -8px rgba(34,110,34,0.55); z-index:900;
     transition:background .2s ease, padding-right .2s ease;
   }
-  .emp-login-tab:hover{
-    background:var(--emp-green-dark);
-    padding-right:16px;
-  }
+  .emp-login-tab:hover{ background:var(--green-dark); padding-right:16px; }
   .emp-login-overlay{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(15,25,15,0.55);
-    z-index:1000;
-    align-items:flex-start;
-    justify-content:center;
+    display:none; position:fixed; inset:0; background:rgba(15,25,15,0.55);
+    z-index:1000; align-items:flex-start; justify-content:center;
   }
-  .emp-login-overlay.active{
-    display:flex;
-  }
+  .emp-login-overlay.active{ display:flex; }
   .emp-login-modal{
-    background:#fff;
-    width:320px;
-    max-width:90vw;
-    margin-top:70px;
-    border-radius:10px;
-    box-shadow:0 24px 60px -20px rgba(0,0,0,0.4);
-    font-family:'Inter',sans-serif;
-    overflow:hidden;
-    animation:empModalIn .25s ease;
+    background:#fff; width:320px; max-width:90vw; margin-top:70px;
+    border-radius:10px; box-shadow:0 24px 60px -20px rgba(0,0,0,0.4);
+    font-family:'Inter',sans-serif; overflow:hidden; animation:empModalIn .25s ease;
   }
-  @keyframes empModalIn{
-    from{ opacity:0; transform:translateY(-14px); }
-    to{ opacity:1; transform:translateY(0); }
-  }
+  @keyframes empModalIn{ from{ opacity:0; transform:translateY(-14px); } to{ opacity:1; transform:translateY(0); } }
   .emp-login-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:18px 20px;
-    border-bottom:1px solid #eef1f4;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 20px; border-bottom:1px solid #eef1f4;
   }
-  .emp-login-header h3{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    font-size:19px;
-    font-weight:600;
-    color:#1A2848;
-  }
-  .emp-login-close{
-    background:none;
-    border:none;
-    font-size:18px;
-    color:#8a95a3;
-    cursor:pointer;
-    line-height:1;
-    padding:4px;
-  }
+  .emp-login-header h3{ margin:0; font-family:'Poppins',sans-serif; font-size:19px; font-weight:600; color:#1A2848; }
+  .emp-login-close{ background:none; border:none; font-size:18px; color:#8a95a3; cursor:pointer; line-height:1; padding:4px; }
   .emp-login-close:hover{ color:#27313f; }
-  .emp-login-body{
-    padding:22px 20px 26px;
-  }
+  .emp-login-body{ padding:22px 20px 26px; }
   .emp-branch-btn{
-    width:100%;
-    display:block;
-    background:var(--emp-green-pale);
-    border:1.5px solid var(--emp-green);
-    color:var(--emp-green-dark);
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:14.5px;
-    text-align:center;
-    padding:12px 14px;
-    border-radius:8px;
-    margin-bottom:18px;
-    cursor:default;
+    width:100%; display:block; background:#eaf5ea; border:1.5px solid var(--green);
+    color:var(--green-dark); font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px;
+    text-align:center; padding:12px 14px; border-radius:8px; margin-bottom:18px; cursor:default;
   }
-  .emp-input-wrap{
-    position:relative;
-    margin-bottom:14px;
-  }
+  .emp-input-wrap{ position:relative; margin-bottom:14px; }
   .emp-input-wrap input{
-    width:100%;
-    font-family:'Inter',sans-serif;
-    font-size:14px;
-    padding:12px 40px 12px 14px;
-    border:1px solid #dde2e8;
-    border-radius:8px;
-    outline:none;
-    transition:border-color .2s ease;
-    box-sizing:border-box;
+    width:100%; font-family:'Inter',sans-serif; font-size:14px; padding:12px 40px 12px 14px;
+    border:1px solid #dde2e8; border-radius:8px; outline:none; transition:border-color .2s ease; box-sizing:border-box;
   }
-  .emp-input-wrap input:focus{
-    border-color:var(--emp-green);
-  }
-  .emp-input-wrap i{
-    position:absolute;
-    right:14px;
-    top:50%;
-    transform:translateY(-50%);
-    color:#9aa7b3;
-    font-size:14px;
-    pointer-events:none;
-  }
+  .emp-input-wrap input:focus{ border-color:var(--green); }
+  .emp-input-wrap i{ position:absolute; right:14px; top:50%; transform:translateY(-50%); color:#9aa7b3; font-size:14px; pointer-events:none; }
   .emp-login-submit{
-    width:100%;
-    background:var(--emp-green);
-    color:#fff;
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:15px;
-    padding:13px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:6px;
-    transition:background .2s ease;
+    width:100%; background:var(--green); color:#fff; font-family:'Inter',sans-serif; font-weight:600;
+    font-size:15px; padding:13px; border:none; border-radius:8px; cursor:pointer; margin-top:6px; transition:background .2s ease;
   }
-  .emp-login-submit:hover{
-    background:var(--emp-green-dark);
-  }
+  .emp-login-submit:hover{ background:var(--green-dark); }
   .emp-login-error{
-    display:none;
-    background:#fdeceb;
-    border:1px solid #f3c2be;
-    color:#b13a30;
-    font-size:13px;
-    padding:10px 12px;
-    border-radius:7px;
-    margin-bottom:14px;
+    display:none; background:#fdeceb; border:1px solid #f3c2be; color:#b13a30;
+    font-size:13px; padding:10px 12px; border-radius:7px; margin-bottom:14px;
   }
   .emp-login-error.show{ display:block; }
   @media(max-width:560px){
@@ -1562,25 +1462,36 @@ html{ scroll-behavior:smooth; }
 </head>
 <body>
 
-  <!-- ===== PRELOADER ===== -->
-  <div id="preloader" role="status" aria-label="Loading L&D Manpower Solutions">
-    <img
-      src="assets/favicon-preloader.png"
-      alt="L&D Manpower logo"
-      class="pre-logo"
-      loading="eager"
-      decoding="async"
-    >
-    <div class="pre-bar-wrap">
-      <div class="pre-bar"></div>
-    </div>
-    <span class="pre-text">L &amp; D Manpower Solutions</span>
+<!-- Preloader -->
+<div id="preloader" role="status" aria-label="Loading L&D Manpower Solutions">
+  <img
+    src="assets/favicon-preloader.png"
+    alt="L&D Manpower logo"
+    class="pre-logo"
+    loading="eager"
+    decoding="async"
+  >
+  <div class="pre-bar-wrap">
+    <div class="pre-bar"></div>
   </div>
+  <span class="pre-text">L &amp; D Manpower Solutions</span>
+</div>
 
   <header class="navbar">
     <div class="navbar-inner">
       <a href="#" class="brand">
         <img src="assets/logo.png" alt="L&D Manpower Solutions Logo" class="brand-logo" loading="eager" decoding="async" fetchpriority="high">
+        <!-- 
+        <div class="brand-text">
+          <h1>L&amp;D MANPOWER</h1>
+          <div class="brand-sub">
+            <span class="line"></span>
+            <span>SOLUTIONS</span>
+            <span class="line"></span>
+          </div>
+          <p class="brand-tag">THE RIGHT PEOPLE&nbsp;|&nbsp;THE RIGHT FIT</p>
+        </div>
+        -->
       </a>
 
       <ul class="nav-links">
@@ -1604,6 +1515,7 @@ html{ scroll-behavior:smooth; }
     <div class="about-hero-inner">
 
       <div class="about-hero-media">
+        <!-- Auto-loads (lazily) once you drop a file at assets/about-hero.png — until then this shows the placeholder caption -->
         <div class="ph-block img-frame">
           <img src="assets/about.png" alt="Singapore skyline with global talent illustration" loading="lazy" decoding="async" onload="this.classList.add('is-loaded')" onerror="this.remove()">
           <span class="ph-caption">Hero illustration placeholder<br>(assets/about-hero.png)</span>
@@ -1835,6 +1747,7 @@ html{ scroll-behavior:smooth; }
           </a>
         </div>
       </div>
+      <!-- Auto-loads (lazily) once you drop a file at assets/about-cta.png (puzzle pieces / partnership illustration) -->
       <div class="final-cta-media ph-block img-frame">
         <img src="assets/c.png" alt="Partnership puzzle piece illustration" loading="lazy" decoding="async" onload="this.classList.add('is-loaded')" onerror="this.remove()">
         <span class="ph-caption">CTA illustration placeholder<br>(assets/about-cta.png)</span>
@@ -1983,7 +1896,7 @@ html{ scroll-behavior:smooth; }
   <i class="fas fa-arrow-up"></i>
 </button>
 
-<!-- ══════════ EMPLOYEE LOGIN — Floating Tab + Popup Modal ══════════ -->
+<!-- ══════ EMPLOYEE LOGIN — Floating Tab + Popup Modal ══════ -->
 <button type="button" class="emp-login-tab" id="empLoginTab">EMPLOYEE LOGIN</button>
 
 <div class="emp-login-overlay" id="empLoginOverlay">
@@ -2087,28 +2000,7 @@ html{ scroll-behavior:smooth; }
 })();
 </script>
 
-<!-- ===== PRELOADER SCRIPT ===== -->
-<script>
-(function(){
-  var pre = document.getElementById('preloader');
-  function hidePreloader(){
-    if(pre){ pre.classList.add('hide'); }
-  }
-  var minTime = 1200;
-  var loaded  = false;
-  var elapsed = false;
-  var loadedAt = Date.now();
-  function tryHide(){ if(loaded && elapsed) hidePreloader(); }
-  window.addEventListener('load', function(){
-    loaded = true;
-    var wait = Math.max(0, minTime - (Date.now() - loadedAt));
-    setTimeout(function(){ elapsed = true; tryHide(); }, wait);
-  });
-  setTimeout(function(){ loaded = true; elapsed = true; tryHide(); }, 4000);
-})();
-</script>
-
-<!-- ===== EMPLOYEE LOGIN SCRIPT ===== -->
+<!-- Employee login script -->
 <script>
 (function(){
   var tab     = document.getElementById('empLoginTab');
@@ -2140,6 +2032,28 @@ html{ scroll-behavior:smooth; }
     e.preventDefault();
     errorEl.classList.add('show');
   });
+})();
+</script>
+
+<!-- Preloader script -->
+<script>
+(function(){
+  var pre = document.getElementById('preloader');
+  function hidePreloader(){
+    if(pre){ pre.classList.add('hide'); }
+  }
+  var minTime = 1200; // ms minimum show time
+  var loaded  = false;
+  var elapsed = false;
+  var loadedAt = Date.now();
+  function tryHide(){ if(loaded && elapsed) hidePreloader(); }
+  window.addEventListener('load', function(){
+    loaded = true;
+    var wait = Math.max(0, minTime - (Date.now() - loadedAt));
+    setTimeout(function(){ elapsed = true; tryHide(); }, wait);
+  });
+  // Absolute fallback after 4s in case 'load' never fires
+  setTimeout(function(){ loaded = true; elapsed = true; tryHide(); }, 4000);
 })();
 </script>
 
