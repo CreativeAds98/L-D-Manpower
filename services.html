@@ -220,9 +220,87 @@
   .scroll-top-btn.show{opacity:1;transform:translateY(0);pointer-events:auto;}
   .scroll-top-btn:hover{background:var(--green-dark);transform:translateY(-3px);}
 
+  /* ===== PRELOADER ===== */
+  #preloader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    transition:opacity .55s ease, visibility .55s ease;
+  }
+  #preloader.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .pre-logo{
+    width:96px;
+    height:96px;
+    animation:prePulse 1.6s ease-in-out infinite;
+  }
+  @keyframes prePulse{
+    0%,100%{ transform:scale(1);   opacity:1;   }
+    50%{     transform:scale(1.1); opacity:.75; }
+  }
+  .pre-bar-wrap{
+    width:160px;
+    height:3px;
+    background:#e7eaef;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .pre-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#226e22,#3FA63F);
+    border-radius:4px;
+    animation:preBar 1.6s ease-in-out forwards;
+  }
+  @keyframes preBar{
+    0%{  width:0%;   }
+    60%{ width:75%;  }
+    100%{width:100%; }
+  }
+  .pre-text{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#226e22;
+    animation:preFade 1.2s ease-in-out infinite alternate;
+  }
+  @keyframes preFade{
+    from{ opacity:.4; }
+    to{   opacity:1;  }
+  }
+  @media(prefers-reduced-motion:reduce){
+    #preloader .pre-logo,#preloader .pre-bar,#preloader .pre-text{animation:none !important;}
+  }
+
 </style>
 </head>
 <body>
+
+<!-- Preloader -->
+<div id="preloader" role="status" aria-label="Loading L&D Manpower Solutions">
+  <img
+    src="assets/favicon-preloader.png"
+    alt="L&D Manpower logo"
+    class="pre-logo"
+    loading="eager"
+    decoding="async"
+  >
+  <div class="pre-bar-wrap">
+    <div class="pre-bar"></div>
+  </div>
+  <span class="pre-text">L &amp; D Manpower Solutions</span>
+</div>
 
 <!-- ══════════ NAVBAR ══════════ -->
 <header class="navbar">
@@ -684,6 +762,160 @@
       window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
     });
   }
+})();
+</script>
+
+<!-- ══════════════════════════════════════════
+     EMPLOYEE LOGIN — Floating Tab + Popup Modal
+══════════════════════════════════════════ -->
+<style>
+  :root{
+    --emp-green:#2C8C2C;
+    --emp-green-dark:#226e22;
+    --emp-green-pale:#eaf5ea;
+  }
+  .emp-login-tab{
+    position:fixed; top:50%; right:0; transform:translateY(-50%);
+    background:var(--emp-green); color:#fff; font-family:'Inter',sans-serif;
+    font-weight:600; font-size:14px; letter-spacing:1.5px;
+    writing-mode:vertical-rl; text-orientation:mixed;
+    padding:22px 10px; border-radius:8px 0 0 8px; cursor:pointer; border:none;
+    box-shadow:0 8px 20px -8px rgba(34,110,34,0.55); z-index:900;
+    transition:background .2s ease, padding-right .2s ease;
+  }
+  .emp-login-tab:hover{ background:var(--emp-green-dark); padding-right:16px; }
+  .emp-login-overlay{
+    display:none; position:fixed; inset:0; background:rgba(15,25,15,0.55);
+    z-index:1000; align-items:flex-start; justify-content:center;
+  }
+  .emp-login-overlay.active{ display:flex; }
+  .emp-login-modal{
+    background:#fff; width:320px; max-width:90vw; margin-top:70px;
+    border-radius:10px; box-shadow:0 24px 60px -20px rgba(0,0,0,0.4);
+    font-family:'Inter',sans-serif; overflow:hidden; animation:empModalIn .25s ease;
+  }
+  @keyframes empModalIn{ from{ opacity:0; transform:translateY(-14px); } to{ opacity:1; transform:translateY(0); } }
+  .emp-login-header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 20px; border-bottom:1px solid #eef1f4;
+  }
+  .emp-login-header h3{ margin:0; font-family:'Poppins',sans-serif; font-size:19px; font-weight:600; color:#1A2848; }
+  .emp-login-close{ background:none; border:none; font-size:18px; color:#8a95a3; cursor:pointer; line-height:1; padding:4px; }
+  .emp-login-close:hover{ color:#27313f; }
+  .emp-login-body{ padding:22px 20px 26px; }
+  .emp-branch-btn{
+    width:100%; display:block; background:var(--emp-green-pale); border:1.5px solid var(--emp-green);
+    color:var(--emp-green-dark); font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px;
+    text-align:center; padding:12px 14px; border-radius:8px; margin-bottom:18px; cursor:default;
+  }
+  .emp-input-wrap{ position:relative; margin-bottom:14px; }
+  .emp-input-wrap input{
+    width:100%; font-family:'Inter',sans-serif; font-size:14px; padding:12px 40px 12px 14px;
+    border:1px solid #dde2e8; border-radius:8px; outline:none; transition:border-color .2s ease; box-sizing:border-box;
+  }
+  .emp-input-wrap input:focus{ border-color:var(--emp-green); }
+  .emp-input-wrap i{ position:absolute; right:14px; top:50%; transform:translateY(-50%); color:#9aa7b3; font-size:14px; pointer-events:none; }
+  .emp-login-submit{
+    width:100%; background:var(--emp-green); color:#fff; font-family:'Inter',sans-serif; font-weight:600;
+    font-size:15px; padding:13px; border:none; border-radius:8px; cursor:pointer; margin-top:6px; transition:background .2s ease;
+  }
+  .emp-login-submit:hover{ background:var(--emp-green-dark); }
+  .emp-login-error{
+    display:none; background:#fdeceb; border:1px solid #f3c2be; color:#b13a30;
+    font-size:13px; padding:10px 12px; border-radius:7px; margin-bottom:14px;
+  }
+  .emp-login-error.show{ display:block; }
+  @media(max-width:560px){
+    .emp-login-tab{ font-size:12.5px; padding:18px 8px; }
+    .emp-login-modal{ margin-top:50px; }
+  }
+</style>
+
+<button type="button" class="emp-login-tab" id="empLoginTab">EMPLOYEE LOGIN</button>
+
+<div class="emp-login-overlay" id="empLoginOverlay">
+  <div class="emp-login-modal">
+    <div class="emp-login-header">
+      <h3>Employee Login</h3>
+      <button type="button" class="emp-login-close" id="empLoginClose" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="emp-login-body">
+      <div class="emp-branch-btn">Singapore Employee Login</div>
+
+      <div class="emp-login-error" id="empLoginError">
+        Invalid username or password. Please try again.
+      </div>
+
+      <form id="empLoginForm">
+        <div class="emp-input-wrap">
+          <input type="text" placeholder="Username or Email Address" autocomplete="username">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="emp-input-wrap">
+          <input type="password" placeholder="Password" autocomplete="current-password">
+          <i class="fas fa-lock"></i>
+        </div>
+        <button type="submit" class="emp-login-submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var tab     = document.getElementById('empLoginTab');
+  var overlay = document.getElementById('empLoginOverlay');
+  var closeBtn= document.getElementById('empLoginClose');
+  var form    = document.getElementById('empLoginForm');
+  var errorEl = document.getElementById('empLoginError');
+
+  function openModal(){
+    overlay.classList.add('active');
+    errorEl.classList.remove('show');
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('active');
+    document.body.style.overflow='';
+  }
+
+  tab.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errorEl.classList.add('show');
+  });
+})();
+</script>
+
+<!-- Preloader script -->
+<script>
+(function(){
+  var pre = document.getElementById('preloader');
+  function hidePreloader(){
+    if(pre){ pre.classList.add('hide'); }
+  }
+  var minTime = 1200; // ms minimum show time
+  var loaded  = false;
+  var elapsed = false;
+  var loadedAt = Date.now();
+  function tryHide(){ if(loaded && elapsed) hidePreloader(); }
+  window.addEventListener('load', function(){
+    loaded = true;
+    var wait = Math.max(0, minTime - (Date.now() - loadedAt));
+    setTimeout(function(){ elapsed = true; tryHide(); }, wait);
+  });
+  // Absolute fallback after 4s in case 'load' never fires
+  setTimeout(function(){ loaded = true; elapsed = true; tryHide(); }, 4000);
 })();
 </script>
 </body>
