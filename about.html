@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
+
 <style>
   :root{
     --navy:#1A2848;
@@ -1401,8 +1403,9 @@ html{ scroll-behavior:smooth; }
     #preloader .pre-logo,#preloader .pre-bar,#preloader .pre-text{animation:none !important;}
   }
 
-  /* ===== EMPLOYEE LOGIN ===== */
-/* ===== Employee Login ===== */
+</style>
+
+<style>
   :root{
     --emp-green:#2C8C2C;
     --emp-green-dark:#226e22;
@@ -1534,9 +1537,15 @@ html{ scroll-behavior:smooth; }
     transition:background .2s ease, border-color .2s ease, color .2s ease, transform .15s ease;
   }
   .emp-branch-btn .branch-flag{
+    display:inline-block;
     font-size:19px;
     line-height:1;
     flex-shrink:0;
+    width:26px;
+    height:19px;
+    background-size:cover;
+    border-radius:3px;
+    box-shadow:0 0 0 1px rgba(0,0,0,0.08);
   }
   .emp-branch-btn:hover{
     border-color:var(--emp-green);
@@ -2068,6 +2077,10 @@ html{ scroll-behavior:smooth; }
   <i class="fas fa-arrow-up"></i>
 </button>
 
+ <!-- ══════════════════════════════════════════
+     EMPLOYEE LOGIN — Floating Tab + Popup Modal
+══════════════════════════════════════════ -->
+
 <!-- Floating tab -->
 <button type="button" class="emp-login-tab" id="empLoginTab">EMPLOYEE LOGIN</button>
 
@@ -2085,28 +2098,28 @@ html{ scroll-behavior:smooth; }
       <span class="emp-branch-label">Select Your Branch</span>
       <div class="emp-branch-grid" id="empBranchGrid">
         <button type="button" class="emp-branch-btn active" data-branch="Singapore">
-          <span class="branch-flag">🇸🇬</span> Singapore
+          <span class="branch-flag fi fi-sg"></span> Singapore
         </button>
         <button type="button" class="emp-branch-btn" data-branch="Hong Kong">
-          <span class="branch-flag">🇭🇰</span> Hong Kong
+          <span class="branch-flag fi fi-hk"></span> Hong Kong
         </button>
         <button type="button" class="emp-branch-btn" data-branch="Malaysia">
-          <span class="branch-flag">🇲🇾</span> Malaysia
+          <span class="branch-flag fi fi-my"></span> Malaysia
         </button>
         <button type="button" class="emp-branch-btn" data-branch="Indonesia">
-          <span class="branch-flag">🇮🇩</span> Indonesia
+          <span class="branch-flag fi fi-id"></span> Indonesia
         </button>
         <button type="button" class="emp-branch-btn" data-branch="Maldives">
-          <span class="branch-flag">🇲🇻</span> Maldives
+          <span class="branch-flag fi fi-mv"></span> Maldives
         </button>
         <button type="button" class="emp-branch-btn" data-branch="Qatar">
-          <span class="branch-flag">🇶🇦</span> Qatar
+          <span class="branch-flag fi fi-qa"></span> Qatar
         </button>
         <button type="button" class="emp-branch-btn" data-branch="Dubai">
-          <span class="branch-flag">🇦🇪</span> Dubai
+          <span class="branch-flag fi fi-ae"></span> Dubai
         </button>
         <button type="button" class="emp-branch-btn" data-branch="Oman">
-          <span class="branch-flag">🇴🇲</span> Oman
+          <span class="branch-flag fi fi-om"></span> Oman
         </button>
       </div>
 
