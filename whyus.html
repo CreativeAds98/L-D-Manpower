@@ -531,12 +531,14 @@
     #preloader .pre-logo,#preloader .pre-bar,#preloader .pre-text{animation:none !important;}
   }
 
-  /* ===== EMPLOYEE LOGIN ===== */
+  /* ===== Employee Login ===== */
   :root{
     --emp-green:#2C8C2C;
     --emp-green-dark:#226e22;
     --emp-green-pale:#eaf5ea;
   }
+
+  /* Floating vertical tab, fixed to right edge of viewport */
   .emp-login-tab{
     position:fixed;
     top:50%;
@@ -562,6 +564,8 @@
     background:var(--emp-green-dark);
     padding-right:16px;
   }
+
+  /* Overlay */
   .emp-login-overlay{
     display:none;
     position:fixed;
@@ -570,15 +574,19 @@
     z-index:1000;
     align-items:flex-start;
     justify-content:center;
+    overflow-y:auto;
+    padding:40px 16px;
   }
   .emp-login-overlay.active{
     display:flex;
   }
+
+  /* Modal card */
   .emp-login-modal{
     background:#fff;
-    width:320px;
-    max-width:90vw;
-    margin-top:70px;
+    width:440px;
+    max-width:100%;
+    margin-top:30px;
     border-radius:10px;
     box-shadow:0 24px 60px -20px rgba(0,0,0,0.4);
     font-family:'Inter',sans-serif;
@@ -589,11 +597,12 @@
     from{ opacity:0; transform:translateY(-14px); }
     to{ opacity:1; transform:translateY(0); }
   }
+
   .emp-login-header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:18px 20px;
+    padding:18px 22px;
     border-bottom:1px solid #eef1f4;
   }
   .emp-login-header h3{
@@ -613,24 +622,66 @@
     padding:4px;
   }
   .emp-login-close:hover{ color:#27313f; }
+
   .emp-login-body{
-    padding:22px 20px 26px;
+    padding:22px 22px 26px;
+  }
+
+  /* ── Country / branch selector grid ── */
+  .emp-branch-label{
+    font-family:'Inter',sans-serif;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:#8a95a3;
+    margin:0 0 10px 2px;
+  }
+  .emp-branch-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:8px;
+    margin-bottom:20px;
   }
   .emp-branch-btn{
-    width:100%;
-    display:block;
-    background:var(--emp-green-pale);
-    border:1.5px solid var(--emp-green);
-    color:var(--emp-green-dark);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    background:#f4f6f8;
+    border:1.5px solid #eef1f4;
+    color:#4b5563;
     font-family:'Inter',sans-serif;
     font-weight:600;
-    font-size:14.5px;
+    font-size:12px;
     text-align:center;
-    padding:12px 14px;
+    line-height:1.25;
+    padding:12px 6px;
     border-radius:8px;
-    margin-bottom:18px;
-    cursor:default;
+    cursor:pointer;
+    transition:background .2s ease, border-color .2s ease, color .2s ease, transform .15s ease;
   }
+  .emp-branch-btn .branch-flag{
+    font-size:19px;
+    line-height:1;
+    flex-shrink:0;
+  }
+  .emp-branch-btn:hover{
+    border-color:var(--emp-green);
+    color:var(--emp-green-dark);
+    transform:translateY(-1px);
+  }
+  .emp-branch-btn.active{
+    background:var(--emp-green);
+    border-color:var(--emp-green);
+    color:#fff;
+    box-shadow:0 8px 18px -8px rgba(34,110,34,0.55);
+  }
+  .emp-branch-btn.active:hover{
+    transform:none;
+  }
+
   .emp-input-wrap{
     position:relative;
     margin-bottom:14px;
@@ -658,6 +709,7 @@
     font-size:14px;
     pointer-events:none;
   }
+
   .emp-login-submit{
     width:100%;
     background:var(--emp-green);
@@ -675,6 +727,19 @@
   .emp-login-submit:hover{
     background:var(--emp-green-dark);
   }
+
+  .emp-forgot{
+    display:block;
+    text-align:center;
+    margin-top:16px;
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:var(--emp-green-dark);
+    cursor:pointer;
+  }
+  .emp-forgot:hover{ text-decoration:underline; }
+
   .emp-login-error{
     display:none;
     background:#fdeceb;
@@ -686,9 +751,11 @@
     margin-bottom:14px;
   }
   .emp-login-error.show{ display:block; }
+
   @media(max-width:560px){
     .emp-login-tab{ font-size:12.5px; padding:18px 8px; }
-    .emp-login-modal{ margin-top:50px; }
+    .emp-login-modal{ margin-top:20px; }
+    .emp-branch-grid{ grid-template-columns:1fr 1fr; }
   }
 
 </style>
@@ -1158,19 +1225,47 @@
   <i class="fas fa-arrow-up"></i>
 </button>
 
-<!-- ══════════ EMPLOYEE LOGIN — Floating Tab + Popup Modal ══════════ -->
+<!-- Floating tab -->
 <button type="button" class="emp-login-tab" id="empLoginTab">EMPLOYEE LOGIN</button>
 
+<!-- Popup overlay + modal -->
 <div class="emp-login-overlay" id="empLoginOverlay">
   <div class="emp-login-modal">
     <div class="emp-login-header">
-      <h3>Employee Login</h3>
+      <h3>Employees Login</h3>
       <button type="button" class="emp-login-close" id="empLoginClose" aria-label="Close">
         <i class="fas fa-times"></i>
       </button>
     </div>
     <div class="emp-login-body">
-      <div class="emp-branch-btn">Singapore Employee Login</div>
+
+      <span class="emp-branch-label">Select Your Branch</span>
+      <div class="emp-branch-grid" id="empBranchGrid">
+        <button type="button" class="emp-branch-btn active" data-branch="Singapore">
+          <span class="branch-flag">🇸🇬</span> Singapore
+        </button>
+        <button type="button" class="emp-branch-btn" data-branch="Hong Kong">
+          <span class="branch-flag">🇭🇰</span> Hong Kong
+        </button>
+        <button type="button" class="emp-branch-btn" data-branch="Malaysia">
+          <span class="branch-flag">🇲🇾</span> Malaysia
+        </button>
+        <button type="button" class="emp-branch-btn" data-branch="Indonesia">
+          <span class="branch-flag">🇮🇩</span> Indonesia
+        </button>
+        <button type="button" class="emp-branch-btn" data-branch="Maldives">
+          <span class="branch-flag">🇲🇻</span> Maldives
+        </button>
+        <button type="button" class="emp-branch-btn" data-branch="Qatar">
+          <span class="branch-flag">🇶🇦</span> Qatar
+        </button>
+        <button type="button" class="emp-branch-btn" data-branch="Dubai">
+          <span class="branch-flag">🇦🇪</span> Dubai
+        </button>
+        <button type="button" class="emp-branch-btn" data-branch="Oman">
+          <span class="branch-flag">🇴🇲</span> Oman
+        </button>
+      </div>
 
       <div class="emp-login-error" id="empLoginError">
         Invalid username or password. Please try again.
@@ -1187,6 +1282,8 @@
         </div>
         <button type="submit" class="emp-login-submit">Login</button>
       </form>
+
+      <a class="emp-forgot" id="empForgot">Forget Password</a>
     </div>
   </div>
 </div>
@@ -1409,7 +1506,6 @@
 })();
 </script>
 
-<!-- ===== EMPLOYEE LOGIN SCRIPT ===== -->
 <script>
 (function(){
   var tab     = document.getElementById('empLoginTab');
@@ -1417,6 +1513,8 @@
   var closeBtn= document.getElementById('empLoginClose');
   var form    = document.getElementById('empLoginForm');
   var errorEl = document.getElementById('empLoginError');
+  var branchGrid = document.getElementById('empBranchGrid');
+  var selectedBranch = 'Singapore';
 
   function openModal(){
     overlay.classList.add('active');
@@ -1437,9 +1535,25 @@
     if(e.key === 'Escape') closeModal();
   });
 
+  branchGrid.addEventListener('click', function(e){
+    var btn = e.target.closest('.emp-branch-btn');
+    if(!btn) return;
+    branchGrid.querySelectorAll('.emp-branch-btn').forEach(function(b){
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    selectedBranch = btn.getAttribute('data-branch');
+  });
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     errorEl.classList.add('show');
+  });
+
+  var forgot = document.getElementById('empForgot');
+  forgot.addEventListener('click', function(){
+    // Hook up your password-reset flow here
+    alert('Please contact HR to reset your password for the ' + selectedBranch + ' branch.');
   });
 })();
 </script>
