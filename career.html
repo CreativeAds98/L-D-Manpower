@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Careers – L&D Manpower Solutions</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +25,10 @@
     --border:#e7eaef;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0;overflow-x:hidden;}
   body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); }
   a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; }
 
   /* ── NAVBAR ── */
   .navbar{ width:100%; background:var(--paper); border-bottom:1px solid var(--border); box-shadow:0 6px 18px -12px rgba(20,30,60,0.25); position:relative; z-index:20; }
@@ -41,9 +43,102 @@
   .navbar-cta{ display:inline-flex; align-items:center; gap:8px; background:var(--green); color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:15px; padding:13px 26px; border-radius:32px; border:none; cursor:pointer; flex-shrink:0; transition:background .2s ease, transform .2s ease; }
   .navbar-cta:hover{ background:var(--green-dark); transform:translateY(-1px); }
   .navbar-cta svg{ width:15px; height:15px; }
+
+  /* ── MOBILE NAV TOGGLE ── */
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    width:44px;
+    height:44px;
+    background:transparent;
+    border:1.5px solid #e0e4ea;
+    border-radius:10px;
+    cursor:pointer;
+    flex-shrink:0;
+    padding:0;
+    z-index:60;
+  }
+  .nav-toggle-bar{
+    width:20px;
+    height:2px;
+    background:var(--navy);
+    border-radius:2px;
+    transition:transform .3s ease, opacity .3s ease;
+  }
+  .nav-toggle.open .nav-toggle-bar:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-toggle.open .nav-toggle-bar:nth-child(2){ opacity:0; }
+  .nav-toggle.open .nav-toggle-bar:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  .nav-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,25,15,0.45);
+    z-index:35;
+    opacity:0;
+    transition:opacity .3s ease;
+  }
+  .nav-overlay.show{ display:block; opacity:1; }
+
+  .mobile-only-cta{ display:none; }
+  .desktop-only-cta{ display:inline-flex; }
+
   @media(max-width:1180px){ .nav-links{ gap:22px; } .navbar-inner{ padding:16px 28px; } }
-  @media(max-width:980px){ .nav-links{ display:none; } .navbar-cta{ padding:11px 20px; font-size:14px; } }
-  @media(max-width:560px){ .brand img{ height:42px; } .navbar-cta span.cta-label{ display:none; } .navbar-cta{ padding:11px 14px; } }
+
+  @media(max-width:980px){
+    .navbar-inner{ padding:14px 20px; }
+    .nav-toggle{ display:flex; }
+    .desktop-only-cta{ display:none; }
+
+    .nav-links{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0;
+      position:fixed;
+      top:0;
+      right:0;
+      height:100vh;
+      width:min(320px,82vw);
+      background:#fff;
+      box-shadow:-12px 0 40px -14px rgba(20,30,60,0.35);
+      padding:100px 28px 32px;
+      transform:translateX(100%);
+      transition:transform .35s ease;
+      z-index:40;
+      overflow-y:auto;
+      justify-content:flex-start;
+    }
+    .nav-links.open{ transform:translateX(0); }
+    .nav-links li{ width:100%; }
+    .nav-links li a{
+      display:block;
+      width:100%;
+      padding:14px 4px;
+      font-size:16px;
+      border-bottom:1px solid #f0f2f5;
+      white-space:normal;
+    }
+    .nav-links li a.active::after{ display:none; }
+    .nav-links li a.active{ color:var(--green); font-weight:700; }
+    .mobile-only-cta{
+      display:block;
+      margin-top:20px;
+      border-bottom:none !important;
+    }
+    .mobile-only-cta .navbar-cta{
+      width:100%;
+      justify-content:center;
+    }
+  }
+
+  @media(max-width:560px){
+    .brand img{ height:56px; }
+    .nav-toggle{ width:40px; height:40px; }
+  }
 
   /* ══════════════════
      SHARED UTILITIES
@@ -98,7 +193,6 @@
     position:relative; height:480px;
     display:flex; align-items:flex-end; justify-content:center;
   }
-  /* REPLACE with: <img src="assets/career-hero.png" class="hero-img" alt="Careers" loading="lazy"> */
   .hero-img{ width:100%; height:100%; object-fit:contain; object-position:bottom center; }
 
   /* Floating stat chips */
@@ -118,7 +212,6 @@
   .chip-placed  { top:40px; right:0; }
   .chip-rating  { bottom:100px; left:20px; }
 
-  /* Hero SVG illustration placeholder */
   .hero-svg-wrap{
     position:absolute; bottom:0; left:50%; transform:translateX(-50%);
     width:100%; display:flex; justify-content:center;
@@ -142,7 +235,6 @@
     width:64px; height:64px; border-radius:18px; background:var(--green-pale);
     display:flex; align-items:center; justify-content:center;
     margin:0 auto 20px; font-size:26px; color:var(--green);
-    /* REPLACE with: <img src="assets/icons/perk-*.png" loading="lazy"> */
   }
   .perk-card h4{ font-family:'Poppins',sans-serif; font-size:16px; font-weight:700; color:var(--navy); margin:0 0 10px 0; }
   .perk-card p{ font-size:13.5px; color:var(--muted); line-height:1.65; margin:0; }
@@ -155,7 +247,6 @@
   .jobs-section .sec-title{ text-align:center; }
   .jobs-section .sec-sub{ text-align:center; }
 
-  /* Filter tabs */
   .job-filters{
     display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:40px;
   }
@@ -169,7 +260,6 @@
     border-color:var(--green); color:var(--green); background:var(--green-pale);
   }
 
-  /* Search bar */
   .job-search{
     display:flex; gap:12px; max-width:680px; margin:0 auto 44px;
   }
@@ -189,7 +279,6 @@
   }
   .search-btn:hover{ background:var(--green-dark); }
 
-  /* Job cards */
   .jobs-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
   .job-card{
     background:#fff; border-radius:16px; border:1px solid var(--border);
@@ -226,7 +315,7 @@
     background:var(--green-soft); color:var(--green-dark); border:1px solid #c8e0c8;
   }
 
-  .job-card-footer{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; padding-top:16px; border-top:1px solid var(--border); }
+  .job-card-footer{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; padding-top:16px; border-top:1px solid var(--border); flex-wrap:wrap; }
   .job-salary{ font-family:'Poppins',sans-serif; font-size:15px; font-weight:700; color:var(--navy); }
   .job-salary small{ font-size:12px; color:var(--muted); font-weight:400; font-family:'Inter',sans-serif; }
   .apply-btn{
@@ -237,7 +326,6 @@
   }
   .apply-btn:hover{ background:var(--green-dark); transform:translateY(-1px); }
 
-  /* No more jobs notice */
   .jobs-more{ text-align:center; margin-top:40px; }
   .jobs-more p{ font-size:14.5px; color:var(--muted); margin:0 0 18px 0; }
 
@@ -262,7 +350,6 @@
   .life-point h5{ font-family:'Poppins',sans-serif; font-size:15px; font-weight:700; color:var(--navy); margin:0 0 4px 0; }
   .life-point p{ font-size:13.5px; color:var(--muted); line-height:1.6; margin:0; }
 
-  /* Right — photo grid */
   .life-grid{
     display:grid; grid-template-columns:1fr 1fr; gap:14px;
   }
@@ -271,7 +358,6 @@
     border:1px solid #c8e0c8; aspect-ratio:4/3;
     display:flex; align-items:center; justify-content:center;
     color:var(--green); font-size:28px;
-    /* REPLACE with: <img src="assets/life-*.jpg" loading="lazy" alt=""> */
   }
   .life-photo.tall{ grid-row:span 2; aspect-ratio:auto; min-height:260px; }
 
@@ -422,8 +508,35 @@
      RESPONSIVE
   ══════════════════ */
   @media(max-width:1100px){ .career-hero-inner{ grid-template-columns:1fr; min-height:auto; } .career-hero-right{ height:320px; } }
+  @media(max-width:980px){
+    .wrap{ padding:0 28px; }
+    .career-hero-inner{ padding:0 28px; }
+    .life-inner{ padding:0 28px; }
+    .cta-section{ padding:0 28px 60px; }
+    .career-hero-left h1{ font-size:36px; }
+    .sec-title{ font-size:28px; }
+    .cta-banner-career{ flex-direction:column; align-items:flex-start; text-align:left; padding:40px 32px; }
+  }
   @media(max-width:860px){ .wrap,.career-hero-inner,.life-inner{ padding:0 28px; } .cta-section{ padding:0 28px 60px; } }
-  @media(max-width:640px){ .perks-grid{ grid-template-columns:1fr 1fr; } .hero-chip{ display:none; } .cta-banner-career{ padding:36px 28px; } }
+  @media(max-width:640px){
+    .perks-grid{ grid-template-columns:1fr 1fr; }
+    .hero-chip{ display:none; }
+    .cta-banner-career{ padding:36px 28px; }
+    .career-hero{ padding:48px 0 0; }
+    .career-hero-left h1{ font-size:30px; }
+    .career-hero-left p{ font-size:15px; }
+    .hero-cta-row{ flex-direction:column; align-items:stretch; }
+    .hero-cta-row a{ justify-content:center; }
+    .career-hero-right{ height:260px; }
+    .sec-title{ font-size:24px; }
+    .sec-sub{ font-size:14.5px; margin-bottom:32px; }
+    .job-search{ flex-direction:column; }
+    .job-card-footer{ flex-direction:column; align-items:flex-start; }
+    .job-card-footer .apply-btn{ width:100%; justify-content:center; }
+    .life-grid{ grid-template-columns:1fr; }
+    .life-photo.tall{ grid-row:auto; min-height:200px; }
+    .perks-section,.jobs-section,.life-section,.apply-section{ padding-top:56px; padding-bottom:56px; }
+  }
   @media(max-width:420px){ .perks-grid{ grid-template-columns:1fr; } }
  
 
@@ -431,6 +544,10 @@
   .scroll-top-btn{position:fixed;right:26px;bottom:26px;width:48px;height:48px;border-radius:50%;background:var(--green);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;box-shadow:0 14px 28px -12px rgba(34,110,34,0.55);opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .3s ease,transform .3s ease,background .2s ease;z-index:50;}
   .scroll-top-btn.show{opacity:1;transform:translateY(0);pointer-events:auto;}
   .scroll-top-btn:hover{background:var(--green-dark);transform:translateY(-3px);}
+  @media(max-width:560px){
+    .scroll-top-btn{ right:16px; bottom:16px; width:44px; height:44px; }
+    .emp-login-tab{ display:none; }
+  }
 
 
     #preloader{
@@ -755,19 +872,31 @@
     <a href="index.html" class="brand">
       <img src="assets/logo.png" alt="L&D Manpower Solutions" loading="eager">
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="services.html">Our Services</a></li>
       <li><a href="whyus.html">Why Us</a></li>
       <li><a href="career.html" class="active">Careers</a></li>
       <li><a href="contact.html">Contact Us</a></li>
+      <li class="mobile-only-cta">
+        <a href="contact.html" class="navbar-cta">
+          <span class="cta-label">Get In Touch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </a>
+      </li>
     </ul>
-    <a href="contact.html" class="navbar-cta">
+    <a href="contact.html" class="navbar-cta desktop-only-cta">
       <span class="cta-label">Get In Touch</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
     </a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
   </div>
+  <div class="nav-overlay" id="navOverlay"></div>
 </header>
 
 <!-- ══════════ 1. HERO ══════════ -->
@@ -889,7 +1018,6 @@
 
     <div class="perks-grid">
       <div class="perk-card">
-        <!-- REPLACE: <img src="assets/icons/growth.png" loading="lazy" alt=""> -->
         <div class="perk-icon"><i class="fas fa-chart-line"></i></div>
         <h4>Career Growth</h4>
         <p>Structured development plans, mentorship programmes, and clear pathways to advance your career at every level.</p>
@@ -1614,5 +1742,46 @@
 })();
 </script>
 
+<!-- ══════════════════════════════════════════
+     MOBILE NAV TOGGLE LOGIC
+══════════════════════════════════════════ -->
+<script>
+(function(){
+  var toggle  = document.getElementById('navToggle');
+  var links   = document.getElementById('navLinks');
+  var overlay = document.getElementById('navOverlay');
+
+  if(!toggle || !links || !overlay) return;
+
+  function openMenu(){
+    links.classList.add('open');
+    overlay.classList.add('show');
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu(){
+    links.classList.remove('open');
+    overlay.classList.remove('show');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  toggle.addEventListener('click', function(){
+    links.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  overlay.addEventListener('click', closeMenu);
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 980) closeMenu();
+  });
+})();
+</script>
 </body>
 </html>
